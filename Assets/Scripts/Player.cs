@@ -26,27 +26,9 @@ public class Player : MonoBehaviour
 
         //APUNTADO
 
-        //RotatePlayerAlongMousePosition();
-
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, (mousePosition - transform.position).normalized);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, (mousePosition - transform.position).normalized); 
     }
 
-    Vector3 lookPos;
-    void RotatePlayerAlongMousePosition()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-
-        if (hit == true)
-        {
-            lookPos = hit.point;
-        }
-
-        Vector3 lookDir = lookPos - transform.position;
-        lookDir.x = 0;
-        lookDir.y = 0;
-        transform.LookAt( lookPos, Vector3.forward);
-    }
 }
