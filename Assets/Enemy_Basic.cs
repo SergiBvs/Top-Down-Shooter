@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class Enemy_Basic : MonoBehaviour
@@ -16,15 +17,16 @@ public class Enemy_Basic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //NOT WORKING XD
-        if (Physics2D.Raycast(transform.position, m_Player.transform.position, 5))
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(m_Player.transform.position), 10);
+        
+        if (hit)
         {
-            Debug.DrawRay(transform.position, m_Player.transform.position, Color.red);
+            Debug.DrawRay(transform.position, transform.TransformDirection(m_Player.transform.position), Color.red, hit.distance);
         }
         else
         {
-            Debug.DrawRay(transform.position, m_Player.transform.position, Color.gray);
+            Debug.DrawRay(transform.position, transform.TransformDirection(m_Player.transform.position), Color.gray, hit.distance);
         }
+        
     }
 }
