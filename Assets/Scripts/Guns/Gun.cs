@@ -8,8 +8,10 @@ public class Gun : MonoBehaviour
 
     public int m_Damage;
     public int m_Magazine;
-    public float m_ShootCD;
     public int m_CurrentAmmo;
+    public float m_ShootCD;
+    public float m_ReloadSpeed;
+
     //others
 
     public Transform GunTip;
@@ -83,7 +85,7 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(2.5f); //reload time
+        yield return new WaitForSeconds(m_ReloadSpeed);
         m_CurrentAmmo = m_Magazine;
         m_HasBullets = true;
     }
