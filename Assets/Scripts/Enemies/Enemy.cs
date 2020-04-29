@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float m_Damage;
 
     public float m_MovementSpeed = 5f;
+    private float m_PatrolCooldown = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +44,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 Debug.DrawRay(transform.position, transform.up, Color.blue, 20);
+                //Patrol();
             }
             Debug.Log("hit " + hit.collider.tag);
         }
@@ -67,6 +66,32 @@ public class Enemy : MonoBehaviour
         if(Vector2.Distance(l_position, m_LastSeenPosition) >= 0.1f)
             transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed;
 
+    }
+
+    //NO FUNCIONA.
+    //Moverse aleatoriamente cuando no esta viendo al player
+    public void Patrol()
+    {
+        Vector2 l_position = transform.position;
+        m_LastSeenPosition = new Vector2(transform.position.x + Random.Range(-5f, 5f), transform.position.y + Random.Range(5f,5f));
+
+        //Si aun no ha llegado moverse hacia alli
+        if (Vector2.Distance(l_position, m_LastSeenPosition) >= 0.1f)
+            Debug.Log(".");
+        // transform.position += (Vector3)m_LastSeenPosition.normalized * Time.deltaTime * m_MovementSpeed;
+
+        //HACER QUE TAMBIEN PARE SI TOCA UNA PARED PARA EVITAR BUGS
+
+        //Si ya ha llegado pararse, esperar un tiempo y volver a empezar
+        else
+        {
+            if (m_PatrolCooldown <= 0)
+            {
+                m_PatrolCooldown = Random.Range(2f, 5f);
+                Patrol();
+            }
+            else m_PatrolCooldown -= Time.deltaTime;
+        }
     }
 
     public void TakeDamage(int amount)
