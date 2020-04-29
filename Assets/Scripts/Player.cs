@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     //Variables de player
 
-    public int m_Health = 100;
+    public float m_Health = 100;
     public int m_PlayerSpeed;
 
     public GameObject m_BasicGun;
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
         }
     }*/
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         m_Health -= amount;
 
