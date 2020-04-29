@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -17,15 +16,28 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(m_Player.transform.position), 10);
+        //APUNTANDO
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_Player.transform.position - transform.position).normalized);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Player", "Default"));
         
         if (hit)
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(m_Player.transform.position), Color.red, hit.distance);
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.DrawRay(transform.position, transform.up, Color.red, 20);
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, transform.up, Color.blue, 20);
+            }
+            Debug.Log("hit " + hit.collider.tag);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(m_Player.transform.position), Color.gray, hit.distance);
+
+            Debug.Log("not hitting");
+            Debug.DrawRay(transform.position, transform.up, Color.gray, 20);
         }
         
     }
