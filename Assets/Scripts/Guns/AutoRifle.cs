@@ -9,7 +9,7 @@ public class AutoRifle : Gun
     {
         if (Input.GetButton("Fire1"))
         {
-            if (m_canShoot)
+            if (m_canShoot && m_HasBullets)
                 Shoot();
         }
     }

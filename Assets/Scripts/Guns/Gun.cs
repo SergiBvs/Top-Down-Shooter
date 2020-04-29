@@ -8,17 +8,20 @@ public class Gun : MonoBehaviour
 
     public int m_Damage;
     public int m_Magazine;
+    public int m_CurrentAmmo;
     public float m_ShootCD;
+    public float m_ReloadSpeed;
 
     //others
 
     public Transform GunTip;
     public bool m_canShoot = true;
+    public bool m_HasBullets = true;
     public LineRenderer m_LR;
     
     void Start()
     {
-        
+        m_CurrentAmmo = m_Magazine;
     }
 
     
@@ -26,8 +29,10 @@ public class Gun : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            if(m_canShoot)
-            Shoot();
+            if((m_canShoot) && (m_HasBullets))
+            {
+                Shoot();
+            }
         }
     }
 
@@ -66,11 +71,23 @@ public class Gun : MonoBehaviour
         m_LR.enabled = true;
         StartCoroutine(LineCooldown());
 
+
+        m_CurrentAmmo--;
+
+        if (m_CurrentAmmo <= 0)
+        {
+            m_HasBullets = false;
+            StartCoroutine(Reload());
+        }
+       
+
     }
 
-    public void Reload()
+    IEnumerator Reload()
     {
-
+        yield return new WaitForSeconds(m_ReloadSpeed);
+        m_CurrentAmmo = m_Magazine;
+        m_HasBullets = true;
     }
 
     IEnumerator GunCooldown()
