@@ -19,12 +19,15 @@ public class Enemy : MonoBehaviour
         //APUNTANDO
         transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_Player.transform.position - transform.position).normalized);
 
+        //Raycast siguiendo constantemente al player.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Player", "Default"));
+        
         
         if (hit)
         {
             if (hit.collider.CompareTag("Player"))
             {
+                Movement();
                 Debug.DrawRay(transform.position, transform.up, Color.red, 20);
             }
             else
@@ -35,11 +38,15 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-
             Debug.Log("not hitting");
             Debug.DrawRay(transform.position, transform.up, Color.gray, 20);
         }
         
+    }
+
+    public void Movement()
+    {
+
     }
 
     public void TakeDamage(int amount)
