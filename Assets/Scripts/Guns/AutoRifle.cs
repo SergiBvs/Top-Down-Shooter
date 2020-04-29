@@ -9,8 +9,13 @@ public class AutoRifle : Gun
     {
         if (Input.GetButton("Fire1"))
         {
-            if (m_canShoot && m_HasBullets)
+            if (m_canShoot && m_HasBullets && !m_IsReloading)
                 Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(Reload());
         }
     }
 }

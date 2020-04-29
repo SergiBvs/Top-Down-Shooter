@@ -243,10 +243,11 @@ MonoBehaviour:
   m_Magazine: 30
   m_CurrentAmmo: 0
   m_ShootCD: 0.1
-  m_ReloadSpeed: 0
+  m_ReloadSpeed: 2
   GunTip: {fileID: 1290293154}
   m_canShoot: 1
   m_HasBullets: 1
+  m_IsReloading: 0
   m_LR: {fileID: 782642744}
 --- !u!1 &211856403
 GameObject:
@@ -1523,4 +1524,5 @@ MonoBehaviour:
   GunTip: {fileID: 446006858}
   m_canShoot: 1
   m_HasBullets: 1
+  m_IsReloading: 0
   m_LR: {fileID: 782642744}

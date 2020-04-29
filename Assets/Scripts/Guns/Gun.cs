@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public Transform GunTip;
     public bool m_canShoot = true;
     public bool m_HasBullets = true;
+    public bool m_IsReloading = false;
     public LineRenderer m_LR;
     
     void Start()
@@ -29,10 +30,15 @@ public class Gun : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            if((m_canShoot) && (m_HasBullets))
+            if(m_canShoot && m_HasBullets && !m_IsReloading)
             {
                 Shoot();
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(Reload());
         }
     }
 
@@ -77,17 +83,18 @@ public class Gun : MonoBehaviour
         if (m_CurrentAmmo <= 0)
         {
             m_HasBullets = false;
-            StartCoroutine(Reload());
         }
        
 
     }
 
-    IEnumerator Reload()
+    protected IEnumerator Reload()
     {
+        m_IsReloading = true;
         yield return new WaitForSeconds(m_ReloadSpeed);
         m_CurrentAmmo = m_Magazine;
         m_HasBullets = true;
+        m_IsReloading = false;
     }
 
     IEnumerator GunCooldown()
