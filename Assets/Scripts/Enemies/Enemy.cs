@@ -5,12 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private GameObject m_Player;
+    private Player m_PlayerScript;
+
     public int m_Health;
+    public int m_Damage;
 
     // Start is called before the first frame update
     void Start()
     {
         m_Player = GameObject.FindGameObjectWithTag("Player");
+        m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -57,5 +61,13 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       if(collision.gameObject.CompareTag("Player"))
+       {
+            m_PlayerScript.TakeDamage(m_Damage);
+       }
     }
 }

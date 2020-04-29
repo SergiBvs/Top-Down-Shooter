@@ -580,6 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerRB2D: {fileID: 0}
+  m_Health: 100
   m_PlayerSpeed: 10
   m_BasicGun: {fileID: 0}
   m_AutoRifle: {fileID: 0}
@@ -1335,6 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Health: 100
+  m_Damage: 10
 --- !u!212 &1865651254
 SpriteRenderer:
   m_ObjectHideFlags: 0

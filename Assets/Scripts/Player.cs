@@ -5,7 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Vector2 m_movement;
-    public Rigidbody2D m_PlayerRB2D;
+    [HideInInspector] public Rigidbody2D m_PlayerRB2D;
+
+    //Variables de player
+
+    public int m_Health = 100;
     public int m_PlayerSpeed;
 
     public GameObject m_BasicGun;
@@ -87,7 +91,7 @@ public class Player : MonoBehaviour
                 break;
         }*/
 
-
+        
 
     }
 
@@ -111,4 +115,14 @@ public class Player : MonoBehaviour
                 break;
         }
     }*/
+
+    public void TakeDamage(int amount)
+    {
+        m_Health -= amount;
+
+        if(m_Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
