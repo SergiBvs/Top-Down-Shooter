@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 
-public class Enemy_Basic : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     private GameObject m_Player;
     public int m_Health;
@@ -28,5 +28,15 @@ public class Enemy_Basic : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(m_Player.transform.position), Color.gray, hit.distance);
         }
         
+    }
+
+    public void TakeDamage(int amount)
+    {
+        m_Health -= amount; 
+
+        if(m_Health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
