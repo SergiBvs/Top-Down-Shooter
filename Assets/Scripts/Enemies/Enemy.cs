@@ -11,12 +11,17 @@ public class Enemy : MonoBehaviour
     public int m_Health;
     public float m_Damage;
 
+    //Movement and patrol variables
     public float m_MovementSpeed = 5f;
     private float m_PatrolCooldown = 0f;
+    private bool m_HasHitWall = false;
+    Vector2 m_nextPatrolPosition = Vector2.zero;
+    private bool m_HasReachedLastSeen = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_nextPatrolPosition = transform.position;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         m_rb2d = GetComponent<Rigidbody2D>();
@@ -35,63 +40,75 @@ public class Enemy : MonoBehaviour
         
         if (hit)
         {
+            //Si esta viendo al player
             if (hit.collider.CompareTag("Player"))
             {
                 m_LastSeenPosition = hit.transform.position;
-                print(m_LastSeenPosition);
                 Debug.DrawRay(transform.position, transform.up, Color.red, 20);
+                MoveToPlayer();
             }
-            else
+            else //Si no esta viendo al player
             {
                 Debug.DrawRay(transform.position, transform.up, Color.blue, 20);
-                //Patrol();
+
+                //Comprobar si ya ha llegado al ultimo punto en el que vió al player antes de compenzar su patrulla.
+                if (m_HasReachedLastSeen)
+                    Patrol();
+                else
+                    MoveToPlayer();
+                
             }
-            Debug.Log("hit " + hit.collider.tag);
         }
         else
         {
             Debug.DrawRay(transform.position, transform.up, Color.gray, 20);
+            Patrol();
         }
 
-        Movement();
     }
 
-    public void Movement()
+    public void MoveToPlayer()
     {
         Vector2 l_position = transform.position;
+        print("MoveToPlayer");
 
         //Ir hacia donde ha visto al player por ultima vez (Mas "natural"?)
         //No me salia con rigidbody xD
         Vector3 dir = m_LastSeenPosition - l_position;
-        if(Vector2.Distance(l_position, m_LastSeenPosition) >= 0.1f)
+        if (Vector2.Distance(l_position, m_LastSeenPosition) >= 0.1f)
+        {
             transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed;
+            m_HasReachedLastSeen = false;
+        }
+
+        else
+        {
+            m_HasReachedLastSeen = true;
+        }
 
     }
 
-    //NO FUNCIONA.
+
     //Moverse aleatoriamente cuando no esta viendo al player
     public void Patrol()
     {
-        Vector2 l_position = transform.position;
-        m_LastSeenPosition = new Vector2(transform.position.x + Random.Range(-5f, 5f), transform.position.y + Random.Range(5f,5f));
-
-        //Si aun no ha llegado moverse hacia alli
-        if (Vector2.Distance(l_position, m_LastSeenPosition) >= 0.1f)
-            Debug.Log(".");
-        // transform.position += (Vector3)m_LastSeenPosition.normalized * Time.deltaTime * m_MovementSpeed;
-
-        //HACER QUE TAMBIEN PARE SI TOCA UNA PARED PARA EVITAR BUGS
-
+        print("Patrol");
         //Si ya ha llegado pararse, esperar un tiempo y volver a empezar
-        else
+        if (m_PatrolCooldown <= 0 || m_HasHitWall)
         {
-            if (m_PatrolCooldown <= 0)
-            {
-                m_PatrolCooldown = Random.Range(2f, 5f);
-                Patrol();
-            }
-            else m_PatrolCooldown -= Time.deltaTime;
+            m_HasHitWall = false;
+            m_nextPatrolPosition = transform.position;
+            m_PatrolCooldown = 0;
+            m_nextPatrolPosition = new Vector2(transform.position.x + Random.Range(-7f, 7f), transform.position.y + Random.Range(-7f, 7f));
+            m_PatrolCooldown = Random.Range(4f, 8f);
+            print("New patrol Position");
         }
+        else m_PatrolCooldown -= Time.deltaTime;
+
+        Vector2 l_position = transform.position;
+        Vector3 dir = m_nextPatrolPosition - l_position;
+        if (Vector2.Distance(l_position, m_nextPatrolPosition) >= 0.1f)
+            transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed * 0.5f;
     }
 
     public void TakeDamage(int amount)
@@ -110,5 +127,19 @@ public class Enemy : MonoBehaviour
        {
             m_PlayerScript.TakeDamage(m_Damage);
        }
+       else if (collision.gameObject.CompareTag("Wall"))
+       {
+            m_HasHitWall = true;
+            print("Touching wall");
+       }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            m_HasHitWall = true;
+            print("Touching wall");
+        }
     }
 }
