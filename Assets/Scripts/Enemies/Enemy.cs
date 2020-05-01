@@ -10,11 +10,11 @@ public class Enemy : MonoBehaviour
 
     //MOVEMENT AND PATROL
     public float m_MovementSpeed = 5f;
-    private float m_PatrolCooldown = 0f;
+    protected float m_PatrolCooldown = 0f;
     private bool m_HasHitWall = false;
     private bool m_HasReachedLastSeen = false;
-    Vector2 m_nextPatrolPosition = Vector2.zero;
-    private Vector2 m_LastSeenPosition;
+    protected Vector2 m_nextPatrolPosition = Vector2.zero;
+    protected Vector2 m_LastSeenPosition;
     public float m_PatrolDistance = 0;
 
     public virtual void Start()
