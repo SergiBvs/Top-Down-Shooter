@@ -2,11 +2,13 @@
 
 public class Enemy : MonoBehaviour
 {
-    private GameObject m_Player;
+    protected GameObject m_Player;
     private Player m_PlayerScript;
 
     public int m_Health;
     public float m_Damage;
+    protected float m_AttackCooldown;
+    public float m_MaxAttackCooldown;
 
     //MOVEMENT AND PATROL
     public float m_MovementSpeed = 5f;
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Start()
     {
+        m_AttackCooldown = m_MaxAttackCooldown;
         m_nextPatrolPosition = transform.position;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -28,11 +31,20 @@ public class Enemy : MonoBehaviour
     public virtual void Update()
     {
         //APUNTANDO
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_Player.transform.position - transform.position).normalized);
-
-        //Raycast siguiendo constantemente al player. Para controlar si realmente lo esta viendo o hay una pared de por medio
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 20, LayerMask.GetMask("Player", "Default"));
-        
+        //Raycast que sigue constantemente al Player, mirando si hay paredes de por medio.
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Player.transform.position - transform.position, 25, LayerMask.GetMask("Player", "Default"));
+        Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.red,0.1f);
+        if (hit.collider.CompareTag("Player"))
+        {
+            //Si encuentra al player mirarle constantemente.
+            FaceToPlayer();
+        }
+        else
+        {
+            //Mirar donde sea
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_nextPatrolPosition - (Vector2)transform.position).normalized);
+        }
+                
         
         if (hit)
         {
@@ -40,12 +52,11 @@ public class Enemy : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 m_LastSeenPosition = hit.transform.position;
-                Debug.DrawRay(transform.position, transform.up, Color.red, 20);
                 MoveToPlayer();
+                AttackState();
             }
             else //Si no esta viendo al player
             {
-                Debug.DrawRay(transform.position, transform.up, Color.blue, 20);
 
                 //Comprobar si ya ha llegado al ultimo punto en el que vió al player antes de compenzar su patrulla.
                 if (m_HasReachedLastSeen)
@@ -57,10 +68,13 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.up, Color.gray, 20);
             Patrol();
         }
+    }
 
+    public virtual void FaceToPlayer()
+    {
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_Player.transform.position - transform.position).normalized);
     }
 
     public virtual void MoveToPlayer()
@@ -78,12 +92,32 @@ public class Enemy : MonoBehaviour
         {
             m_HasReachedLastSeen = true;
         }
-
     }
 
     public virtual void AttackState()
     {
-        //fuck me.
+        if(m_AttackCooldown <= 0)
+        {
+            Shoot();
+        }
+        else
+        {
+            m_AttackCooldown -= Time.deltaTime;
+        }
+    }
+
+    public virtual void Shoot()
+    {
+        //HACER UNA PEQUEÑA ALEATORIEDAD EN LA DESVIACION PARA QUE NO SEA TAN PRECISO.
+        RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
+        if (l_ShotHit.collider.CompareTag("Player"))
+        {
+            //CAMBIAR ESTA LINEA POR LAS GUAYS
+            Debug.DrawLine(transform.position, m_Player.transform.position, Color.red, 0.1f);
+            m_PlayerScript.TakeDamage(m_Damage);
+            
+        }
+        m_AttackCooldown = m_MaxAttackCooldown;
     }
 
     //Moverse aleatoriamente cuando no esta viendo al player
