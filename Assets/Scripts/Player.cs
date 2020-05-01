@@ -125,4 +125,12 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Explosion"))
+        {
+            TakeDamage(50f);
+        }
+    }
 }

@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Enemy_Kamikaze : Enemy
 {
-    
-    private bool m_OnRange = false;
+    private bool m_TouchedPlayer = false;
+    private bool m_GonnaExplode = false;
     public override void Update()
     {
-        if(!m_OnRange)
+        if(!m_GonnaExplode)
             base.Update();
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!m_OnRange && collision.collider.CompareTag("Player"))
+        if (!m_TouchedPlayer && collision.collider.CompareTag("Player"))
         {
-            print("OnRange");
-            m_OnRange = true;
+            m_TouchedPlayer = true;
             StartCoroutine(Explode());
         }
     }
@@ -26,6 +25,7 @@ public class Enemy_Kamikaze : Enemy
     IEnumerator Explode()
     {
         yield return new WaitForSeconds(1f);
+        m_GonnaExplode = true;
         GameObject explosion = Instantiate((GameObject)Resources.Load("Enemy/Explosion"));
         explosion.transform.position = transform.position;
         yield return new WaitForSeconds(1f);
