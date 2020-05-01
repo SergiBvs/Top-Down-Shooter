@@ -47,7 +47,8 @@ public class Gun : MonoBehaviour
         m_canShoot = false;
    
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(GunTip.position, mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right, 30);
+        Debug.DrawRay(GunTip.position, transform.right, Color.red, hit.distance);
 
         StartCoroutine(GunCooldown());
 
