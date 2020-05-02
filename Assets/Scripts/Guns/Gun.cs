@@ -57,16 +57,15 @@ public class Gun : MonoBehaviour
             m_LR.SetPosition(0, GunTip.position);
             m_LR.SetPosition(1, hit.point);
 
-            Enemy m_Enemy = hit.transform.GetComponent<Enemy>();
 
             if(hit.collider.CompareTag("Enemy"))
             {
-                m_Enemy.TakeDamage(m_Damage);
+                Enemy l_Enemy = hit.transform.GetComponent<Enemy>();
+                l_Enemy.TakeDamage(m_Damage);
             }
-
-            if(hit.collider.CompareTag("Wall"))
+            else if(hit.collider.CompareTag("Window"))
             {
-                Debug.Log("i hit a wall");
+                hit.transform.GetComponent<Window>().WindowDamage(m_Damage, hit.point);
             }
         }
         else

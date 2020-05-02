@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Explosion
   - Door
+  - Window
   layers:
   - Default
   - TransparentFX
