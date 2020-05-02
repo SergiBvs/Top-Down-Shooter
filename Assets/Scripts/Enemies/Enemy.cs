@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         //APUNTANDO
         //Raycast que sigue constantemente al Player, mirando si hay paredes de por medio.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Player.transform.position - transform.position, 25, LayerMask.GetMask("Player", "Default"));
-        Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.red,0.1f);
+        Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.gray,0.1f);
         if (hit.collider.CompareTag("Player"))
         {
             //Si encuentra al player mirarle constantemente.
@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
         if (l_ShotHit.collider.CompareTag("Player"))
         {
             //CAMBIAR ESTA LINEA POR LAS GUAYS
-            Debug.DrawLine(transform.position, m_Player.transform.position, Color.red, 0.1f);
+            Debug.DrawLine(transform.position, m_Player.transform.position, Color.red, 0.5f);
             m_PlayerScript.TakeDamage(m_Damage);
             
         }
