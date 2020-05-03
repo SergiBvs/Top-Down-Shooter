@@ -188,7 +188,6 @@ public class Enemy : MonoBehaviour
                     }
                 }
             }
-            print(closerOne);
             m_PivotIndex = closerOne;
             m_NextPatrolPosition = pivots[closerOne];
         }
