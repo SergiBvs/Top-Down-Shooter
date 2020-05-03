@@ -3,11 +3,11 @@
 public class Door : MonoBehaviour
 {
 
+    private enum DoorType { Horizontal, Vertical}
+    [SerializeField] private DoorType doorType;
+
     private GameObject m_Player;
     private bool m_Open = false;
-
-    [SerializeField] private bool isHorizontal = false;
-    [SerializeField] private bool isVertical = false;
 
     private Quaternion m_InitialRotation;
 
@@ -44,7 +44,7 @@ public class Door : MonoBehaviour
 
     void OpenDoor()
     {
-        if (isHorizontal)
+        if (doorType == DoorType.Horizontal)
         {
             if (m_Player.transform.position.y > transform.position.y)
             {
@@ -57,7 +57,7 @@ public class Door : MonoBehaviour
                 m_Open = true;
             }
         }
-        else if (isVertical)
+        else if (doorType == DoorType.Vertical)
         {
             if (m_Player.transform.position.x > transform.position.x)
             {

@@ -26,14 +26,12 @@ public class Window : MonoBehaviour
     public void WindowDamage(float l_amount, Vector2 l_particlePos)
     {
         m_WindowHealth -= l_amount;
-        m_BreakParticles.transform.position = l_particlePos;
-        m_BreakParticles.SetActive(true);
+        GameObject l_Particles = Instantiate(m_BreakParticles);
+        l_Particles.transform.position = l_particlePos;
+        l_Particles.SetActive(true);
         if(m_WindowHealth <= 0)
         {
             StartCoroutine(DestroyWindow());
-            //m_DestroyParticles.transform.SetParent(null);
-            //m_DestroyParticles.SetActive(true);
-            //gameObject.SetActive(false);
         }
     }
 
