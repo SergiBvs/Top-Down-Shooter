@@ -12,6 +12,11 @@ public class Enemy_Kamikaze : Enemy
             base.Update();
     }
 
+    public override void Shoot()
+    {
+        //Do nothing.
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

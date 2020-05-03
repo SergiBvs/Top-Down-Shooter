@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     protected Vector2 m_LastSeenPosition;
     public float m_PatrolDistance = 0;
 
+    bool ComesFromChasing = false;
+
     private enum PatrolType { Cyclic, PingPong}
     [SerializeField] PatrolType patrolType;
     private bool HasReachedPivot = false;
@@ -99,6 +101,7 @@ public class Enemy : MonoBehaviour
         {
             m_HasReachedLastSeen = true;
         }
+        ComesFromChasing = true;
     }
 
     public virtual void AttackState()
@@ -115,7 +118,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Shoot()
     {
-        //HACER UNA PEQUEÑA ALEATORIEDAD EN LA DESVIACION PARA QUE NO SEA TAN PRECISO.
+        //HACER UNA PEQUEÑA ALEATORIEDAD EN LA DESVIACION PARA QUE NO SEA TAN PRECISO???
         RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
         if (l_ShotHit.collider.CompareTag("Player"))
         {
@@ -130,7 +133,7 @@ public class Enemy : MonoBehaviour
     //Moverse de pivote en pivote cuando no esta viendo al player
     protected virtual void Patrol()
     {
-        if (m_PatrolCooldown <= 0)
+        if ((m_PatrolCooldown <= 0) || ComesFromChasing)
         {
             HasReachedPivot = false;
             ChoosePatrolDirection();           
@@ -148,18 +151,47 @@ public class Enemy : MonoBehaviour
 
     void ChoosePatrolDirection()
     {
-        if (m_PivotIndex == 0)
-            dir = 1;
-        else if (m_PivotIndex == pivots.Length -1)
+        if (!ComesFromChasing)
         {
-            if(patrolType == PatrolType.PingPong)
-                dir = -1;
-            else if(patrolType == PatrolType.Cyclic)
-                m_PivotIndex = -1; 
-        }
+            if (m_PivotIndex == 0)
+                dir = 1;
+            else if (m_PivotIndex == pivots.Length - 1)
+            {
+                if (patrolType == PatrolType.PingPong)
+                    dir = -1;
+                else if (patrolType == PatrolType.Cyclic)
+                    m_PivotIndex = -1;
+            }
 
-        m_PivotIndex += dir;
-        m_NextPatrolPosition = pivots[m_PivotIndex];
+            m_PivotIndex += dir;
+            m_NextPatrolPosition = pivots[m_PivotIndex];
+        }
+        else
+        {
+            ComesFromChasing = false;
+            int closerOne = 0;
+            float Lowestdist = 0;
+            //Si viene de perseguir al player cambiar el siguiente pivote al pivote mas cercano para no quedarse atrapado con paredes.
+            for (int i = 0; i < pivots.Length; i++)
+            {
+                float CurrentDist = Vector2.Distance(transform.position, pivots[i].position);
+                if (i == 0) {
+                    Lowestdist = CurrentDist;
+                    closerOne = i;
+                }
+                else
+                {
+                    if(CurrentDist < Lowestdist)
+                    {
+                        Lowestdist = CurrentDist;
+                        closerOne = i;
+                    }
+                }
+            }
+            print(closerOne);
+            m_PivotIndex = closerOne;
+            m_NextPatrolPosition = pivots[closerOne];
+        }
         
     }
 

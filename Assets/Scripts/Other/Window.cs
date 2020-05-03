@@ -16,13 +16,6 @@ public class Window : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void WindowDamage(float l_amount, Vector2 l_particlePos)
     {
         m_WindowHealth -= l_amount;
