@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
     [SerializeField] private DoorType doorType;
 
     private GameObject m_Player;
-    private bool m_Open = false;
+    public bool m_Open = false;
 
     private Quaternion m_InitialRotation;
 
@@ -18,12 +18,6 @@ public class Door : MonoBehaviour
         m_InitialRotation = transform.rotation;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -32,7 +26,7 @@ public class Door : MonoBehaviour
             {
                 if (!m_Open)
                 {
-                    OpenDoor();
+                    OpenDoor(m_Player.transform);
                 }
                 else
                 {
@@ -42,11 +36,11 @@ public class Door : MonoBehaviour
         }
     }
 
-    void OpenDoor()
+    public void OpenDoor(Transform whoOpens)
     {
         if (doorType == DoorType.Horizontal)
         {
-            if (m_Player.transform.position.y > transform.position.y)
+            if (whoOpens.transform.position.y > transform.position.y)
             {
                 transform.Rotate(0, 0, -90);
                 m_Open = true;
@@ -59,7 +53,7 @@ public class Door : MonoBehaviour
         }
         else if (doorType == DoorType.Vertical)
         {
-            if (m_Player.transform.position.x > transform.position.x)
+            if (whoOpens.transform.position.x > transform.position.x)
             {
                 transform.Rotate(0, 0, -90);
                 m_Open = true;
@@ -72,7 +66,7 @@ public class Door : MonoBehaviour
         }
     }
 
-    void CloseDoor()
+    public void CloseDoor()
     {
         transform.rotation = m_InitialRotation;
         m_Open = false;

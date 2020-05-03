@@ -28,6 +28,7 @@ public class Window : MonoBehaviour
         m_WindowHealth -= l_amount;
         GameObject l_Particles = Instantiate(m_BreakParticles);
         l_Particles.transform.position = l_particlePos;
+        l_Particles.transform.rotation = transform.rotation;
         l_Particles.SetActive(true);
         if(m_WindowHealth <= 0)
         {

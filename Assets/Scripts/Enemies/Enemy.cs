@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,14 +16,21 @@ public class Enemy : MonoBehaviour
     protected float m_PatrolCooldown = 0f;
     private bool m_HasHitWall = false;
     private bool m_HasReachedLastSeen = false;
-    protected Vector2 m_nextPatrolPosition = Vector2.zero;
     protected Vector2 m_LastSeenPosition;
     public float m_PatrolDistance = 0;
+
+    private enum PatrolType { Cyclic, PingPong}
+    [SerializeField] PatrolType patrolType;
+    private bool HasReachedPivot = false;
+    public Transform[] pivots;
+    private int m_PivotIndex = 0;
+    int dir = 1;
+    private Transform m_NextPatrolPosition;
 
     public virtual void Start()
     {
         m_AttackCooldown = m_MaxAttackCooldown;
-        m_nextPatrolPosition = transform.position;
+        m_NextPatrolPosition = pivots[0];
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         m_LastSeenPosition = transform.position; 
@@ -42,7 +50,7 @@ public class Enemy : MonoBehaviour
         else
         {
             //Mirar donde sea
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_nextPatrolPosition - (Vector2)transform.position).normalized);
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
         }
                 
         
@@ -57,7 +65,6 @@ public class Enemy : MonoBehaviour
             }
             else //Si no esta viendo al player
             {
-
                 //Comprobar si ya ha llegado al ultimo punto en el que vió al player antes de compenzar su patrulla.
                 if (m_HasReachedLastSeen)
                     Patrol();
@@ -120,25 +127,40 @@ public class Enemy : MonoBehaviour
         m_AttackCooldown = m_MaxAttackCooldown;
     }
 
-    //Moverse aleatoriamente cuando no esta viendo al player
+    //Moverse de pivote en pivote cuando no esta viendo al player
     protected virtual void Patrol()
     {
-        //Si ya ha llegado o ha tocado una pared pararse, esperar un tiempo y volver a empezar
-        if (m_PatrolCooldown <= 0 || m_HasHitWall)
+        if (m_PatrolCooldown <= 0)
         {
-            m_HasHitWall = false;
-            m_nextPatrolPosition = transform.position;
-            m_PatrolCooldown = 0;
-            m_nextPatrolPosition = new Vector2(transform.position.x 
-                + Random.Range(-m_PatrolDistance, m_PatrolDistance), transform.position.y + Random.Range(-m_PatrolDistance, m_PatrolDistance));
-            m_PatrolCooldown = Random.Range(4f, 8f);
+            HasReachedPivot = false;
+            ChoosePatrolDirection();           
+            m_PatrolCooldown = Random.Range(3f, 5f);
         }
-        else m_PatrolCooldown -= Time.deltaTime;
+        else if(HasReachedPivot) m_PatrolCooldown -= Time.deltaTime;
 
         Vector2 l_position = transform.position;
-        Vector3 dir = m_nextPatrolPosition - l_position;
-        if (Vector2.Distance(l_position, m_nextPatrolPosition) >= 0.1f)
-            transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed * 0.5f;
+        Vector3 dir = (Vector2)m_NextPatrolPosition.position - l_position;
+        if (Vector2.Distance(l_position, m_NextPatrolPosition.position) >= 0.1f)
+            transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed * 0.8f;
+        else
+            HasReachedPivot = true;
+    }
+
+    void ChoosePatrolDirection()
+    {
+        if (m_PivotIndex == 0)
+            dir = 1;
+        else if (m_PivotIndex == pivots.Length -1)
+        {
+            if(patrolType == PatrolType.PingPong)
+                dir = -1;
+            else if(patrolType == PatrolType.Cyclic)
+                m_PivotIndex = -1; 
+        }
+
+        m_PivotIndex += dir;
+        m_NextPatrolPosition = pivots[m_PivotIndex];
+        
     }
 
     public virtual void TakeDamage(int amount)
@@ -163,11 +185,28 @@ public class Enemy : MonoBehaviour
        }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Door"))
+        {
+
+            StartCoroutine(OpenDoor(collision.GetComponent<Door>()));
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
             m_HasHitWall = true;
         }
+    }
+
+    IEnumerator OpenDoor(Door door)
+    {
+        if(!door.m_Open)
+            door.OpenDoor(transform);
+        yield return new WaitForSeconds(2.5f);
+        door.CloseDoor();
     }
 }
