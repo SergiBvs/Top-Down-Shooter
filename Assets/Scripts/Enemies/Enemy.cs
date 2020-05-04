@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     bool ComesFromChasing = false;
 
-    private enum PatrolType { Cyclic, PingPong}
+    private enum PatrolType { Cyclic, PingPong, None}
     [SerializeField] PatrolType patrolType;
     private bool HasReachedPivot = false;
     public Transform[] pivots;
@@ -32,43 +32,41 @@ public class Enemy : MonoBehaviour
     public virtual void Start()
     {
         m_AttackCooldown = m_MaxAttackCooldown;
-        m_NextPatrolPosition = pivots[0];
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        m_LastSeenPosition = transform.position; 
+        m_LastSeenPosition = transform.position;
+
+        if(patrolType != PatrolType.None)
+            m_NextPatrolPosition = pivots[0];
     }
 
     public virtual void Update()
     {
         //APUNTANDO
         //Raycast que sigue constantemente al Player, mirando si hay paredes de por medio.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Player.transform.position - transform.position, 25, LayerMask.GetMask("Player", "Default"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Player.transform.position - transform.position, 50, LayerMask.GetMask("Player", "Default"));
         Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.gray,0.1f);
-        if (hit.collider.CompareTag("Player"))
-        {
-            //Si encuentra al player mirarle constantemente.
-            FaceToPlayer();
-        }
-        else
-        {
-            //Mirar donde sea
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
-        }
-                
-        
+       
         if (hit)
         {
             //Si esta viendo al player ir hacia el
             if (hit.collider.CompareTag("Player"))
             {
-                m_LastSeenPosition = hit.transform.position;
-                MoveToPlayer();
-                AttackState();
+                //Si encuentra al player mirarle constantemente.
+                if (Vector2.Distance(hit.point, transform.position) <= 20)
+                {
+                    FaceToPlayer();
+                    m_LastSeenPosition = hit.transform.position;
+                    MoveToPlayer();
+                    AttackState();
+                }
             }
             else //Si no esta viendo al player
             {
+                if (patrolType != PatrolType.None)
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
                 //Comprobar si ya ha llegado al ultimo punto en el que vió al player antes de compenzar su patrulla.
-                if (m_HasReachedLastSeen)
+                if (m_HasReachedLastSeen && patrolType != PatrolType.None)
                     Patrol();
                 else
                     MoveToPlayer();
@@ -77,7 +75,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Patrol();
+            if (patrolType != PatrolType.None)
+                Patrol();
         }
     }
 
