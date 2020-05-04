@@ -26,7 +26,8 @@ public class Lasers : MonoBehaviour
 
     void Start()
     {
-        
+        m_DisabledCopy = m_DisabledTime;
+        m_ActiveCopy = m_ActiveTime;
     }
 
     void Update()
