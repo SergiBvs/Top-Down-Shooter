@@ -9,18 +9,42 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
-    public TextMeshProUGUI m_AmmoText;
-    public Slider m_Slider;
+    public static GameManager instance;
+    private GUIhelper GUIHelp;
+
+    void Awake()
+    {
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void Start()
+    {
+        ReassignObjs();
+    }
+
+    public void ReassignObjs()
+    {
+        GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
+    }
 
     public void SetMaxHealth(int health)
     {
-        m_Slider.maxValue = health;
-        m_Slider.value = health;
+        GUIHelp.m_Slider.maxValue = health;
+        GUIHelp.m_Slider.value = health;
     }
 
     public void SetHealth(int health)
     {
-        m_Slider.value = health;
+        GUIHelp.m_Slider.value = health;
     }
 
 

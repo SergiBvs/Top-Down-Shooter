@@ -9,7 +9,7 @@ public class AutoRifle : Gun
     
     public override void Update()
     {
-        m_GameManager.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
 
         if (Input.GetButton("Fire1"))
         {

@@ -22,24 +22,22 @@ public class Gun : MonoBehaviour
     public bool m_IsReloading = false;
     public LineRenderer m_LR;
 
+    protected GUIhelper GUIHelp;
 
-
-    protected GameManager m_GameManager;  //provisional
-    
     void Start()
     {
         m_CurrentAmmo = m_Magazine;
         m_CurrentMaxAmmo = m_MaxAmmo;
-        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
 
-        m_GameManager.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
     }
 
     
     public virtual void Update()
     {
 
-        m_GameManager.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
 
         if (Input.GetButtonDown("Fire1"))
         {

@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
     int l_WeaponNumber = 1;
     int l_LastWeaponNumber = 0;
 
-
+    
 
     void Start()
     {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = m_Health;
+        GameManager.instance.SetMaxHealth(m_Health);
+       
     }
 
 
@@ -120,7 +122,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        print("test");
         m_CurrentHealth -= amount;
+        GameManager.instance.SetHealth(m_CurrentHealth);
 
         if(m_CurrentHealth <= 0)
         {

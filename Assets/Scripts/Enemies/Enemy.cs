@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     private Player m_PlayerScript;
 
     public int m_Health;
-    public float m_Damage;
+    public int m_Damage;
     protected float m_AttackCooldown;
     public float m_MaxAttackCooldown;
 
