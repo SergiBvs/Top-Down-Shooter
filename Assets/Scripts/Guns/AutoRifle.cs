@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class AutoRifle : Gun
 {
+
+
     
     public override void Update()
     {
+        m_GameManager.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+
         if (Input.GetButton("Fire1"))
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading)
                 Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))
         {
             StartCoroutine(Reload());
         }

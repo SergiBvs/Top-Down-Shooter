@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 
     //Variables de player
 
-    public float m_Health = 100;
+    public int m_Health = 100;
+    public int m_CurrentHealth;
     public int m_PlayerSpeed;
 
     public GameObject m_BasicGun;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
+        m_CurrentHealth = m_Health;
     }
 
 
@@ -116,11 +118,11 @@ public class Player : MonoBehaviour
         }
     }*/
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
-        m_Health -= amount;
+        m_CurrentHealth -= amount;
 
-        if(m_Health <= 0)
+        if(m_CurrentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -130,7 +132,7 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Explosion"))
         {
-            TakeDamage(50f);
+            TakeDamage(50);
         }
     }
 }

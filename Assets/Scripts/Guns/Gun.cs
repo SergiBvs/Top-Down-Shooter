@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
     public int m_Damage;
     public int m_Magazine;
     public int m_CurrentAmmo;
+    public int m_MaxAmmo;
+    public int m_CurrentMaxAmmo;
     public float m_ShootCD;
     public float m_ReloadSpeed;
 
@@ -19,16 +21,27 @@ public class Gun : MonoBehaviour
     public bool m_HasBullets = true;
     public bool m_IsReloading = false;
     public LineRenderer m_LR;
+
+
+
+    protected GameManager m_GameManager;  //provisional
     
     void Start()
     {
         m_CurrentAmmo = m_Magazine;
+        m_CurrentMaxAmmo = m_MaxAmmo;
+        m_GameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        m_GameManager.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
     }
 
     
     public virtual void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+
+        m_GameManager.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+
+        if (Input.GetButtonDown("Fire1"))
         {
             if(m_canShoot && m_HasBullets && !m_IsReloading)
             {
@@ -36,7 +49,7 @@ public class Gun : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))
         {
             StartCoroutine(Reload());
         }
@@ -44,6 +57,7 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
+        print(m_CurrentAmmo);
         m_canShoot = false;
    
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -79,6 +93,7 @@ public class Gun : MonoBehaviour
 
 
         m_CurrentAmmo--;
+        
 
         if (m_CurrentAmmo <= 0)
         {
@@ -92,8 +107,24 @@ public class Gun : MonoBehaviour
     {
         m_IsReloading = true;
         yield return new WaitForSeconds(m_ReloadSpeed);
-        m_CurrentAmmo = m_Magazine;
-        m_HasBullets = true;
+
+        if(m_MaxAmmo > 0)
+        {
+
+            if (m_CurrentMaxAmmo >= m_Magazine)
+            {
+                m_CurrentMaxAmmo -= (m_Magazine - m_CurrentAmmo);
+                m_CurrentAmmo = m_Magazine;
+            }
+            else
+            {
+                m_CurrentAmmo = m_CurrentMaxAmmo;
+                m_CurrentMaxAmmo = 0;
+            }
+
+            m_HasBullets = true;
+        }
+
         m_IsReloading = false;
     }
 
