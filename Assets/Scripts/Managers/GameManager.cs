@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private GUIhelper GUIHelp;
 
+    public bool m_IsGameOverPanelOn = false;
+
     void Awake()
     {
 
@@ -48,6 +50,22 @@ public class GameManager : MonoBehaviour
     {
         GUIHelp.m_Slider.value = health;
         GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(GUIHelp.m_Slider.normalizedValue);
+    }
+
+
+    public void RestartGame()
+    {
+
+    }
+
+    public void NextLevel()
+    {
+
+    }
+
+    public void MainMenu()
+    {
+
     }
 
 
