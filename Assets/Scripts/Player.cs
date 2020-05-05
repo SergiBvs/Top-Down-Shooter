@@ -18,16 +18,14 @@ public class Player : MonoBehaviour
     public GameObject m_Shotgun;
     public GameObject m_SomethingElse;
 
-    int l_WeaponNumber = 1;
-    int l_LastWeaponNumber = 0;
 
-    
 
     void Start()
     {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = m_Health;
         GameManager.instance.SetMaxHealth(m_Health);
+        ChangeWeapon(1);
        
     }
 
@@ -48,77 +46,65 @@ public class Player : MonoBehaviour
 
         //CAMBIO DE ARMAS
 
-        // no funciona, y muy complicado, debe haber otra forma de hacer esto segurisimo
-
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            l_WeaponNumber = 1;
+            ChangeWeapon(1);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            l_WeaponNumber = 2;
+            ChangeWeapon(2);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            l_WeaponNumber = 3;
+            ChangeWeapon(3);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha4))
         {
-            l_WeaponNumber = 4;
+            ChangeWeapon(4);
         }
-
-        switch (l_WeaponNumber)
-        {
-            case 1:
-                m_BasicGun.SetActive(true);
-                ChangeWeapon();
-                l_LastWeaponNumber = 1;
-                break;
-            case 2:
-                m_AutoRifle.SetActive(true);
-                ChangeWeapon();
-                l_LastWeaponNumber = 2;
-                break;
-            case 3:
-                m_Shotgun.SetActive(true);
-                ChangeWeapon();
-                l_LastWeaponNumber = 3;
-                break;
-            case 4:
-                m_SomethingElse.SetActive(true);
-                ChangeWeapon();
-                l_LastWeaponNumber = 4;
-                break;
-            default:
-
-                break;
-        }*/
-
-        
-
     }
 
-    /*public void ChangeWeapon()
+    public void ChangeWeapon(int weaponNumber)
     {
-        switch (l_LastWeaponNumber)
+        switch (weaponNumber)
         {
             case 1:
-                m_BasicGun.SetActive(false);
+
+                m_BasicGun.SetActive(true);
+                m_AutoRifle.SetActive(false);
+                m_Shotgun.SetActive(false);
+                m_SomethingElse.SetActive(false);
+
                 break;
             case 2:
-                m_AutoRifle.SetActive(false);
+
+                m_BasicGun.SetActive(false);
+                m_AutoRifle.SetActive(true);
+                m_Shotgun.SetActive(false);
+                m_SomethingElse.SetActive(false);
+
                 break;
             case 3:
-                m_Shotgun.SetActive(false);
+
+                m_BasicGun.SetActive(false);
+                m_AutoRifle.SetActive(false);
+                m_Shotgun.SetActive(true);
+                m_SomethingElse.SetActive(false);
+
                 break;
             case 4:
-                m_SomethingElse.SetActive(false);
+
+                m_BasicGun.SetActive(false);
+                m_AutoRifle.SetActive(false);
+                m_Shotgun.SetActive(false);
+                m_SomethingElse.SetActive(true);
+
                 break;
             default:
                 break;
         }
-    }*/
+    }
 
     public void TakeDamage(int amount)
     {

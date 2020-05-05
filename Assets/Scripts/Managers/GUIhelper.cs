@@ -8,6 +8,8 @@ public class GUIhelper : MonoBehaviour
 {
     public TextMeshProUGUI m_AmmoText;
     public Slider m_Slider;
+    public Gradient m_Gradient;
+    public Image fill;
 
     void Start()
     {

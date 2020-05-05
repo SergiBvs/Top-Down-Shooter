@@ -40,11 +40,14 @@ public class GameManager : MonoBehaviour
     {
         GUIHelp.m_Slider.maxValue = health;
         GUIHelp.m_Slider.value = health;
+        GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(1f);
+
     }
 
     public void SetHealth(int health)
     {
         GUIHelp.m_Slider.value = health;
+        GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(GUIHelp.m_Slider.normalizedValue);
     }
 
 

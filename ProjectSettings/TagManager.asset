@@ -9,6 +9,7 @@ TagManager:
   - Explosion
   - Door
   - Window
+  - GUI
   layers:
   - Default
   - TransparentFX

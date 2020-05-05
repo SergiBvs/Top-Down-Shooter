@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     public int m_CurrentMaxAmmo;
     public float m_ShootCD;
     public float m_ReloadSpeed;
+    public bool m_Comprada = false;
 
     //others
 
