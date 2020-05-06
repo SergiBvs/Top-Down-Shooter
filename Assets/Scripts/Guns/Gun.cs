@@ -6,13 +6,13 @@ public class Gun : MonoBehaviour
 {
     //Gun variables
 
-    public int m_Damage;
     public int m_Magazine;
     public int m_CurrentAmmo;
     public int m_MaxAmmo;
     public int m_CurrentMaxAmmo;
     public float m_ShootCD;
     public float m_ReloadSpeed;
+    public string m_BulletName;
 
     //others
 
@@ -56,14 +56,21 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         m_canShoot = false;
-   
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //CAMBIAR POR PROYECTIL
+
+
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, GunTip.rotation);
+
+        /*Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right, 30);
-        Debug.DrawRay(GunTip.position, transform.right, Color.red, hit.distance);
+        Debug.DrawRay(GunTip.position, transform.right, Color.red, hit.distance);*/
 
         StartCoroutine(GunCooldown());
 
-        if(hit)
+        //poner esto en el script de bala cambiando lo que haga falta
+
+        /*if(hit)
         {
             m_LR.SetPosition(0, GunTip.position);
             m_LR.SetPosition(1, hit.point);
@@ -83,10 +90,10 @@ public class Gun : MonoBehaviour
         {
             m_LR.SetPosition(0, GunTip.position);
             m_LR.SetPosition(1, GunTip.position + GunTip.right * 100);
-        }
+        }*/
 
-        m_LR.enabled = true;
-        StartCoroutine(LineCooldown());
+        //m_LR.enabled = true;
+        //StartCoroutine(LineCooldown());
 
 
         m_CurrentAmmo--;

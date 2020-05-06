@@ -117,6 +117,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void Shoot()
     {
+        //CAMBIAR POR PROYECTIL 
+
         //HACER UNA PEQUEÑA ALEATORIEDAD EN LA DESVIACION PARA QUE NO SEA TAN PRECISO???
         RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
         if (l_ShotHit.collider.CompareTag("Player"))
