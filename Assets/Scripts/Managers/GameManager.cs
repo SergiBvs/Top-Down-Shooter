@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private GUIhelper GUIHelp;
 
     public bool m_IsGameOverPanelOn = false;
+    public bool m_GameIsPaused;
 
     void Awake()
     {
@@ -52,21 +53,12 @@ public class GameManager : MonoBehaviour
         GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(GUIHelp.m_Slider.normalizedValue);
     }
 
-
-    public void RestartGame()
-    {
-
-    }
-
     public void NextLevel()
     {
-
+        //telon o lo que sea
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) + 1);
     }
-
-    public void MainMenu()
-    {
-
-    }
-
-
 }
+
+
+

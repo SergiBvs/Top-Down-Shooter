@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GUIhelper : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class GUIhelper : MonoBehaviour
 
     public GameObject m_GameOverPanel;
     public GameObject m_PausePanel;
-    public bool m_GameIsPaused;
+    
 
     void Start()
     {
@@ -31,11 +32,11 @@ public class GUIhelper : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (m_GameIsPaused)
+                if (GameManager.instance.m_GameIsPaused)
                 {
                     ResumeGame();
                 }
-                else if (!m_GameIsPaused)
+                else if (!GameManager.instance.m_GameIsPaused)
                 {
                     PauseGame();
                 }
@@ -47,23 +48,32 @@ public class GUIhelper : MonoBehaviour
     {
         m_PausePanel.SetActive(false);
         Time.timeScale = 1f;
-        m_GameIsPaused = false;
+        GameManager.instance.m_GameIsPaused = false;
     }
 
     public void PauseGame()
     {
         m_PausePanel.SetActive(true);
         Time.timeScale = 0f;
-        m_GameIsPaused = true;
-
+        GameManager.instance.m_GameIsPaused = true;
     }
 
     public void RestartLevel()
     {
         //GameManager.instance.m_Telon.SetTrigger("Telon");
         //StartCoroutine(GameManager.instance.TelonWait(SceneManager.GetActiveScene().buildIndex));
+
         m_PausePanel.SetActive(false);
+        GameManager.instance.m_GameIsPaused = false;
         Time.timeScale = 1f;
         GameManager.instance.m_IsGameOverPanelOn = false;
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
+        GameManager.instance.SetMaxHealth(100);
+    }
+
+    public void MainMenu()
+    {
+        //telon o lo que sea
+        SceneManager.LoadScene(0);
     }
 }

@@ -13,10 +13,8 @@ public class Player : MonoBehaviour
     public int m_CurrentHealth;
     public int m_PlayerSpeed;
 
-    public GameObject m_BasicGun;
-    public GameObject m_AutoRifle;
-    public GameObject m_Shotgun;
-    public GameObject m_SomethingElse;
+    public GameObject[] GunArray;
+    public bool[] GunBoughtArray;
 
 
 
@@ -25,8 +23,12 @@ public class Player : MonoBehaviour
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = m_Health;
         GameManager.instance.SetMaxHealth(m_Health);
-        ChangeWeapon(1);
-       
+
+        //provisional , cuando hagamos varios niveles esto tendra que cambiar para que se mantenga el arma correcta y los bools de comprado entre niveles
+
+        GunBoughtArray = new bool[GunArray.Length];
+        GunBoughtArray[0] = true;
+        ChangeWeapon(0);
     }
 
 
@@ -41,74 +43,55 @@ public class Player : MonoBehaviour
 
         //APUNTADO
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, (mousePosition - transform.position).normalized);
+        if(!GameManager.instance.m_GameIsPaused)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, (mousePosition - transform.position).normalized);
+        }
 
-        //CAMBIO DE ARMAS
+        //CAMBIO DE ARMAS  
 
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ChangeWeapon(1);
+            ChangeWeapon(0);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ChangeWeapon(2);
+            if (GunBoughtArray[1])
+                ChangeWeapon(1);
+            else { }
+            //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
         }
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ChangeWeapon(3);
+            if (GunBoughtArray[2])
+                ChangeWeapon(2);
+            else { }
+            //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
         }
         else if(Input.GetKeyDown(KeyCode.Alpha4))
         {
-            ChangeWeapon(4);
+            if (GunBoughtArray[3])
+                ChangeWeapon(3);
+            else { }
+            //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
         }
     }
 
     public void ChangeWeapon(int weaponNumber)
     {
-        switch (weaponNumber)
+
+        foreach (GameObject gun in GunArray)
         {
-            case 1:
-
-                m_BasicGun.SetActive(true);
-                m_AutoRifle.SetActive(false);
-                m_Shotgun.SetActive(false);
-                m_SomethingElse.SetActive(false);
-
-                break;
-            case 2:
-
-                m_BasicGun.SetActive(false);
-                m_AutoRifle.SetActive(true);
-                m_Shotgun.SetActive(false);
-                m_SomethingElse.SetActive(false);
-
-                break;
-            case 3:
-
-                m_BasicGun.SetActive(false);
-                m_AutoRifle.SetActive(false);
-                m_Shotgun.SetActive(true);
-                m_SomethingElse.SetActive(false);
-
-                break;
-            case 4:
-
-                m_BasicGun.SetActive(false);
-                m_AutoRifle.SetActive(false);
-                m_Shotgun.SetActive(false);
-                m_SomethingElse.SetActive(true);
-
-                break;
-            default:
-                break;
+            gun.SetActive(false);
         }
+
+        GunArray[weaponNumber].SetActive(true);
     }
 
     public void TakeDamage(int amount)
     {
-        print("test");
         m_CurrentHealth -= amount;
         GameManager.instance.SetHealth(m_CurrentHealth);
 

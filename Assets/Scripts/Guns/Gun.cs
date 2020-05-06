@@ -13,7 +13,6 @@ public class Gun : MonoBehaviour
     public int m_CurrentMaxAmmo;
     public float m_ShootCD;
     public float m_ReloadSpeed;
-    public bool m_Comprada = false;
 
     //others
 
@@ -42,7 +41,7 @@ public class Gun : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if(m_canShoot && m_HasBullets && !m_IsReloading)
+            if(m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
                 Shoot();
             }
@@ -56,7 +55,6 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
-        print(m_CurrentAmmo);
         m_canShoot = false;
    
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
