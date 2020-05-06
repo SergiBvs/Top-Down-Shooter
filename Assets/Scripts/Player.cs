@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     //Variables de player
 
-    public int m_Health = 100;
+    
     public int m_CurrentHealth;
     public int m_PlayerSpeed;
 
@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
-        m_CurrentHealth = m_Health;
-        GameManager.instance.SetMaxHealth(m_Health);
+        m_CurrentHealth = GameManager.instance.m_Health;
+        //GameManager.instance.SetMaxHealth(GameManager.instance.m_Health);
 
         //provisional , cuando hagamos varios niveles esto tendra que cambiar para que se mantenga el arma correcta y los bools de comprado entre niveles
 

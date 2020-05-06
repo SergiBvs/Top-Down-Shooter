@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public bool m_IsGameOverPanelOn = false;
     public bool m_GameIsPaused;
+    public int m_Health;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public void ReassignObjs()
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
+        SetMaxHealth(m_Health);
     }
 
     public void SetMaxHealth(int health)
