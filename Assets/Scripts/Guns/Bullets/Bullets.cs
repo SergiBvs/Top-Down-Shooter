@@ -12,8 +12,8 @@ public class Bullets : MonoBehaviour
     //others
 
     public Rigidbody2D m_BulletRB2D;
-    bool shot;
-    Transform gunpoint;
+    private bool shot;
+    private Transform gunpoint;
 
 
     public virtual void Start()

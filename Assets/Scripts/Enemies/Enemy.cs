@@ -131,11 +131,9 @@ public class Enemy : MonoBehaviour
     {
         //CAMBIAR POR PROYECTIL 
 
-        //HACER UNA PEQUEÑA ALEATORIEDAD EN LA DESVIACION PARA QUE NO SEA TAN PRECISO???
         RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
         if (l_ShotHit.collider.CompareTag("Player"))
         {
-            //CAMBIAR ESTA LINEA POR LAS GUAYS
             Debug.DrawLine(transform.position, m_Player.transform.position, Color.red, 0.5f);
             m_PlayerScript.TakeDamage(m_Damage);
             
@@ -232,13 +230,13 @@ public class Enemy : MonoBehaviour
         int l_AmmoBoxChance = Random.Range(0, 100);
         if(l_AmmoBoxChance <= m_AmmoChance)
         {
-            Instantiate(Resources.Load("Loot/Ammo"));
+            Instantiate(Resources.Load("Loot/Ammo"), transform.position, Quaternion.identity);
         }
 
         int l_HealthChance = Random.Range(0, 100);
-        if (l_AmmoBoxChance <= m_HealthChance)
+        if (l_HealthChance <= m_HealthChance)
         {
-            Instantiate(Resources.Load("Drops/Health"));
+            Instantiate(Resources.Load("Drops/Health"), transform.position, Quaternion.identity);
         }
     }
 
@@ -254,7 +252,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Door"))
         {
-
             StartCoroutine(OpenDoor(collision.GetComponent<Door>()));
         }
     }

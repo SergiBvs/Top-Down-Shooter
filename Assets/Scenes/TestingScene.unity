@@ -7909,7 +7909,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806835219}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 56.864117, y: 1.7637212, z: 25.972755}
   m_LocalScale: {x: 6.821004, y: 0.36600012, z: 1}
   m_Children:
@@ -7917,7 +7917,7 @@ Transform:
   - {fileID: 852433847}
   m_Father: {fileID: 135283823}
   m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &852433844
 GameObject:
   m_ObjectHideFlags: 0
@@ -14159,7 +14159,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227577680}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 56.864117, y: 23.56372, z: 25.972755}
   m_LocalScale: {x: 6.821004, y: 0.36600012, z: 1}
   m_Children:
@@ -14167,7 +14167,7 @@ Transform:
   - {fileID: 1545205757}
   m_Father: {fileID: 135283823}
   m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1281221269
 GameObject:
   m_ObjectHideFlags: 0
@@ -25963,7 +25963,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910356588}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 20.504118, y: -5.816279, z: 25.972755}
   m_LocalScale: {x: 6.821004, y: 0.36600012, z: 1}
   m_Children:
@@ -25971,7 +25971,7 @@ Transform:
   - {fileID: 1996050009}
   m_Father: {fileID: 135283823}
   m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1996050006
 GameObject:
   m_ObjectHideFlags: 0
@@ -36179,12 +36179,12 @@ PrefabInstance:
     - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
         type: 3}
       propertyPath: m_AmmoChance
-      value: 10
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
         type: 3}
       propertyPath: m_MaxCoin
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
         type: 3}
