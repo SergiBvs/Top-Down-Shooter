@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ec3bc9ed1156146bb1cc65813192a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BulletForce: 20
+  m_BulletForce: 50
   m_Damage: 10
   m_BulletRB2D: {fileID: 0}
 --- !u!61 &61979708380230438

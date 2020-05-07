@@ -13,21 +13,26 @@ public class Player : MonoBehaviour
     public int m_CurrentHealth;
     public int m_PlayerSpeed;
 
+    //public static bool GunBoughtArrayActivator = false;
+
     public GameObject[] GunArray;
-    public bool[] GunBoughtArray;
-
-
+    public /*static*/ bool[] GunBoughtArray;
 
     void Start()
     {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = GameManager.instance.m_Health;
-        //GameManager.instance.SetMaxHealth(GameManager.instance.m_Health);
 
-        //provisional , cuando hagamos varios niveles esto tendra que cambiar para que se mantenga el arma correcta y los bools de comprado entre niveles
+        //quitar comentarios cuando se deje de testear
 
-        GunBoughtArray = new bool[GunArray.Length];
+        //if(!GunBoughtArrayActivator) 
+        //{
+            GunBoughtArray = new bool[GunArray.Length];
+            //GunBoughtArrayActivator = true;
+        //}
+
         GunBoughtArray[0] = true;
+
         ChangeWeapon(0);
     }
 
@@ -51,7 +56,6 @@ public class Player : MonoBehaviour
 
         //CAMBIO DE ARMAS  
 
-        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeWeapon(0);
