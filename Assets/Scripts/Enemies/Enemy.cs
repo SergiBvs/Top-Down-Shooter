@@ -3,31 +3,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    private enum PatrolType { Cyclic, PingPong, None }
+
     protected GameObject m_Player;
     private Player m_PlayerScript;
 
+    [Header("Enemy Stats")]
     public int m_Health;
     public int m_Damage;
     protected float m_AttackCooldown;
     public float m_MaxAttackCooldown;
 
+
     //MOVEMENT AND PATROL
+    [Header("Movement & Patrol")]
+    [SerializeField] PatrolType patrolType;
+    [Range(0, 10)]
     public float m_MovementSpeed = 5f;
     protected float m_PatrolCooldown = 0f;
-    private bool m_HasHitWall = false;
     private bool m_HasReachedLastSeen = false;
     protected Vector2 m_LastSeenPosition;
-    public float m_PatrolDistance = 0;
 
     bool ComesFromChasing = false;
 
-    private enum PatrolType { Cyclic, PingPong, None}
-    [SerializeField] PatrolType patrolType;
-    private bool HasReachedPivot = false;
     public Transform[] pivots;
     private int m_PivotIndex = 0;
-    int dir = 1;
+    private int dir = 1;
+    private bool HasReachedPivot = false;
     private Transform m_NextPatrolPosition;
+
+    [Header("Loot Chances (%)")]
+    [SerializeField] private int m_MaxCoin;
+    [SerializeField] private int m_minCoin;
+    [Range(0,100)]
+    [SerializeField] private int m_AmmoChance;
+    [Range(0,100)]
+    [SerializeField] private int m_HealthChance;
 
     public virtual void Start()
     {
@@ -201,7 +213,31 @@ public class Enemy : MonoBehaviour
 
         if(m_Health <= 0)
         {
+            Loot();
             Destroy(this.gameObject);
+        }
+    }
+
+    public virtual void Loot()
+    {
+        int l_RandomNumber = Random.Range(m_minCoin, m_MaxCoin+1);
+        for(int i = 0; i <= l_RandomNumber; i++)
+        {
+            GameObject coin = Instantiate((GameObject)Resources.Load("Loot/Coin"));
+            coin.transform.position = transform.position;
+            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 10, ForceMode2D.Impulse);
+        }
+
+        int l_AmmoBoxChance = Random.Range(0, 100);
+        if(l_AmmoBoxChance <= m_AmmoChance)
+        {
+            Instantiate(Resources.Load("Loot/Ammo"));
+        }
+
+        int l_HealthChance = Random.Range(0, 100);
+        if (l_AmmoBoxChance <= m_HealthChance)
+        {
+            Instantiate(Resources.Load("Drops/Health"));
         }
     }
 
@@ -211,10 +247,6 @@ public class Enemy : MonoBehaviour
        {
             m_PlayerScript.TakeDamage(m_Damage);
        }
-       else if (collision.gameObject.CompareTag("Wall"))
-       {
-            m_HasHitWall = true;
-       }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -223,14 +255,6 @@ public class Enemy : MonoBehaviour
         {
 
             StartCoroutine(OpenDoor(collision.GetComponent<Door>()));
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            m_HasHitWall = true;
         }
     }
 

@@ -7688,10 +7688,13 @@ MonoBehaviour:
   m_Health: 900000
   m_Damage: 10
   m_MaxAttackCooldown: 0.8
-  m_MovementSpeed: 0
-  m_PatrolDistance: 0
   patrolType: 2
+  m_MovementSpeed: 0
   pivots: []
+  m_MaxCoin: 0
+  m_minCoin: 0
+  m_AmmoChance: 0
+  m_HealthChance: 0
 --- !u!58 &788811895
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -36157,6 +36160,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_Basic_Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
+        type: 3}
+      propertyPath: m_AmmoChance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
+        type: 3}
+      propertyPath: m_MaxCoin
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
+        type: 3}
+      propertyPath: m_HealthChance
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59ce78baec38b844d9e5c99a5a29b44f, type: 3}
