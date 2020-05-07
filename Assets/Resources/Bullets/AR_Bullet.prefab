@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BulletForce: 30
-  m_Damage: 8
+  m_Damage: 5
   m_BulletRB2D: {fileID: 0}
