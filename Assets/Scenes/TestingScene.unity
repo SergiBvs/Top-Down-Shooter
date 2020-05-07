@@ -36179,12 +36179,12 @@ PrefabInstance:
     - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
         type: 3}
       propertyPath: m_AmmoChance
-      value: 10
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
         type: 3}
       propertyPath: m_MaxCoin
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1250878247662447378, guid: 59ce78baec38b844d9e5c99a5a29b44f,
         type: 3}

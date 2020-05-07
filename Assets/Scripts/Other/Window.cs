@@ -1,7 +1,4 @@
-﻿using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Window : MonoBehaviour
@@ -11,11 +8,6 @@ public class Window : MonoBehaviour
     public GameObject m_DestroyParticles;
     public GameObject m_BreakParticles;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void WindowDamage(float l_amount, Vector2 l_particlePos)
     {
         m_WindowHealth -= l_amount;
