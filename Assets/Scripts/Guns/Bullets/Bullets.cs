@@ -20,6 +20,7 @@ public class Bullets : MonoBehaviour
     {
         gunpoint = gameObject.transform;
         m_BulletRB2D = gameObject.GetComponent<Rigidbody2D>();
+        StartCoroutine(DeleteBulletAfterTime());
     }
 
     
@@ -36,7 +37,6 @@ public class Bullets : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-
             if (collision.gameObject.CompareTag("Wall"))
             {
                 //particulas
@@ -51,7 +51,12 @@ public class Bullets : MonoBehaviour
                 collision.gameObject.GetComponent<Window>().WindowDamage(m_Damage, this.transform.position);
             }
         
-        
+        Destroy(this.gameObject);
+    }
+
+    public IEnumerator DeleteBulletAfterTime()
+    {
+        yield return new WaitForSeconds(8f);
         Destroy(this.gameObject);
     }
 
