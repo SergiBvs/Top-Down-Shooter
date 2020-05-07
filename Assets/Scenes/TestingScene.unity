@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 110903622}
   - component: {fileID: 110903624}
   - component: {fileID: 110903623}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (5)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 170727013}
   - component: {fileID: 170727015}
   - component: {fileID: 170727014}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (13)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 224970982}
   - component: {fileID: 224970981}
   - component: {fileID: 224970980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DestroyParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6104,7 +6104,7 @@ GameObject:
   - component: {fileID: 486813917}
   - component: {fileID: 486813916}
   - component: {fileID: 486813915}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door (2)
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -6506,7 +6506,7 @@ GameObject:
   - component: {fileID: 528226627}
   - component: {fileID: 528226626}
   - component: {fileID: 528226628}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -6647,7 +6647,7 @@ GameObject:
   - component: {fileID: 561022130}
   - component: {fileID: 561022132}
   - component: {fileID: 561022131}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (12)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -7185,7 +7185,7 @@ GameObject:
   - component: {fileID: 699846964}
   - component: {fileID: 699846966}
   - component: {fileID: 699846965}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (6)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -7432,7 +7432,7 @@ GameObject:
   - component: {fileID: 778398293}
   - component: {fileID: 778398295}
   - component: {fileID: 778398294}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (11)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -7806,7 +7806,7 @@ GameObject:
   - component: {fileID: 806835222}
   - component: {fileID: 806835221}
   - component: {fileID: 806835220}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Window (2)
   m_TagString: Window
   m_Icon: {fileID: 0}
@@ -7929,7 +7929,7 @@ GameObject:
   - component: {fileID: 852433847}
   - component: {fileID: 852433846}
   - component: {fileID: 852433845}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BreakParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12772,7 +12772,7 @@ GameObject:
   - component: {fileID: 968492457}
   - component: {fileID: 968492459}
   - component: {fileID: 968492458}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -12998,7 +12998,7 @@ GameObject:
   - component: {fileID: 989901812}
   - component: {fileID: 989901811}
   - component: {fileID: 989901813}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -13345,6 +13345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Window (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5118853214176605937, guid: 825bd850de5a3e04ca0a6a3768593515,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5118853214176605941, guid: 825bd850de5a3e04ca0a6a3768593515,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13399,6 +13404,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118853214268664665, guid: 825bd850de5a3e04ca0a6a3768593515,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118853214648723031, guid: 825bd850de5a3e04ca0a6a3768593515,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 825bd850de5a3e04ca0a6a3768593515, type: 3}
@@ -13495,7 +13510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089840669}
   - component: {fileID: 1089840668}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: super cuadrado (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13575,7 +13590,7 @@ GameObject:
   - component: {fileID: 1115586275}
   - component: {fileID: 1115586277}
   - component: {fileID: 1115586276}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (10)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -13960,7 +13975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1217920735}
   - component: {fileID: 1217920734}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: super cuadrado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14041,7 +14056,7 @@ GameObject:
   - component: {fileID: 1227577683}
   - component: {fileID: 1227577682}
   - component: {fileID: 1227577681}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Window (3)
   m_TagString: Window
   m_Icon: {fileID: 0}
@@ -14266,7 +14281,7 @@ GameObject:
   - component: {fileID: 1302066490}
   - component: {fileID: 1302066492}
   - component: {fileID: 1302066491}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (8)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -14669,7 +14684,7 @@ GameObject:
   - component: {fileID: 1389523057}
   - component: {fileID: 1389523056}
   - component: {fileID: 1389523055}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door (1)
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -14845,7 +14860,7 @@ GameObject:
   - component: {fileID: 1538932870}
   - component: {fileID: 1538932869}
   - component: {fileID: 1538932871}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -14951,7 +14966,7 @@ GameObject:
   - component: {fileID: 1545205757}
   - component: {fileID: 1545205756}
   - component: {fileID: 1545205755}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BreakParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19996,7 +20011,7 @@ GameObject:
   - component: {fileID: 1605930247}
   - component: {fileID: 1605930249}
   - component: {fileID: 1605930248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (7)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -20102,7 +20117,7 @@ GameObject:
   - component: {fileID: 1672520162}
   - component: {fileID: 1672520161}
   - component: {fileID: 1672520160}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DestroyParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25004,7 +25019,7 @@ GameObject:
   - component: {fileID: 1700637469}
   - component: {fileID: 1700637468}
   - component: {fileID: 1700637470}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -25134,7 +25149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 182.59, y: -132.38002}
+  m_AnchoredPosition: {x: 283.3, y: -182.2}
   m_SizeDelta: {x: 79.84003, y: -62.150024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730763906
@@ -25265,7 +25280,7 @@ GameObject:
   - component: {fileID: 1774228101}
   - component: {fileID: 1774228100}
   - component: {fileID: 1774228099}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Door (3)
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -25411,7 +25426,7 @@ GameObject:
   - component: {fileID: 1793497241}
   - component: {fileID: 1793497243}
   - component: {fileID: 1793497242}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (9)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -25672,7 +25687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -178.7, y: -134.1}
+  m_AnchoredPosition: {x: -290.4, y: -188}
   m_SizeDelta: {x: 152.46, y: 24.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883818974
@@ -25845,7 +25860,7 @@ GameObject:
   - component: {fileID: 1910356591}
   - component: {fileID: 1910356590}
   - component: {fileID: 1910356589}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Window (1)
   m_TagString: Window
   m_Icon: {fileID: 0}
@@ -25968,7 +25983,7 @@ GameObject:
   - component: {fileID: 1996050009}
   - component: {fileID: 1996050008}
   - component: {fileID: 1996050007}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BreakParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30831,7 +30846,7 @@ GameObject:
   - component: {fileID: 2001339258}
   - component: {fileID: 2001339260}
   - component: {fileID: 2001339259}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (4)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -31092,7 +31107,7 @@ GameObject:
   - component: {fileID: 2128898989}
   - component: {fileID: 2128898991}
   - component: {fileID: 2128898990}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -31198,7 +31213,7 @@ GameObject:
   - component: {fileID: 2132706589}
   - component: {fileID: 2132706591}
   - component: {fileID: 2132706590}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -31304,7 +31319,7 @@ GameObject:
   - component: {fileID: 2140606008}
   - component: {fileID: 2140606007}
   - component: {fileID: 2140606006}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DestroyParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36190,6 +36205,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Window
       objectReference: {fileID: 0}
+    - target: {fileID: 5118853214176605937, guid: 825bd850de5a3e04ca0a6a3768593515,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5118853214176605941, guid: 825bd850de5a3e04ca0a6a3768593515,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36244,6 +36264,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118853214268664665, guid: 825bd850de5a3e04ca0a6a3768593515,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118853214648723031, guid: 825bd850de5a3e04ca0a6a3768593515,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 825bd850de5a3e04ca0a6a3768593515, type: 3}
@@ -36313,6 +36343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8243378355588033087, guid: 817cc4b21bbb9684d9734e9369bc9fa2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817cc4b21bbb9684d9734e9369bc9fa2, type: 3}

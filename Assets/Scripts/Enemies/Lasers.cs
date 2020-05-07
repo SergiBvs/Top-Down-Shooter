@@ -11,6 +11,7 @@ public class Lasers : MonoBehaviour
     private bool m_Active = true;
 
     //For Moving
+    [Header("For Moving Lasers")]
     [SerializeField] private Vector2 MovingPosition_1;
     [SerializeField] private Vector2 MovingPosition_2;
     [SerializeField] private float MovingSpeed = 0.125f;
@@ -18,6 +19,7 @@ public class Lasers : MonoBehaviour
     private bool m_MovingActive = true;
 
     //For OnOff
+    [Header("For ONOFF Lasers")]
     [SerializeField] private float m_ActiveTime = 1f;
     [SerializeField] private float m_DisabledTime = 1f;
     private float m_ActiveCopy;
@@ -58,7 +60,7 @@ public class Lasers : MonoBehaviour
 
     void LaserActive()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default", "Enemy"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Obstacle", "Enemy"));
         Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.red);
         if (hit)
         {

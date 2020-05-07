@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
     {
         //APUNTANDO
         //Raycast que sigue constantemente al Player, mirando si hay paredes de por medio.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Player.transform.position - transform.position, 50, LayerMask.GetMask("Player", "Default"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, m_Player.transform.position - transform.position, 50, LayerMask.GetMask("Player", "Obstacle"));
         Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.gray,0.1f);
        
         if (hit)
@@ -225,8 +225,9 @@ public class Enemy : MonoBehaviour
         {
             GameObject coin = Instantiate((GameObject)Resources.Load("Loot/Coin"));
             coin.transform.position = transform.position;
-            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 10, ForceMode2D.Impulse);
+            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 20, ForceMode2D.Impulse);
         }
+    
 
         int l_AmmoBoxChance = Random.Range(0, 100);
         if(l_AmmoBoxChance <= m_AmmoChance)
@@ -265,4 +266,5 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         door.CloseDoor();
     }
+
 }
