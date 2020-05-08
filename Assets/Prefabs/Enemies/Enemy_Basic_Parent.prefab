@@ -132,7 +132,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 50
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -171,9 +171,8 @@ MonoBehaviour:
   m_Health: 100
   m_Damage: 10
   m_MaxAttackCooldown: 2
-  m_MovementSpeed: 5
-  m_PatrolDistance: 5
   patrolType: 0
+  m_MovementSpeed: 5
   pivots:
   - {fileID: 1250878248009734140}
   - {fileID: 1250878249148182440}
@@ -181,6 +180,10 @@ MonoBehaviour:
   - {fileID: 1250878249450410363}
   - {fileID: 1250878247816365941}
   - {fileID: 1250878247936060324}
+  m_MaxCoin: 0
+  m_minCoin: 0
+  m_AmmoChance: 0
+  m_HealthChance: 0
 --- !u!1 &1250878247816365942
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,9 +16,10 @@ public class GameManager : MonoBehaviour
     public bool m_GameIsPaused;
     public int m_Health;
 
+    public int m_Currency;
+
     void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour
     {
         //telon o lo que sea
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) + 1);
+    }
+
+    public void SetCoins(int l_quantity)
+    {
+        m_Currency += l_quantity;
     }
 }
 
