@@ -69,12 +69,13 @@ public class Enemy : MonoBehaviour
             if (hit.collider.CompareTag("Player"))
             {
                 //Si encuentra al player mirarle constantemente.
-                if (Vector2.Distance(hit.point, transform.position) <= 20)
+                if (Vector2.Distance(hit.point, transform.position) <= 40)
                 {
-                    FaceToPlayer();
                     m_LastSeenPosition = hit.transform.position;
+                    FaceToPlayer();
                     MoveToPlayer();
-                    AttackState();
+                    if(Vector2.Distance(hit.point, transform.position) <= 30)
+                        AttackState();
                 }
             }
             else //Si no esta viendo al player
