@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     protected GameObject m_Player;
     private Player m_PlayerScript;
+    protected Animator m_Anim;
 
     [Header("Enemy Stats")]
     public int m_Health;
@@ -19,6 +20,8 @@ public class Enemy : MonoBehaviour
     //MOVEMENT AND PATROL
     [Header("Movement & Patrol")]
     [SerializeField] PatrolType patrolType;
+    [Range(0, 10)]
+    public float m_PatrolSpeed = 4f;
     [Range(0, 10)]
     public float m_MovementSpeed = 5f;
     protected float m_PatrolCooldown = 0f;
@@ -47,6 +50,7 @@ public class Enemy : MonoBehaviour
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         m_LastSeenPosition = transform.position;
+        m_Anim = GetComponent<Animator>();
 
         if(patrolType != PatrolType.None)
             m_NextPatrolPosition = pivots[0];
@@ -75,14 +79,17 @@ public class Enemy : MonoBehaviour
             }
             else //Si no esta viendo al player
             {
-                if (patrolType != PatrolType.None)
-                    transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
                 //Comprobar si ya ha llegado al ultimo punto en el que vió al player antes de compenzar su patrulla.
                 if (m_HasReachedLastSeen && patrolType != PatrolType.None)
+                {
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
                     Patrol();
+                }
                 else
+                {
                     MoveToPlayer();
-                
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_LastSeenPosition - (Vector2)transform.position).normalized);
+                }
             }
         }
         else
@@ -113,6 +120,7 @@ public class Enemy : MonoBehaviour
             m_HasReachedLastSeen = true;
         }
         ComesFromChasing = true;
+        m_Anim.SetTrigger("WALK");
     }
 
     public virtual void AttackState()
@@ -130,7 +138,6 @@ public class Enemy : MonoBehaviour
     public virtual void Shoot()
     {
         //CAMBIAR POR PROYECTIL 
-
         RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
         if (l_ShotHit.collider.CompareTag("Player"))
         {
@@ -146,18 +153,29 @@ public class Enemy : MonoBehaviour
     {
         if ((m_PatrolCooldown <= 0) || ComesFromChasing)
         {
+            
             HasReachedPivot = false;
-            ChoosePatrolDirection();           
+            ChoosePatrolDirection();
             m_PatrolCooldown = Random.Range(3f, 5f);
         }
-        else if(HasReachedPivot) m_PatrolCooldown -= Time.deltaTime;
+        else if (HasReachedPivot)
+        {
+            m_Anim.SetTrigger("IDLE");
+            m_PatrolCooldown -= Time.deltaTime;
+        }
 
         Vector2 l_position = transform.position;
         Vector3 dir = (Vector2)m_NextPatrolPosition.position - l_position;
         if (Vector2.Distance(l_position, m_NextPatrolPosition.position) >= 0.1f)
-            transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed * 0.8f;
+        {
+            m_Anim.SetTrigger("WALK");
+            transform.position += dir.normalized * Time.deltaTime * m_PatrolSpeed;
+        }
         else
+        {
             HasReachedPivot = true;
+            m_Anim.SetTrigger("IDLE");
+        }
     }
 
     void ChoosePatrolDirection()
