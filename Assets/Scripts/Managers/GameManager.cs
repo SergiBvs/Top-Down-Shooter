@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     public bool m_IsGameOverPanelOn = false;
     public bool m_GameIsPaused;
     public int m_Health;
-
     public int m_Currency;
+
+    public Sprite[] GunUISprites;
 
     void Awake()
     {
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void SetMaxHealth(int health)
     {
+        GUIHelp.m_HealthText.text = "" + health;
         GUIHelp.m_Slider.maxValue = health;
         GUIHelp.m_Slider.value = health;
         GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(1f);
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void SetHealth(int health)
     {
+        GUIHelp.m_HealthText.text = "" + health;
         GUIHelp.m_Slider.value = health;
         GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(GUIHelp.m_Slider.normalizedValue);
     }
@@ -64,6 +67,13 @@ public class GameManager : MonoBehaviour
     public void SetCoins(int l_quantity)
     {
         m_Currency += l_quantity;
+    }
+
+    public void GameOver()
+    {
+        GUIHelp.m_GUIpanel.SetActive(false); 
+        GUIHelp.m_GameOverPanel.SetActive(true);
+        m_IsGameOverPanelOn = true;
     }
 }
 

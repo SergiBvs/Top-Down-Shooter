@@ -10,6 +10,7 @@ public class GUIhelper : MonoBehaviour
     //GUI
 
     public TextMeshProUGUI m_AmmoText;
+    public TextMeshProUGUI m_HealthText;
     public Slider m_Slider;
     public Gradient m_Gradient;
     public Image fill;
@@ -18,7 +19,8 @@ public class GUIhelper : MonoBehaviour
 
     public GameObject m_GameOverPanel;
     public GameObject m_PausePanel;
-    
+    public GameObject m_GUIpanel;
+    public GameObject m_ReloadPanel;
 
     void Start()
     {

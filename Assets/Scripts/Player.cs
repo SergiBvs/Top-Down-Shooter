@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,12 +17,17 @@ public class Player : MonoBehaviour
     //public static bool GunBoughtArrayActivator = false;
 
     public GameObject[] GunArray;
+    public GameObject[] GunImages;
     public /*static*/ bool[] GunBoughtArray;
+
+    private GUIhelper GUIHelp;
+
 
     void Start()
     {
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = GameManager.instance.m_Health;
+        GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
 
         //quitar comentarios cuando se deje de testear
 
@@ -32,7 +38,6 @@ public class Player : MonoBehaviour
         //}
 
         GunBoughtArray[0] = true;
-
         ChangeWeapon(0);
     }
 
@@ -91,7 +96,15 @@ public class Player : MonoBehaviour
             gun.SetActive(false);
         }
 
+        foreach(GameObject image in GunImages)
+        {
+            image.SetActive(false);
+        }
+
         GunArray[weaponNumber].SetActive(true);
+        GunImages[weaponNumber].SetActive(true);
+        GUIHelp.m_AmmoText.color = new Color(255, 255, 255);
+        GUIHelp.m_ReloadPanel.SetActive(false);
     }
 
     public void TakeDamage(int amount)
@@ -102,6 +115,7 @@ public class Player : MonoBehaviour
         if(m_CurrentHealth <= 0)
         {
             Destroy(this.gameObject);
+            GameManager.instance.GameOver();
         }
     }
 

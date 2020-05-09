@@ -21,5 +21,11 @@ public class AutoRifle : Gun
         {
             StartCoroutine(Reload());
         }
+
+        if (m_CurrentAmmo <= 0)
+        {
+            GUIHelp.m_ReloadPanel.SetActive(true);
+            GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
+        }
     }
 }

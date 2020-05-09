@@ -51,6 +51,12 @@ public class Gun : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+
+        if (m_CurrentAmmo <= 0)
+        {
+            GUIHelp.m_ReloadPanel.SetActive(true);
+            GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
+        }
     }
 
     public void Shoot()
@@ -97,14 +103,28 @@ public class Gun : MonoBehaviour
 
 
         m_CurrentAmmo--;
-        
+
+        //aixo hauria de funcionar no?
+
+        if (m_CurrentAmmo <= (m_Magazine/2))
+        {
+            GUIHelp.m_AmmoText.color = new Color(255, 129, 129);
+        }
+
+        if(m_CurrentAmmo <=(m_Magazine/4))
+        {
+            GUIHelp.m_AmmoText.color = new Color(255, 57, 57);
+        }
+
+        //aixo si funciona
 
         if (m_CurrentAmmo <= 0)
         {
+            GUIHelp.m_ReloadPanel.SetActive(true);
+            GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
             m_HasBullets = false;
         }
        
-
     }
 
     protected IEnumerator Reload()
@@ -129,6 +149,8 @@ public class Gun : MonoBehaviour
             m_HasBullets = true;
         }
 
+        GUIHelp.m_AmmoText.color = new Color(255, 255, 255);
+        GUIHelp.m_ReloadPanel.SetActive(false);
         m_IsReloading = false;
     }
 
