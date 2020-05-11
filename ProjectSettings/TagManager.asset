@@ -11,6 +11,7 @@ TagManager:
   - Window
   - GUI
   - Bullet
+  - Coin
   layers:
   - Default
   - TransparentFX

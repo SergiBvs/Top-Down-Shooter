@@ -14,6 +14,8 @@ public class GUIhelper : MonoBehaviour
     public Slider m_Slider;
     public Gradient m_Gradient;
     public Image fill;
+    public ParticleSystem m_healthParticles;
+    public ParticleSystem.MainModule m_psmain;
 
     //PANELS
 
@@ -22,9 +24,12 @@ public class GUIhelper : MonoBehaviour
     public GameObject m_GUIpanel;
     public GameObject m_ReloadPanel;
 
+    public TMP_Text CoinText;
+
     void Start()
     {
         GameManager.instance.ReassignObjs();
+        m_psmain = m_healthParticles.main;
     }
 
 

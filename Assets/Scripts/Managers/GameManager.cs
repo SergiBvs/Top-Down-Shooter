@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using System.Data;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,9 +53,10 @@ public class GameManager : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        GUIHelp.m_HealthText.text = "" + health;
+        GUIHelp.m_HealthText.text = health.ToString();
         GUIHelp.m_Slider.value = health;
         GUIHelp.fill.color = GUIHelp.m_Gradient.Evaluate(GUIHelp.m_Slider.normalizedValue);
+        GUIHelp.m_psmain.startColor = GUIHelp.fill.color;
     }
 
     public void NextLevel()
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void SetCoins(int l_quantity)
     {
         m_Currency += l_quantity;
+        GUIHelp.CoinText.text = m_Currency.ToString();
     }
 
     public void GameOver()
