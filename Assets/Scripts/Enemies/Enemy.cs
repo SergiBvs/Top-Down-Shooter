@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
     //MOVEMENT AND PATROL
     [Header("Movement & Patrol")]
-    [SerializeField] PatrolType patrolType;
+    [SerializeField] PatrolType patrolType = PatrolType.Cyclic;
     [Range(0, 10)]
     public float m_PatrolSpeed = 4f;
     [Range(0, 10)]
@@ -37,12 +37,12 @@ public class Enemy : MonoBehaviour
     private Transform m_NextPatrolPosition;
 
     [Header("Loot Chances (%)")]
-    [SerializeField] private int m_MaxCoin;
-    [SerializeField] private int m_minCoin;
+    [SerializeField] private int m_MaxCoin = 0;
+    [SerializeField] private int m_minCoin = 0;
     [Range(0,100)]
-    [SerializeField] private int m_AmmoChance;
+    [SerializeField] private int m_AmmoChance = 0;
     [Range(0,100)]
-    [SerializeField] private int m_HealthChance;
+    [SerializeField] private int m_HealthChance = 0;
 
     public virtual void Start()
     {

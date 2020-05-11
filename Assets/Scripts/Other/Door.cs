@@ -4,7 +4,7 @@ public class Door : MonoBehaviour
 {
 
     private enum DoorType { Horizontal, Vertical}
-    [SerializeField] private DoorType doorType;
+    [SerializeField] private DoorType doorType = DoorType.Horizontal;
 
     private GameObject m_Player;
     public bool m_Open = false;

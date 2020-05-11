@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lasers : MonoBehaviour
 {
 
     private enum LaserType { Static, Moving, OnOff, MovingOnOff}
-    [SerializeField] private LaserType laserType;
+    [SerializeField] private LaserType laserType = LaserType.Static;
 
     private bool m_Active = true;
 
     //For Moving
     [Header("For Moving Lasers")]
-    [SerializeField] private Vector2 MovingPosition_1;
-    [SerializeField] private Vector2 MovingPosition_2;
+    [SerializeField] private Vector2 MovingPosition_1 = Vector2.zero;
+    [SerializeField] private Vector2 MovingPosition_2 = Vector2.zero;
     [SerializeField] private float MovingSpeed = 0.125f;
     private bool m_isGoingTo2 = false;
     private bool m_MovingActive = true;
