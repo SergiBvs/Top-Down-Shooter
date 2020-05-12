@@ -8,23 +8,30 @@ using UnityEngine.SceneManagement;
 public class GUIhelper : MonoBehaviour
 {
     //GUI
-
-    public TextMeshProUGUI m_AmmoText;
+    [Header("Health GUI")]
     public TextMeshProUGUI m_HealthText;
-    public Slider m_Slider;
-    public Gradient m_Gradient;
-    public Image fill;
     public ParticleSystem m_healthParticles;
+    public Slider m_Slider;
+    public Image fill;
     public ParticleSystem.MainModule m_psmain;
+    public Gradient m_Gradient;
+
+    [Header("Other GUI")]
+    public TextMeshProUGUI m_AmmoText;
+    public TMP_Text CoinText;
+
+    [Header("PickUp GUI")]
+    public GameObject m_PlayerPickupText;
+    public GameObject m_PlayerPickupCanvas;
+    
 
     //PANELS
-
+    [Header("Panels")]
     public GameObject m_GameOverPanel;
     public GameObject m_PausePanel;
-    public GameObject m_GUIpanel;
+    public GameObject m_GUIPanel;
     public GameObject m_ReloadPanel;
 
-    public TMP_Text CoinText;
 
     void Start()
     {

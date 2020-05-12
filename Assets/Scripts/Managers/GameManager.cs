@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        GUIHelp.m_GUIpanel.SetActive(false); 
+        GUIHelp.m_GUIPanel.SetActive(false); 
         GUIHelp.m_GameOverPanel.SetActive(true);
         m_IsGameOverPanelOn = true;
     }

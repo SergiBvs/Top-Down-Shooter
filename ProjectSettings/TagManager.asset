@@ -12,6 +12,9 @@ TagManager:
   - GUI
   - Bullet
   - Coin
+  - Ammo
+  - Health
+  - Deadzone
   layers:
   - Default
   - TransparentFX
