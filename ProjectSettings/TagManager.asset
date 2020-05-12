@@ -14,6 +14,7 @@ TagManager:
   - Coin
   - Ammo
   - Health
+  - Deadzone
   layers:
   - Default
   - TransparentFX
