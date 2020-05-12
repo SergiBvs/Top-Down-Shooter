@@ -997,7 +997,7 @@ MonoBehaviour:
   GunUISprites:
   - {fileID: 21300000, guid: 9dea9ad897240284ebdda09efb92f615, type: 3}
   - {fileID: 21300000, guid: 08d921bf17bd9074b9590b796c7f97fb, type: 3}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: a32b4a48b1829124abc365597e10da62, type: 3}
   - {fileID: 0}
 --- !u!4 &212346228
 Transform:
@@ -6561,7 +6561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.64936, y: -1.1893888, z: -10.110001}
+  m_LocalPosition: {x: 12.6493635, y: -1.1886258, z: -10.110001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 714593374}
@@ -7328,7 +7328,11 @@ MonoBehaviour:
   GunArray:
   - {fileID: 1894113743}
   - {fileID: 178703360}
-  GunImages: []
+  GunImages:
+  - {fileID: 1064387451}
+  - {fileID: 1546705055}
+  - {fileID: 1135199285}
+  - {fileID: 2026469295}
   GunBoughtArray: 0101
 --- !u!212 &623677574
 SpriteRenderer:
@@ -14594,7 +14598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1135199286
 RectTransform:
   m_ObjectHideFlags: 0
