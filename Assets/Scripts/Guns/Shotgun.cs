@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shotgun : Gun
 {
 
+    public RangeInt m_NumberOfPellets;
+
     public override void Update()
     {
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
@@ -16,6 +18,11 @@ public class Shotgun : Gun
                 Shoot(player.localRotation.eulerAngles.z + 15);
                 Shoot(player.localRotation.eulerAngles.z);
                 Shoot(player.localRotation.eulerAngles.z - 15);
+
+                for (int i = 0; i < ; i++)
+                {
+
+                }
             }
         }
 
