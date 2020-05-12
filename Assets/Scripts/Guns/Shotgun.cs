@@ -13,9 +13,11 @@ public class Shotgun : Gun
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
-                Shoot(GunTip.rotation.z + 45);
-                Shoot(GunTip.rotation.z);
-                Shoot(GunTip.rotation.z - 45);
+                //las 4 formas diferentes segun lo que me ha dicho el profe
+
+                Shoot(/*GunTip.localRotation.z + 45*/ /*GunTip.rotation.z + 45*/ player.localRotation.z + 45 /*player.rotation.z + 45*/);
+                Shoot(/*GunTip.localRotation.z*/ /*GunTip.rotation.z*/ player.localRotation.z /*player.rotation.z*/);
+                Shoot(/*GunTip.localRotation.z - 45*/ /*GunTip.rotation.z - 45*/ player.localRotation.z - 45 /*player.rotation.z - 45*/);
             }
         }
 
