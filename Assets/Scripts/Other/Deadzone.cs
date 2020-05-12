@@ -6,6 +6,7 @@ public class Deadzone : MonoBehaviour
 {
 
     private Player m_Player;
+    public Transform DZPivot;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,7 @@ public class Deadzone : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            //m_Player.Fall();
+            m_Player.Fall(DZPivot);
         }
     }
 }
