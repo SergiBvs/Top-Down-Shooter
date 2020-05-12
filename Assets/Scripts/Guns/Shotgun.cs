@@ -15,9 +15,9 @@ public class Shotgun : Gun
             {
                 //las 4 formas diferentes segun lo que me ha dicho el profe
 
-                Shoot(/*GunTip.localRotation.z + 45*/ /*GunTip.rotation.z + 45*/ player.localRotation.z + 45 /*player.rotation.z + 45*/);
-                Shoot(/*GunTip.localRotation.z*/ /*GunTip.rotation.z*/ player.localRotation.z /*player.rotation.z*/);
-                Shoot(/*GunTip.localRotation.z - 45*/ /*GunTip.rotation.z - 45*/ player.localRotation.z - 45 /*player.rotation.z - 45*/);
+                Shoot(player.localRotation.eulerAngles.z + 90 + 45);
+                Shoot(player.localRotation.eulerAngles.z + 90);
+                Shoot(player.localRotation.eulerAngles.z + 90 - 45);
             }
         }
 
