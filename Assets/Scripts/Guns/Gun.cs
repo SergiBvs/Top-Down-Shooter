@@ -134,11 +134,5 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(m_ShootCD);
         m_canShoot = true;
     }
-
-    IEnumerator LineCooldown()
-    {
-        yield return new WaitForSeconds(0.02f);
-        m_LR.enabled = false;
-    }
 }
 
