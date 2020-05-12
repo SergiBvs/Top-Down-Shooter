@@ -5,23 +5,36 @@ using UnityEngine;
 public class Shotgun : Gun
 {
 
-    public RangeInt m_NumberOfPellets;
+    public int m_NumberOfPellets;
+    public float m_MaxAngle;
+    public float m_MinAngle;
 
     public override void Update()
     {
+        if (m_CurrentAmmo < 0)
+            m_CurrentAmmo = 0;
+
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
 
         if (Input.GetButtonDown("Fire1"))
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
-                Shoot(player.localRotation.eulerAngles.z + 15);
+                /*Shoot(player.localRotation.eulerAngles.z + 15);
                 Shoot(player.localRotation.eulerAngles.z);
-                Shoot(player.localRotation.eulerAngles.z - 15);
+                Shoot(player.localRotation.eulerAngles.z - 15);*/
 
-                for (int i = 0; i < ; i++)
+                for (int i = 0; i < m_NumberOfPellets/2; i++)
                 {
+                    float l_angle = Random.Range(0, m_MaxAngle);
+                    Shoot(player.localRotation.eulerAngles.z + l_angle);
+                }
 
+                for (int i2 = 0; i2 < m_NumberOfPellets/2; i2++)
+                {
+                    float l_angle = Random.Range(0, m_MinAngle);
+
+                    Shoot(player.localRotation.eulerAngles.z + l_angle);
                 }
             }
         }

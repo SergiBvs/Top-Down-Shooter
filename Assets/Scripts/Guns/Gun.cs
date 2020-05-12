@@ -106,12 +106,27 @@ public class Gun : MonoBehaviour
             if (m_CurrentMaxAmmo >= m_Magazine)
             {
                 m_CurrentMaxAmmo -= (m_Magazine - m_CurrentAmmo);
-                m_CurrentAmmo = m_Magazine;
+                m_CurrentAmmo += (m_Magazine - m_CurrentAmmo);
             }
             else
-            {
-                m_CurrentAmmo = m_CurrentMaxAmmo;
-                m_CurrentMaxAmmo = 0;
+            {   
+                if(m_CurrentAmmo == 0)
+                {
+                    m_CurrentAmmo = m_CurrentMaxAmmo;
+                    m_CurrentMaxAmmo = 0;
+                }
+                else
+                {
+                    m_CurrentMaxAmmo -= (m_Magazine - m_CurrentAmmo);
+                    m_CurrentAmmo += (m_Magazine - m_CurrentAmmo);
+
+                    if((m_Magazine - m_CurrentAmmo) > m_CurrentMaxAmmo)
+                    {
+                        m_CurrentAmmo += m_CurrentMaxAmmo;
+                        m_CurrentMaxAmmo = 0;
+                    }
+
+                }
             }
 
             m_HasBullets = true;
