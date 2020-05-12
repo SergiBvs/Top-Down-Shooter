@@ -31,7 +31,9 @@ public class Gun : MonoBehaviour
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
 
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+
     }
+
 
     
     public virtual void Update()
@@ -43,7 +45,7 @@ public class Gun : MonoBehaviour
         {
             if(m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
-                Shoot();
+                Shoot(GunTip.rotation.z);
             }
         }
 
@@ -59,14 +61,11 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void Shoot(float rotationZ)
     {
         m_canShoot = false;
 
-        //CAMBIAR POR PROYECTIL
-
-
-        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, GunTip.rotation);
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(GunTip.rotation.x , GunTip.rotation.y , rotationZ));
 
         /*Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right, 30);

@@ -13,7 +13,8 @@ public class Bullets : MonoBehaviour
 
     public Rigidbody2D m_BulletRB2D;
     private bool shot;
-    private Transform gunpoint;
+    protected Transform gunpoint;
+    
 
 
     public virtual void Start()
