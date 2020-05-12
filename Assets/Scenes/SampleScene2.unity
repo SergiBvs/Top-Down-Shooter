@@ -2141,11 +2141,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 812743770415925868, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
-        type: 3}
-      propertyPath: m_MaxAmmo
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685152, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: GunImages.Array.data[0]

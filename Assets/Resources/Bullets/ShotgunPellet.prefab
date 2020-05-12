@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BulletForce: 50
-  m_Damage: 4
+  m_Damage: 10
   m_BulletRB2D: {fileID: 0}
   FallOffDamageDistance: 5
   DamageAfterFallOff: 1

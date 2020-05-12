@@ -558,8 +558,8 @@ MonoBehaviour:
   m_HasBullets: 1
   m_IsReloading: 0
   m_NumberOfPellets: 5
-  m_MaxAngle: 20
-  m_MinAngle: -20
+  m_MaxAngle: 15
+  m_MinAngle: -15
 --- !u!1 &6620470245013873002
 GameObject:
   m_ObjectHideFlags: 0
