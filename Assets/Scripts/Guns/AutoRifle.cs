@@ -17,7 +17,7 @@ public class AutoRifle : Gun
 
                 //las 4 formas diferentes segun lo que me ha dicho el profe
 
-                Shoot(/*GunTip.localRotation.z*/ /*GunTip.rotation.z*/ player.localRotation.z /*player.rotation.z*/);
+                Shoot(player.localRotation.eulerAngles.z);
         }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))
