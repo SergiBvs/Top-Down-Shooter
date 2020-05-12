@@ -14,7 +14,10 @@ public class AutoRifle : Gun
         if (Input.GetButton("Fire1"))
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
-                Shoot(GunTip.rotation.z);
+
+                //las 4 formas diferentes segun lo que me ha dicho el profe
+
+                Shoot(/*GunTip.localRotation.z*/ /*GunTip.rotation.z*/ player.localRotation.z /*player.rotation.z*/);
         }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))

@@ -20,15 +20,16 @@ public class Gun : MonoBehaviour
     public bool m_canShoot = true;
     public bool m_HasBullets = true;
     public bool m_IsReloading = false;
-    public LineRenderer m_LR;
 
     protected GUIhelper GUIHelp;
+    protected Transform player;
 
     void Start()
     {
         m_CurrentAmmo = m_Magazine;
         m_CurrentMaxAmmo = m_MaxAmmo;
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
 
@@ -45,7 +46,10 @@ public class Gun : MonoBehaviour
         {
             if(m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
-                Shoot(GunTip.rotation.z);
+
+                //las 4 formas diferentes segun lo que ha dicho el profe
+
+                Shoot(/*GunTip.localRotation.z*/ /*GunTip.rotation.z*/ player.localRotation.z /*player.rotation.z*/);
             }
         }
 
@@ -65,41 +69,13 @@ public class Gun : MonoBehaviour
     {
         m_canShoot = false;
 
-        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(GunTip.rotation.x , GunTip.rotation.y , rotationZ));
+        //las 4 formas diferentes segun lo que me ha dicho el profe
+        //en el script de bullet hay el addforce que las mueve adelante para el gunpoint tiene que ser .right i para el player tiene que ser .up (aunque con el euler no funcione igualmente) , no preguntes el porque porque no lo se
 
-        /*Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right, 30);
-        Debug.DrawRay(GunTip.position, transform.right, Color.red, hit.distance);*/
+        Instantiate(Resources.Load("Bullets/" + m_BulletName),  GunTip.position,  /*Quaternion.Euler(GunTip.localRotation.x , GunTip.localRotation.y, rotationZ)*/ /*Quaternion.Euler(GunTip.rotation.x , GunTip.rotation.y, rotationZ)*/ Quaternion.Euler(player.localRotation.x , player.localRotation.y, rotationZ) /*Quaternion.Euler(player.rotation.x , player.rotation.y, rotationZ)*/);
+
 
         StartCoroutine(GunCooldown());
-
-        //poner esto en el script de bala cambiando lo que haga falta
-
-        /*if(hit)
-        {
-            m_LR.SetPosition(0, GunTip.position);
-            m_LR.SetPosition(1, hit.point);
-
-
-            if(hit.collider.CompareTag("Enemy"))
-            {
-                Enemy l_Enemy = hit.transform.GetComponent<Enemy>();
-                l_Enemy.TakeDamage(m_Damage);
-            }
-            else if(hit.collider.CompareTag("Window"))
-            {
-                hit.transform.GetComponent<Window>().WindowDamage(m_Damage, hit.point);
-            }
-        }
-        else
-        {
-            m_LR.SetPosition(0, GunTip.position);
-            m_LR.SetPosition(1, GunTip.position + GunTip.right * 100);
-        }*/
-
-        //m_LR.enabled = true;
-        //StartCoroutine(LineCooldown());
-
 
         m_CurrentAmmo--;
 
