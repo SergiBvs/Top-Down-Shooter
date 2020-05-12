@@ -6,6 +6,7 @@ public class Lasers : MonoBehaviour
     private enum LaserType { Static, Moving, OnOff, MovingOnOff}
     [SerializeField] private LaserType laserType = LaserType.Static;
 
+    private GameObject laserBeam;
     private bool m_Active = true;
 
     //For Moving
@@ -28,6 +29,7 @@ public class Lasers : MonoBehaviour
     {
         m_DisabledCopy = m_DisabledTime;
         m_ActiveCopy = m_ActiveTime;
+        laserBeam = transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -54,17 +56,26 @@ public class Lasers : MonoBehaviour
         {
             LaserActive();
         }
+        else
+        {
+            laserBeam.SetActive(false);
+        }
     }
 
     void LaserActive()
     {
+        laserBeam.SetActive(true);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Obstacle", "Enemy"));
-        Debug.DrawRay(transform.position, hit.point - (Vector2)transform.position, Color.red);
+        
         if (hit)
         {
-            if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy"))
+            if (hit.collider.CompareTag("Enemy"))
             {
                 Destroy(hit.collider.gameObject);
+            }
+            else if (hit.collider.CompareTag("Player"))
+            {
+                hit.collider.GetComponent<Player>().TakeDamage(10000);
             }
         }
     }
