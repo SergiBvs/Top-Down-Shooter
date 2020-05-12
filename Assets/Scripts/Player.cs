@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public Rigidbody2D m_PlayerRB2D;
 
     //Variables de player
-
     
     public int m_CurrentHealth;
     public int m_PlayerSpeed;
@@ -125,5 +124,12 @@ public class Player : MonoBehaviour
         {
             TakeDamage(50);
         }
+    }
+
+    public void Fall(Transform DZpivot)
+    {
+        //Fall Animation
+        TakeDamage(20);
+        transform.position = DZpivot.position;
     }
 }
