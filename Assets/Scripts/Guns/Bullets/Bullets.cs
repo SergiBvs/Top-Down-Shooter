@@ -29,7 +29,7 @@ public class Bullets : MonoBehaviour
     {
         if (!shot)
         {
-            m_BulletRB2D.AddForce(gunpoint.right * m_BulletForce, ForceMode2D.Impulse);
+            m_BulletRB2D.AddForce(gunpoint.up * m_BulletForce, ForceMode2D.Impulse);
             shot = true;
         }
 

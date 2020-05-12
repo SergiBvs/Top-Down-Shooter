@@ -46,10 +46,7 @@ public class Gun : MonoBehaviour
         {
             if(m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
-
-                //las 4 formas diferentes segun lo que ha dicho el profe
-
-                Shoot(player.localRotation.eulerAngles.z + 90);
+                Shoot(player.localRotation.eulerAngles.z);
             }
         }
 
@@ -69,10 +66,6 @@ public class Gun : MonoBehaviour
     {
         m_canShoot = false;
 
-        //las 4 formas diferentes segun lo que me ha dicho el profe
-        //en el script de bullet hay el addforce que las mueve adelante para el gunpoint tiene que ser .right i para el player tiene que ser .up (aunque con el euler no funcione igualmente) , no preguntes el porque porque no lo se
-
-        //Instantiate(Resources.Load("Bullets/" + m_BulletName),  GunTip.position,  /*Quaternion.Euler(GunTip.localRotation.x , GunTip.localRotation.y, rotationZ)*/ /*Quaternion.Euler(GunTip.rotation.x , GunTip.rotation.y, rotationZ)*/ Quaternion.Euler(player.localRotation.x , player.localRotation.y, rotationZ) /*Quaternion.Euler(player.rotation.x , player.rotation.y, rotationZ)*/);
         GameObject bullet = Instantiate((GameObject)Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ));
 
         StartCoroutine(GunCooldown());
