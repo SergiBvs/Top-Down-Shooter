@@ -12,6 +12,8 @@ TagManager:
   - GUI
   - Bullet
   - Coin
+  - Ammo
+  - Health
   layers:
   - Default
   - TransparentFX

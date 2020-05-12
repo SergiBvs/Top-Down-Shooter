@@ -17,6 +17,9 @@ public class GUIhelper : MonoBehaviour
     public ParticleSystem m_healthParticles;
     public ParticleSystem.MainModule m_psmain;
 
+    public GameObject m_PlayerPickupText;
+    public GameObject m_PlayerPickupCanvas;
+
     //PANELS
 
     public GameObject m_GameOverPanel;
