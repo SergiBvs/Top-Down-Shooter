@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Damage: 10
   m_MaxAttackCooldown: 2
   m_GunTip: {fileID: 2422762081339182844}
+  m_BulletName: E_Basic_Bullet
   patrolType: 0
   m_PatrolSpeed: 4
   m_MovementSpeed: 4

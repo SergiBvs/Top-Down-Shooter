@@ -21,6 +21,7 @@ public class Lasers : MonoBehaviour
     [Header("For ONOFF Lasers")]
     [SerializeField] private float m_ActiveTime = 1f;
     [SerializeField] private float m_DisabledTime = 1f;
+    [SerializeField] private float m_DelayedTime = 0f;
     private float m_ActiveCopy;
     private float m_DisabledCopy;
 
@@ -104,29 +105,36 @@ public class Lasers : MonoBehaviour
 
     void Laser_OnOff()
     {
-        if (m_Active)
+        if (m_DelayedTime <= 0)
         {
-            if(m_ActiveTime <= 0)
+            if (m_Active)
             {
-                m_Active = false;
-                m_ActiveTime = m_ActiveCopy;
+                if (m_ActiveTime <= 0)
+                {
+                    m_Active = false;
+                    m_ActiveTime = m_ActiveCopy;
+                }
+                else
+                {
+                    m_ActiveTime -= Time.deltaTime;
+                }
             }
             else
             {
-                m_ActiveTime -= Time.deltaTime;
+                if (m_DisabledTime <= 0)
+                {
+                    m_Active = true;
+                    m_DisabledTime = m_DisabledCopy;
+                }
+                else
+                {
+                    m_DisabledTime -= Time.deltaTime;
+                }
             }
         }
         else
         {
-            if (m_DisabledTime <= 0)
-            {
-                m_Active = true;
-                m_DisabledTime = m_DisabledCopy;
-            }
-            else
-            {
-                m_DisabledTime -= Time.deltaTime;
-            }
+            m_DelayedTime -= Time.deltaTime;
         }
     }
 
