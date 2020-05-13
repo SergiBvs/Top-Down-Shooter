@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GunTip: {fileID: 2422762081339182844}
   patrolType: 0
   m_PatrolSpeed: 4
-  m_MovementSpeed: 5
+  m_MovementSpeed: 4
   pivots:
   - {fileID: 1250878248009734140}
   - {fileID: 1250878249148182440}

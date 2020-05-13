@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public GameObject[] GunImages;
     public /*static*/ bool[] GunBoughtArray;
 
+    [HideInInspector] public Gun m_CurrentGun;
+
     private GUIhelper GUIHelp;
 
 
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
         //}
 
         GunBoughtArray[0] = true;
+        m_CurrentGun = GunArray[0].GetComponent<Gun>();
         ChangeWeapon(0);
     }
 
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
 
         GunArray[weaponNumber].SetActive(true);
         GunImages[weaponNumber].SetActive(true);
+        m_CurrentGun = GunArray[weaponNumber].GetComponent<Gun>();
         GUIHelp.m_AmmoText.color = new Color(255, 255, 255);
         GUIHelp.m_ReloadPanel.SetActive(false);
     }

@@ -21,7 +21,8 @@ public class GUIhelper : MonoBehaviour
     public TMP_Text CoinText;
 
     [Header("PickUp GUI")]
-    public GameObject m_PlayerPickupText;
+    public GameObject m_CoinPickupText;
+    public GameObject m_AmmoPickupText;
     public GameObject m_PlayerPickupCanvas;
     
 
