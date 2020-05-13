@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour
     protected float m_AttackCooldown;
     public float m_MaxAttackCooldown;
 
+    [Header("Shooting")]
+    public Transform m_GunTip;
+
 
     //MOVEMENT AND PATROL
     [Header("Movement & Patrol")]
@@ -142,13 +145,16 @@ public class Enemy : MonoBehaviour
     public virtual void Shoot()
     {
         //CAMBIAR POR PROYECTIL 
-        RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
+        Instantiate((GameObject)Resources.Load("Bullets/Enemy/E_Basic_Bullet"), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
+        
+        /*RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
         if (l_ShotHit.collider.CompareTag("Player"))
         {
             Debug.DrawLine(transform.position, m_Player.transform.position, Color.red, 0.5f);
             m_PlayerScript.TakeDamage(m_Damage);
             
         }
+        */
         m_AttackCooldown = m_MaxAttackCooldown;
     }
 

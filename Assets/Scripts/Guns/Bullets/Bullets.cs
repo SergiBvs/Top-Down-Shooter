@@ -38,19 +38,23 @@ public class Bullets : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-            if (collision.gameObject.CompareTag("Wall"))
-            {
-                //particulas
-            }
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                Enemy l_Enemy = collision.gameObject.GetComponent<Enemy>();
-                l_Enemy.TakeDamage(m_Damage); //particulas en esa funcion como en la de window?
-            }
-            else if(collision.gameObject.CompareTag("Window"))
-            {
-                collision.gameObject.GetComponent<Window>().WindowDamage(m_Damage, this.transform.position);
-            }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            //particulas
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Enemy l_Enemy = collision.gameObject.GetComponent<Enemy>();
+            l_Enemy.TakeDamage(m_Damage); //particulas en esa funcion como en la de window?
+        }
+        else if(collision.gameObject.CompareTag("Window"))
+        {
+            collision.gameObject.GetComponent<Window>().WindowDamage(m_Damage, this.transform.position);
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.collider.GetComponent<Player>().TakeDamage(m_Damage);
+        }
         
         Destroy(this.gameObject);
     }
