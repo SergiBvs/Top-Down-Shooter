@@ -258,7 +258,7 @@ public class Enemy : MonoBehaviour
         int l_HealthChance = Random.Range(0, 100);
         if (l_HealthChance <= m_HealthChance)
         {
-            Instantiate(Resources.Load("Drops/Health"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("Loot/Health"), transform.position, Quaternion.identity);
         }
     }
 
