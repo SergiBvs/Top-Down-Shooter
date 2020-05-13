@@ -124,7 +124,7 @@ public class DropPicker : MonoBehaviour
 
         guiHelp.m_AmmoPickupText.SetActive(true);
         guiHelp.m_AmmoPickupText.GetComponent<TMP_Text>().text = "+ " + m_HowMuchAmmo;
-        guiHelp.m_AmmoPickupText.transform.position = transform.position;
+        guiHelp.m_PlayerPickupCanvas.transform.position = transform.position;
         Destroy(this.gameObject);
     }
 
