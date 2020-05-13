@@ -15,6 +15,7 @@ public class Shotgun : Gun
             m_CurrentAmmo = 0;
 
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -40,8 +41,12 @@ public class Shotgun : Gun
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))
         {
-            StartCoroutine(Reload());
+            m_CurrentReloadSpeed = m_ReloadSpeed;
+            m_IsReloading = true;
         }
+
+        if(m_IsReloading)
+            Reload();
 
         if (m_CurrentAmmo <= 0)
         {

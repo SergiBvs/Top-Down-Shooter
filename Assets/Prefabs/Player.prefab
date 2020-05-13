@@ -317,8 +317,11 @@ MonoBehaviour:
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.1
   m_ReloadSpeed: 2
+  m_CurrentReloadSpeed: 0
   m_BulletName: AR_Bullet
   GunTip: {fileID: 6620470244409724679}
+  m_ReloadBarCanvas: {fileID: 0}
+  m_ReloadBar: {fileID: 0}
   m_canShoot: 1
   m_HasBullets: 1
   m_IsReloading: 0
@@ -421,9 +424,12 @@ MonoBehaviour:
   m_MaxAmmo: 300
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.02
-  m_ReloadSpeed: 0.5
+  m_ReloadSpeed: 1
+  m_CurrentReloadSpeed: 0
   m_BulletName: 'not used '
   GunTip: {fileID: 6620470243763215700}
+  m_ReloadBarCanvas: {fileID: 0}
+  m_ReloadBar: {fileID: 0}
   m_canShoot: 1
   m_HasBullets: 1
   m_IsReloading: 0
@@ -799,8 +805,11 @@ MonoBehaviour:
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.6
   m_ReloadSpeed: 1
+  m_CurrentReloadSpeed: 0
   m_BulletName: ShotgunPellet
   GunTip: {fileID: 6620470244543480873}
+  m_ReloadBarCanvas: {fileID: 0}
+  m_ReloadBar: {fileID: 0}
   m_canShoot: 1
   m_HasBullets: 1
   m_IsReloading: 0
@@ -906,8 +915,11 @@ MonoBehaviour:
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.5
   m_ReloadSpeed: 2
+  m_CurrentReloadSpeed: 0
   m_BulletName: Basic_Bullet
   GunTip: {fileID: 6620470243576252143}
+  m_ReloadBarCanvas: {fileID: 0}
+  m_ReloadBar: {fileID: 0}
   m_canShoot: 1
   m_HasBullets: 1
   m_IsReloading: 0
