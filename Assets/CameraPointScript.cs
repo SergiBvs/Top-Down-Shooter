@@ -17,6 +17,8 @@ public class CameraPointScript : MonoBehaviour
     void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position =  m_PlayerPos.position + (-m_PlayerPos.position + mousePosition) / 4;
+        Vector2 targetPos = m_PlayerPos.position + (-m_PlayerPos.position + mousePosition) / 4;
+        if (Vector2.Distance(transform.position, targetPos) > 0.1f)
+            transform.position = targetPos;
     }
 }
