@@ -206,8 +206,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6620470243340659889}
   - component: {fileID: 6620470243340659888}
+  - component: {fileID: 1748580558}
   m_Layer: 0
-  m_Name: Whatever
+  m_Name: LaserGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,6 +277,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1748580558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620470243340659894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278811e1c49a5614e8e5fa5441a3f4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Magazine: 100
+  m_CurrentAmmo: 0
+  m_MaxAmmo: 300
+  m_CurrentMaxAmmo: 0
+  m_ShootCD: 0
+  m_ReloadSpeed: 0.5
+  m_BulletName: 'not used '
+  GunTip: {fileID: 6620470243763215700}
+  m_canShoot: 1
+  m_HasBullets: 1
+  m_IsReloading: 0
+  m_DamagePerAmmoUnit: 0
 --- !u!1 &6620470243576252140
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,6 +474,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   GunBoughtArray: 
+  m_CurrentGun: {fileID: 0}
 --- !u!50 &6620470243767685165
 Rigidbody2D:
   serializedVersion: 4

@@ -20,9 +20,8 @@ public class Shotgun : Gun
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
             {
-                /*Shoot(player.localRotation.eulerAngles.z + 15);
+                
                 Shoot(player.localRotation.eulerAngles.z);
-                Shoot(player.localRotation.eulerAngles.z - 15);*/
 
                 for (int i = 0; i < m_NumberOfPellets/2; i++)
                 {

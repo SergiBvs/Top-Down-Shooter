@@ -62,7 +62,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    public void Shoot(float rotationZ)
+    public virtual void Shoot(float rotationZ)
     {
         m_canShoot = false;
 
@@ -137,7 +137,7 @@ public class Gun : MonoBehaviour
         m_IsReloading = false;
     }
 
-    IEnumerator GunCooldown()
+    protected IEnumerator GunCooldown()
     {
         yield return new WaitForSeconds(m_ShootCD);
         m_canShoot = true;
