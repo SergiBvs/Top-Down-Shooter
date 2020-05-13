@@ -176,7 +176,7 @@ public class Enemy : MonoBehaviour
 
         Vector2 l_position = transform.position;
         Vector3 dir = (Vector2)m_NextPatrolPosition.position - l_position;
-        if (Vector2.Distance(l_position, m_NextPatrolPosition.position) >= 0.1f)
+        if (Vector2.Distance(l_position, m_NextPatrolPosition.position) >= 0.2f)
         {
             m_Anim.SetTrigger("WALK");
             transform.position += dir.normalized * Time.deltaTime * m_PatrolSpeed;

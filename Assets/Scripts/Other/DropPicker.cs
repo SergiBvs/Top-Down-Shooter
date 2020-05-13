@@ -24,6 +24,9 @@ public class DropPicker : MonoBehaviour
     [Header("For Ammo Box")]
     public int m_HowMuchAmmo = 10;
 
+    [Header("For Health")]
+    public int m_HowMuchHealth = 40;
+
     private void Awake()
     {
         if(instance == null)
@@ -81,6 +84,9 @@ public class DropPicker : MonoBehaviour
                 case "Ammo":
                     PickAmmo();
                     break;
+                case "Health":
+                    PickHealth();
+                    break;
             }
         }
     }
@@ -118,5 +124,16 @@ public class DropPicker : MonoBehaviour
         guiHelp.m_AmmoPickupText.GetComponent<TMP_Text>().text = "+ " + m_HowMuchAmmo;
         guiHelp.m_AmmoPickupText.transform.position = transform.position;
         Destroy(this.gameObject);
+    }
+
+    private void PickHealth()
+    {
+        m_Player.m_CurrentHealth += m_HowMuchHealth;
+        if (m_Player.m_CurrentHealth > GameManager.instance.m_Health)
+            m_Player.m_CurrentHealth = GameManager.instance.m_Health;
+
+        GameManager.instance.SetHealth(m_Player.m_CurrentHealth);
+        Destroy(this.gameObject);
+
     }
 }
