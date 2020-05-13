@@ -66,7 +66,8 @@ public class Gun : MonoBehaviour
     {
         m_canShoot = false;
 
-        GameObject bullet = Instantiate((GameObject)Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ));
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ));
+        Instantiate(Resources.Load("Shoot_Particles"), GunTip.transform);
 
         StartCoroutine(GunCooldown());
 
