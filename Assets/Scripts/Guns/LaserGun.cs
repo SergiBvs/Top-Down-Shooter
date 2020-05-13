@@ -11,6 +11,7 @@ public class LaserGun : Gun
     public override void  Update()
     {
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButton("Fire1"))
         {
@@ -20,8 +21,12 @@ public class LaserGun : Gun
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))
         {
-            StartCoroutine(Reload());
+            m_CurrentReloadSpeed = m_ReloadSpeed;
+            m_IsReloading = true;
         }
+
+        if (m_IsReloading)
+            Reload();
 
         if (m_CurrentAmmo <= 0)
         {
