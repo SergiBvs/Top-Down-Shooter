@@ -15,6 +15,7 @@ TagManager:
   - Ammo
   - Health
   - Deadzone
+  - Elevator
   layers:
   - Default
   - TransparentFX

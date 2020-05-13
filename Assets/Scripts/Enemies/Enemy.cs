@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    private enum PatrolType { Cyclic, PingPong, None }
+    private enum PatrolType { Cyclic, PingPong, Static, None }
 
     protected GameObject m_Player;
     private Player m_PlayerScript;
@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Shooting")]
     public Transform m_GunTip;
+    public string m_BulletName;
 
 
     //MOVEMENT AND PATROL
@@ -89,7 +90,10 @@ public class Enemy : MonoBehaviour
                     if (m_HasReachedLastSeen && patrolType != PatrolType.None)
                     {
                         transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
-                        Patrol();
+                        if (patrolType != PatrolType.Static)
+                            Patrol();
+                        else
+                            m_Anim.SetTrigger("IDLE");
                     }
                     else
                     {
@@ -100,7 +104,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                if (patrolType != PatrolType.None)
+                if (patrolType != PatrolType.None && patrolType != PatrolType.Static)
                     Patrol();
             }
         }
@@ -144,17 +148,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Shoot()
     {
-        //CAMBIAR POR PROYECTIL 
-        Instantiate((GameObject)Resources.Load("Bullets/Enemy/E_Basic_Bullet"), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
-        
-        /*RaycastHit2D l_ShotHit = Physics2D.Raycast(transform.position, transform.up, 30, LayerMask.GetMask("Player", "Default"));
-        if (l_ShotHit.collider.CompareTag("Player"))
-        {
-            Debug.DrawLine(transform.position, m_Player.transform.position, Color.red, 0.5f);
-            m_PlayerScript.TakeDamage(m_Damage);
-            
-        }
-        */
+        Instantiate((GameObject)Resources.Load("Bullets/Enemy/" + m_BulletName), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
         m_AttackCooldown = m_MaxAttackCooldown;
     }
 

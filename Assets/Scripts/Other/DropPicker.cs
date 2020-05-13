@@ -20,6 +20,8 @@ public class DropPicker : MonoBehaviour
     private bool m_picked = false;
 
     private GUIhelper guiHelp;
+    [Header("For Coins")]
+    public int m_CoinValue = 1;
 
     [Header("For Ammo Box")]
     public int m_HowMuchAmmo = 10;
@@ -100,7 +102,7 @@ public class DropPicker : MonoBehaviour
 
         if(m_ChainTime > 0)
         {
-            m_PickupChain++;
+            m_PickupChain += m_CoinValue;
             guiHelp.m_CoinPickupText.SetActive(false);
             guiHelp.m_CoinPickupText.SetActive(true);
             guiHelp.m_PlayerPickupCanvas.transform.position = transform.position;
@@ -114,7 +116,7 @@ public class DropPicker : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        GameManager.instance.SetCoins(1);
+        GameManager.instance.SetCoins(m_CoinValue);
     }
     private void PickAmmo()
     {
@@ -122,7 +124,7 @@ public class DropPicker : MonoBehaviour
 
         guiHelp.m_AmmoPickupText.SetActive(true);
         guiHelp.m_AmmoPickupText.GetComponent<TMP_Text>().text = "+ " + m_HowMuchAmmo;
-        guiHelp.m_AmmoPickupText.transform.position = transform.position;
+        guiHelp.m_PlayerPickupCanvas.transform.position = transform.position;
         Destroy(this.gameObject);
     }
 
