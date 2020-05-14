@@ -10,38 +10,20 @@ public class ShopScript : MonoBehaviour
     public int m_Cost;
     private Player m_PlayerScript;
     public TextMeshProUGUI m_CostText;
-    public Color m_testColor;
+    private Image m_ButtonImage;
     public bool m_MaxUpgraded;
     public bool m_Bought;
     
     void Start()
     {
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        m_ButtonImage = this.GetComponent<Image>();
+        ChangeColors();
     }
 
     void Update()
     {
-        if(m_MaxUpgraded)
-        {
-
-            m_CostText.text = "MAX";
-            this.GetComponent<Image>().color = new Color(255/255f, 150/255f, 0);
-        }
-        else if(m_Bought)
-        {
-            m_CostText.text = "BOUGHT";
-            this.GetComponent<Image>().color = new Color(255/255f, 150/255f, 0);
-        }
-        else if(GameManager.instance.m_Currency >= m_Cost && !m_MaxUpgraded)
-        {
-            this.GetComponent<Image>().color = new Color(0, 255/255f, 0);
-            m_CostText.text = m_Cost + "$";
-        }
-        else
-        {
-            m_CostText.text = m_Cost + "$";
-           this.GetComponent<Image>().color = new Color(255/255f, 0, 0);
-        } 
+        
     }
 
 
@@ -74,6 +56,9 @@ public class ShopScript : MonoBehaviour
                 m_Bought = true;
             }
         }
+
+        ChangeColors();
+
     }
 
     public void BuyUpgrades()
@@ -130,7 +115,32 @@ public class ShopScript : MonoBehaviour
             
         }
 
+        ChangeColors();
         //lo que sea que se quiera añadir 
+    }
+
+    public void ChangeColors()
+    {
+        if (m_MaxUpgraded)
+        {
+            m_CostText.text = "MAX";
+            m_ButtonImage.color = new Color(255 / 255f, 150 / 255f, 0);
+        }
+        else if (m_Bought)
+        {
+            m_CostText.text = "BOUGHT";
+            m_ButtonImage.color = new Color(255 / 255f, 150 / 255f, 0);
+        }
+        else if (GameManager.instance.m_Currency >= m_Cost && !m_MaxUpgraded)
+        {
+            m_CostText.text = m_Cost + "$";
+            m_ButtonImage.color = new Color(0, 255 / 255f, 0);
+        }
+        else
+        {
+            m_CostText.text = m_Cost + "$";
+            m_ButtonImage.color = new Color(255 / 255f, 0, 0);
+        }
     }
 
 
