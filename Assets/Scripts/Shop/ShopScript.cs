@@ -9,30 +9,38 @@ public class ShopScript : MonoBehaviour
 
     public int m_Cost;
     private Player m_PlayerScript;
-
     public TextMeshProUGUI m_CostText;
-
     public Color m_testColor;
+    public bool m_MaxUpgraded;
+    public bool m_Bought;
     
     void Start()
     {
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        //m_WeaponCosts = new int[3];
     }
 
     void Update()
     {
-        m_CostText.text = m_Cost + "$";
-
-        if (GameManager.instance.m_Currency < m_Cost)
+        if(m_MaxUpgraded)
         {
-            this.GetComponent<Image>().color = new Color (255,0,0);
+            m_CostText.text = "MAX";
+            this.GetComponent<Image>().color = new Color(255, 150, 0);
+        }
+        else if(m_Bought)
+        {
+            m_CostText.text = "BOUGHT";
+            this.GetComponent<Image>().color = new Color(255, 150, 0);
+        }
+        else if(GameManager.instance.m_Currency >= m_Cost && !m_MaxUpgraded && !m_Bought)
+        {
+            this.GetComponent<Image>().color = new Color(0, 255, 0);
+            m_CostText.text = m_Cost + "$";
         }
         else
         {
-            this.GetComponent<Image>().color = new Color(0, 255, 0);
-        }
-        
+            m_CostText.text = m_Cost + "$";
+            this.GetComponent<Image>().color = new Color(255, 0, 0);
+        } 
     }
 
 
@@ -44,10 +52,7 @@ public class ShopScript : MonoBehaviour
             {
                 m_PlayerScript.GunBoughtArray[1] = true;
                 GameManager.instance.m_Currency -= m_Cost;
-            }
-            else
-            {
-                //mostrar que no puedes comprar el arma o que ya la tienes
+                m_Bought = true;
             }
         }
         else if (this.gameObject.CompareTag("Shotgun"))
@@ -56,10 +61,7 @@ public class ShopScript : MonoBehaviour
             {
                 m_PlayerScript.GunBoughtArray[2] = true;
                 GameManager.instance.m_Currency -= m_Cost;
-            }
-            else
-            {
-                //mostrar que no puedes comprar el arma o que ya la tienes
+                m_Bought = true;
             }
         }
         else if(this.gameObject.CompareTag("LaserGun"))
@@ -68,42 +70,63 @@ public class ShopScript : MonoBehaviour
             {
                 m_PlayerScript.GunBoughtArray[3] = true;
                 GameManager.instance.m_Currency -= m_Cost;
-            }
-            else
-            {
-                //mostrar que no puedes comprar el arma o que ya la tienes
+                m_Bought = true;
             }
         }
     }
 
     public void BuyUpgrades()
     {
-        if (this.gameObject.CompareTag("HealthUpgrade"))
+        if (this.gameObject.CompareTag("Health"))
         {
-            //max health +25 max 175
-        }
-        else if (this.gameObject.CompareTag("LuckUpgrade"))
-        {
-            //mas luck
-        }
-        else if (this.gameObject.CompareTag("AmmoUpgrade"))
-        {
-            //mas ammo total
-        }
-        else if(this.gameObject.CompareTag("SpeedUpgrade"))
-        {
-            //mas speed
-        }
-        else if (this.gameObject.CompareTag("AmmoRefill"))
-        {
-            if (this.gameObject.name == "AmmoSmallRefill")
+            if(GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_Health <200)
             {
-                //pequeño incremento, si tienes poco dinero
+                GameManager.instance.m_Health += 25;
+                GameManager.instance.SetMaxHealth(GameManager.instance.m_Health);
+                m_PlayerScript.m_CurrentHealth = GameManager.instance.m_Health;
+                m_Cost += 125;
+
+                //mostrar +25 de vida y poner una barra mas de las 4 en total
+
+                GameManager.instance.m_Currency -= m_Cost;
             }
-            else if (this.gameObject.name == "AmmoFullRefill")
+
+            if(GameManager.instance.m_Health>=200)
             {
-                //toda la municion restaurada
+                m_MaxUpgraded = true;
             }
+
+            //max health +25 max 200 4 upgrades
+        }
+        else if (this.gameObject.CompareTag("Luck"))
+        {
+            //no se como funciona lo de luck hazlo tu alex
+        }
+        else if(this.gameObject.CompareTag("Speed"))
+        {
+            if(GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.m_PlayerSpeed<15)
+            {
+                m_PlayerScript.m_PlayerSpeed += 1;
+                m_Cost += 125;
+
+                //mostrar +1 de speed y poner una barra mas de las 5 en total
+
+                GameManager.instance.m_Currency -= m_Cost;
+            }
+
+            if(m_PlayerScript.m_PlayerSpeed>=15)
+            {
+                m_MaxUpgraded = true;
+            }
+            
+        }
+        else if (this.gameObject.CompareTag("Magazine"))
+        {
+           
+        }
+        else if(this.gameObject.CompareTag("Ammo"))
+        {
+            
         }
 
         //lo que sea que se quiera añadir 
