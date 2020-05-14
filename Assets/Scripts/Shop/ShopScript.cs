@@ -23,18 +23,19 @@ public class ShopScript : MonoBehaviour
     {
         if(m_MaxUpgraded)
         {
+
             m_CostText.text = "MAX";
-            this.GetComponent<Image>().color = new Color(255, 100, 0);
+            this.GetComponent<Image>().color = new Color(255/255, 150/255, 0);
         }
         else if(m_Bought)
         {
             m_CostText.text = "BOUGHT";
-            this.GetComponent<Image>().color = new Color(255, 100, 0);
+            this.GetComponent<Image>().color = new Color(255/255, 150/255, 0);
         }
-        else if(GameManager.instance.m_Currency >= m_Cost && !m_MaxUpgraded && !m_Bought)
+        else if(GameManager.instance.m_Currency >= m_Cost && !m_MaxUpgraded)
         {
-            m_CostText.text = m_Cost + "$";
             this.GetComponent<Image>().color = new Color(0, 255, 0);
+            m_CostText.text = m_Cost + "$";
         }
         else
         {
