@@ -19,6 +19,9 @@ TagManager:
   - AR
   - Shotgun
   - LaserGun
+  - Luck
+  - Speed
+  - Magazine
   layers:
   - Default
   - TransparentFX
