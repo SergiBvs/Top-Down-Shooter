@@ -17,6 +17,7 @@ TagManager:
   - Deadzone
   - Elevator
   - AR
+  - Shotgun
   layers:
   - Default
   - TransparentFX
