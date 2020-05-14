@@ -7,10 +7,12 @@ using TMPro;
 public class ShopScript : MonoBehaviour
 {
 
-    public int m_WeaponCost;
+    public int m_Cost;
     private Player m_PlayerScript;
 
-    public TextMeshProUGUI m_WeaponCostText;
+    public TextMeshProUGUI m_CostText;
+
+    public Color m_testColor;
     
     void Start()
     {
@@ -20,7 +22,17 @@ public class ShopScript : MonoBehaviour
 
     void Update()
     {
-        m_WeaponCostText.text = m_WeaponCost + "$";
+        m_CostText.text = m_Cost + "$";
+
+        if (GameManager.instance.m_Currency < m_Cost)
+        {
+            this.GetComponent<Image>().color = new Color (255,0,0);
+        }
+        else
+        {
+            this.GetComponent<Image>().color = new Color(0, 255, 0);
+        }
+        
     }
 
 
@@ -28,10 +40,10 @@ public class ShopScript : MonoBehaviour
     {
         if(this.gameObject.CompareTag("AR"))
         {
-            if(GameManager.instance.m_Currency >= m_WeaponCost && m_PlayerScript.GunBoughtArray[1] == false)
+            if(GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.GunBoughtArray[1] == false)
             {
                 m_PlayerScript.GunBoughtArray[1] = true;
-                GameManager.instance.m_Currency -= m_WeaponCost;
+                GameManager.instance.m_Currency -= m_Cost;
             }
             else
             {
@@ -40,10 +52,10 @@ public class ShopScript : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Shotgun"))
         {
-            if (GameManager.instance.m_Currency >= m_WeaponCost && m_PlayerScript.GunBoughtArray[2] == false)
+            if (GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.GunBoughtArray[2] == false)
             {
                 m_PlayerScript.GunBoughtArray[2] = true;
-                GameManager.instance.m_Currency -= m_WeaponCost;
+                GameManager.instance.m_Currency -= m_Cost;
             }
             else
             {
@@ -52,10 +64,10 @@ public class ShopScript : MonoBehaviour
         }
         else if(this.gameObject.CompareTag("LaserGun"))
         {
-            if (GameManager.instance.m_Currency >= m_WeaponCost && m_PlayerScript.GunBoughtArray[3] == false)
+            if (GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.GunBoughtArray[3] == false)
             {
                 m_PlayerScript.GunBoughtArray[3] = true;
-                GameManager.instance.m_Currency -= m_WeaponCost;
+                GameManager.instance.m_Currency -= m_Cost;
             }
             else
             {
@@ -77,6 +89,10 @@ public class ShopScript : MonoBehaviour
         else if (this.gameObject.CompareTag("AmmoUpgrade"))
         {
             //mas ammo total
+        }
+        else if(this.gameObject.CompareTag("SpeedUpgrade"))
+        {
+            //mas speed
         }
         else if (this.gameObject.CompareTag("AmmoRefill"))
         {

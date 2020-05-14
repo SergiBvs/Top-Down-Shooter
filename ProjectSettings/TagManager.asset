@@ -18,6 +18,7 @@ TagManager:
   - Elevator
   - AR
   - Shotgun
+  - LaserGun
   layers:
   - Default
   - TransparentFX
