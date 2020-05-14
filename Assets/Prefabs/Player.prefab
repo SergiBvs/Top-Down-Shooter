@@ -607,7 +607,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  GunBoughtArray: 
+  GunBoughtArray: 00000000
   m_CurrentGun: {fileID: 0}
 --- !u!50 &6620470243767685165
 Rigidbody2D:
@@ -833,7 +833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6620470245013873013
 Transform:
   m_ObjectHideFlags: 0

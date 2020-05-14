@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public bool m_IsGameOverPanelOn = false;
     public bool m_GameIsPaused;
+    public bool m_IsInShop;
     public int m_Health;
     public int m_Currency;
 

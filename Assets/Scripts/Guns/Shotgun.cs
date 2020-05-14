@@ -19,7 +19,7 @@ public class Shotgun : Gun
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused)
+            if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
             {
                 
                 Shoot(player.localRotation.eulerAngles.z);

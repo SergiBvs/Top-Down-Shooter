@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
         //APUNTADO
 
-        if(!GameManager.instance.m_GameIsPaused)
+        if(!GameManager.instance.m_GameIsPaused )
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.rotation = Quaternion.LookRotation(Vector3.forward, (mousePosition - transform.position).normalized);
