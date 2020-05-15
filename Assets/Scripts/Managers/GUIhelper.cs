@@ -57,6 +57,17 @@ public class GUIhelper : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            GameManager.instance.LoadScene(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            GameManager.instance.LoadScene(1);
+        }
+
     }
 
     public void ResumeGame()

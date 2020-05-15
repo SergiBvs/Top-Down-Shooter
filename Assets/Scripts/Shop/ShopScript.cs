@@ -13,7 +13,7 @@ public class ShopScript : MonoBehaviour
     private Image m_ButtonImage;
     public bool m_MaxUpgraded;
     public bool m_Bought;
-    
+
     void Start()
     {
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -23,7 +23,7 @@ public class ShopScript : MonoBehaviour
 
     void Update()
     {
-        
+       
     }
 
 
@@ -31,27 +31,27 @@ public class ShopScript : MonoBehaviour
     {
         if(this.gameObject.CompareTag("AR"))
         {
-            if(GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.GunBoughtArray[1] == false)
+            if(GameManager.instance.m_Currency >= m_Cost && Player.GunBoughtArray[1] == false)
             {
-                m_PlayerScript.GunBoughtArray[1] = true;
+                Player.GunBoughtArray[1] = true;
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = true;
             }
         }
         else if (this.gameObject.CompareTag("Shotgun"))
         {
-            if (GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.GunBoughtArray[2] == false)
+            if (GameManager.instance.m_Currency >= m_Cost && Player.GunBoughtArray[2] == false)
             {
-                m_PlayerScript.GunBoughtArray[2] = true;
+                Player.GunBoughtArray[2] = true;
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = true;
             }
         }
         else if(this.gameObject.CompareTag("LaserGun"))
         {
-            if (GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.GunBoughtArray[3] == false)
+            if (GameManager.instance.m_Currency >= m_Cost && Player.GunBoughtArray[3] == false)
             {
-                m_PlayerScript.GunBoughtArray[3] = true;
+                Player.GunBoughtArray[3] = true;
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = true;
             }
@@ -90,9 +90,9 @@ public class ShopScript : MonoBehaviour
         }
         else if(this.gameObject.CompareTag("Speed"))
         {
-            if(GameManager.instance.m_Currency >= m_Cost && m_PlayerScript.m_PlayerSpeed<15)
+            if(GameManager.instance.m_Currency >= m_Cost && Player.m_PlayerSpeed<15)
             {
-                m_PlayerScript.m_PlayerSpeed += 1;
+                Player.m_PlayerSpeed += 1;
                 m_Cost += 125;
 
                 //mostrar +1 de speed y poner una barra mas de las 5 en total
@@ -100,7 +100,7 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.m_Currency -= m_Cost;
             }
 
-            if(m_PlayerScript.m_PlayerSpeed>=15)
+            if(Player.m_PlayerSpeed>=15)
             {
                 m_MaxUpgraded = true;
             }
@@ -108,7 +108,7 @@ public class ShopScript : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Magazine"))
         {
-           
+            
         }
         else if(this.gameObject.CompareTag("Ammo"))
         {

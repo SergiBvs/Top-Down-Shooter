@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     //Variables de player
     
     public int m_CurrentHealth;
-    public int m_PlayerSpeed;
+    public static int m_PlayerSpeed = 10;
 
-    //public static bool GunBoughtArrayActivator = false;
+    public static bool GunBoughtArrayActivator = false;
 
     public GameObject[] GunArray;
     public GameObject[] GunImages;
-    public /*static*/ bool[] GunBoughtArray;
+    public static bool[] GunBoughtArray;
 
     [HideInInspector] public Gun m_CurrentGun;
 
@@ -32,11 +32,11 @@ public class Player : MonoBehaviour
 
         //quitar comentarios cuando se deje de testear
 
-        //if(!GunBoughtArrayActivator) 
-        //{
+        if(!GunBoughtArrayActivator) 
+        {
             GunBoughtArray = new bool[GunArray.Length];
-            //GunBoughtArrayActivator = true;
-        //}
+            GunBoughtArrayActivator = true;
+        }
 
         GunBoughtArray[0] = true;
         m_CurrentGun = GunArray[0].GetComponent<Gun>();

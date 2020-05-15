@@ -62,8 +62,12 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        //telon o lo que sea
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex) + 1);
+    }
+
+    public void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
     public void SetCoins(int l_quantity)
