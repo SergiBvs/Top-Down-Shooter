@@ -58,6 +58,10 @@ public class Enemy : MonoBehaviour
 
         if(patrolType != PatrolType.None)
             m_NextPatrolPosition = pivots[0];
+        if(patrolType == PatrolType.Static)
+        {
+            m_HasReachedLastSeen = true;
+        }
     }
 
     public virtual void Update()
@@ -87,13 +91,16 @@ public class Enemy : MonoBehaviour
                 else //Si no esta viendo al player
                 {
                     //Comprobar si ya ha llegado al ultimo punto en el que vió al player antes de compenzar su patrulla.
-                    if (m_HasReachedLastSeen && patrolType != PatrolType.None)
+                    if ((m_HasReachedLastSeen) && patrolType != PatrolType.None)
                     {
                         transform.rotation = Quaternion.LookRotation(Vector3.forward, ((Vector2)m_NextPatrolPosition.position - (Vector2)transform.position).normalized);
                         if (patrolType != PatrolType.Static)
                             Patrol();
                         else
+                        {
+                            HasReachedPivot = true;
                             m_Anim.SetTrigger("IDLE");
+                        }
                     }
                     else
                     {
@@ -106,6 +113,10 @@ public class Enemy : MonoBehaviour
             {
                 if (patrolType != PatrolType.None && patrolType != PatrolType.Static)
                     Patrol();
+                else if(patrolType == PatrolType.Static)
+                {
+                    m_Anim.SetTrigger("IDLE");
+                }
             }
         }
     }

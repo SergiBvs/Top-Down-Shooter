@@ -37,15 +37,12 @@ public class Gun : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
-
     }
 
 
 
     public virtual void Update()
     {
-
-        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
         m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButtonDown("Fire1"))
@@ -62,8 +59,10 @@ public class Gun : MonoBehaviour
             m_IsReloading = true;
         }
 
-        if(m_IsReloading)
+        if (m_IsReloading)
+        {
             Reload();
+        }
 
         if (m_CurrentAmmo <= 0)
         {
@@ -87,22 +86,24 @@ public class Gun : MonoBehaviour
 
         if (m_CurrentAmmo <= (m_Magazine / 2))
         {
-            GUIHelp.m_AmmoText.color = new Color(255, 129, 129);
-        }
+            GUIHelp.m_AmmoText.color = new Color(236 / 255f, 128 / 255f, 48 / 255f);
 
-        if (m_CurrentAmmo <= (m_Magazine / 4))
-        {
-            GUIHelp.m_AmmoText.color = new Color(255, 57, 57);
-        }
+            if (m_CurrentAmmo <= (m_Magazine / 4))
+            {
+                GUIHelp.m_AmmoText.color = new Color(236 / 255f, 94 / 255f, 52 / 255f);
+            }
 
+        }
         //aixo si funciona
 
         if (m_CurrentAmmo <= 0)
         {
             GUIHelp.m_ReloadPanel.SetActive(true);
-            GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
+            GUIHelp.m_AmmoText.color = new Color(1, 0, 0);
             m_HasBullets = false;
         }
+
+        UpdateGUI();
 
     }
 
@@ -154,6 +155,13 @@ public class Gun : MonoBehaviour
         {
             m_CurrentReloadSpeed -= Time.deltaTime;
         }
+
+        UpdateGUI();
+    }
+
+    void UpdateGUI()
+    {
+        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
     }
 
     protected IEnumerator GunCooldown()

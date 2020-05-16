@@ -39,7 +39,7 @@ public class LaserGun : Gun
     {
 
         RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right , 30);
-        Debug.DrawRay(GunTip.position, transform.right, Color.red, hit.distance);
+        Debug.DrawRay(GunTip.position, hit.point - (Vector2)transform.position, Color.red, 0.5f);
 
 
         if(m_canShoot)
@@ -90,6 +90,7 @@ public class LaserGun : Gun
                 else if(hit.collider.CompareTag("Window"))
                 {
                     //particles
+                    //Fem que no pugui trencar finestres
                 }
 
                 m_LR.SetPosition(0, GunTip.position);
