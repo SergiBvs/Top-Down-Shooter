@@ -22,6 +22,7 @@ TagManager:
   - Luck
   - Speed
   - Magazine
+  - Gun
   layers:
   - Default
   - TransparentFX

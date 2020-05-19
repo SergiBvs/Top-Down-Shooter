@@ -6882,6 +6882,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6620470245013873002, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Gun
+      objectReference: {fileID: 0}
     - target: {fileID: 6620470245013873015, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_ReloadBarCanvas
