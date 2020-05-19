@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ReassignObjs();
+        PlayerPrefs.DeleteAll();
     }
 
     public void ReassignObjs()
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
         GUIHelp.m_GameOverPanel.SetActive(true);
         m_IsGameOverPanelOn = true;
     }
+
 }
 
 

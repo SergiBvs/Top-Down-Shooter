@@ -159,6 +159,11 @@ public class Gun : MonoBehaviour
         UpdateGUI();
     }
 
+    public void RefillAmmo()
+    {
+        m_CurrentMaxAmmo = (int)(m_MaxAmmo * 0.2f);
+    }
+
     void UpdateGUI()
     {
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;

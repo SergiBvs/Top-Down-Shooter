@@ -120,7 +120,7 @@ public class DropPicker : MonoBehaviour
     }
     private void PickAmmo()
     {
-        m_Player.m_CurrentGun.m_CurrentMaxAmmo += m_HowMuchAmmo;
+        //m_Player.m_CurrentGun.m_CurrentMaxAmmo += m_HowMuchAmmo;
 
         guiHelp.m_AmmoPickupText.SetActive(true);
         guiHelp.m_AmmoPickupText.GetComponent<TMP_Text>().text = "+ " + m_HowMuchAmmo;
