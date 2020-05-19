@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     //Variables de player
     
     public int m_CurrentHealth;
-    public static int m_PlayerSpeed = 10;
+    public static float m_PlayerSpeed = 10;
 
     public static bool GunBoughtArrayActivator = false;
 

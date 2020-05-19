@@ -11,14 +11,22 @@ public class ShopScript : MonoBehaviour
     private Player m_PlayerScript;
     public TextMeshProUGUI m_CostText;
     private Image m_ButtonImage;
-    public bool m_MaxUpgraded;
-    public bool m_Bought;
+
+    public int m_MaxUpgraded = 0; //0 = false 1 = true
+    public int m_Bought = 0; //0 = false 1 = true
 
     void Start()
     {
+        PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
+        PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
+        PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
+
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         m_ButtonImage = this.GetComponent<Image>();
         ChangeColors();
+
+        /*m_MaxUpgraded = PlayerPrefs.GetInt(this.tag);
+        m_Bought = PlayerPrefs.GetInt(this.tag);*/
     }
 
     void Update()
@@ -35,7 +43,8 @@ public class ShopScript : MonoBehaviour
             {
                 Player.GunBoughtArray[1] = true;
                 GameManager.instance.m_Currency -= m_Cost;
-                m_Bought = true;
+                m_Bought = 1;
+                PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
             }
         }
         else if (this.gameObject.CompareTag("Shotgun"))
@@ -44,7 +53,8 @@ public class ShopScript : MonoBehaviour
             {
                 Player.GunBoughtArray[2] = true;
                 GameManager.instance.m_Currency -= m_Cost;
-                m_Bought = true;
+                m_Bought = 1;
+                PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
             }
         }
         else if(this.gameObject.CompareTag("LaserGun"))
@@ -53,7 +63,8 @@ public class ShopScript : MonoBehaviour
             {
                 Player.GunBoughtArray[3] = true;
                 GameManager.instance.m_Currency -= m_Cost;
-                m_Bought = true;
+                m_Bought = 1;
+                PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
             }
         }
 
@@ -70,7 +81,9 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.m_Health += 25;
                 GameManager.instance.SetMaxHealth(GameManager.instance.m_Health);
                 m_PlayerScript.m_CurrentHealth = GameManager.instance.m_Health;
+
                 m_Cost += 125;
+                PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
                 //mostrar +25 de vida y poner una barra mas de las 4 en total
 
@@ -79,7 +92,8 @@ public class ShopScript : MonoBehaviour
 
             if(GameManager.instance.m_Health>=200)
             {
-                m_MaxUpgraded = true;
+                m_MaxUpgraded = 1;
+                PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
             }
 
             //max health +25 max 200 4 upgrades
@@ -90,19 +104,22 @@ public class ShopScript : MonoBehaviour
         }
         else if(this.gameObject.CompareTag("Speed"))
         {
-            if(GameManager.instance.m_Currency >= m_Cost && Player.m_PlayerSpeed<15)
+            if(GameManager.instance.m_Currency >= m_Cost && Player.m_PlayerSpeed<20)
             {
-                Player.m_PlayerSpeed += 1;
+                Player.m_PlayerSpeed += 2;
+
                 m_Cost += 125;
+                PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
                 //mostrar +1 de speed y poner una barra mas de las 5 en total
 
                 GameManager.instance.m_Currency -= m_Cost;
             }
 
-            if(Player.m_PlayerSpeed>=15)
+            if(Player.m_PlayerSpeed>=20)
             {
-                m_MaxUpgraded = true;
+                m_MaxUpgraded = 1;
+                PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
             }
             
         }
@@ -121,27 +138,27 @@ public class ShopScript : MonoBehaviour
 
     public void ChangeColors()
     {
-        if (m_MaxUpgraded)
+        if (m_MaxUpgraded == 1)
         {
             m_CostText.text = "MAX";
             m_ButtonImage.color = new Color(255 / 255f, 150 / 255f, 0);
         }
-        else if (m_Bought)
+        else if (m_Bought == 1)
         {
             m_CostText.text = "BOUGHT";
             m_ButtonImage.color = new Color(255 / 255f, 150 / 255f, 0);
         }
-        else if (GameManager.instance.m_Currency >= m_Cost && !m_MaxUpgraded)
+        else if (GameManager.instance.m_Currency >= m_Cost && m_MaxUpgraded == 0)
         {
+            m_Cost = PlayerPrefs.GetInt(this.tag + "Cost");
             m_CostText.text = m_Cost + "$";
             m_ButtonImage.color = new Color(0, 255 / 255f, 0);
         }
         else
         {
+            m_Cost = PlayerPrefs.GetInt(this.tag + "Cost");
             m_CostText.text = m_Cost + "$";
             m_ButtonImage.color = new Color(255 / 255f, 0, 0);
         }
     }
-
-
 }
