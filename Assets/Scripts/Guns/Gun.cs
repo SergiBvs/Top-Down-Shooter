@@ -53,7 +53,7 @@ public class Gun : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0))
+        if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))
         {
             m_CurrentReloadSpeed = m_ReloadSpeed;
             m_IsReloading = true;
