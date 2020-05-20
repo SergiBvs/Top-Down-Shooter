@@ -110,6 +110,6 @@ public class GUIhelper : MonoBehaviour
 
     public void LoadBase()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 }
