@@ -1066,6 +1066,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  m_CurrentWeapon: {fileID: 0}
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
 --- !u!4 &524286157

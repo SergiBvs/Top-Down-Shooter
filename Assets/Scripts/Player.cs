@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
             GameManager.instance.m_WeaponsArray[i] = item.GetComponent<Gun>();
             i++;
         }
+
+        GameManager.instance.UpdateUpgrades();
     }
 
 

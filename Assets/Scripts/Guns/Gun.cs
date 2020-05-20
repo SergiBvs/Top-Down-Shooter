@@ -40,10 +40,9 @@ public class Gun : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
-
-        GameManager.instance.UpdateUpgrades();
     }
 
+   
 
 
     public virtual void Update()
