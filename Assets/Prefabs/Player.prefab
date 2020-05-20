@@ -935,7 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InitialMagazine: 10
   m_Magazine: 10
-  m_CurrentAmmo: 50
+  m_CurrentAmmo: 10
   m_InitialMaxAmmo: 50
   m_MaxAmmo: 50
   m_CurrentMaxAmmo: 50
