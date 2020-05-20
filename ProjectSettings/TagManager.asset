@@ -23,6 +23,7 @@ TagManager:
   - Speed
   - Magazine
   - Gun
+  - ElevatorDoor
   layers:
   - Default
   - TransparentFX

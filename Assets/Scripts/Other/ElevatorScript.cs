@@ -1,18 +1,55 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
+using System.Collections;
 using UnityEngine;
 
 public class ElevatorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool m_ElevatorOpen = false;
+    bool inside = false;
+    public SpriteRenderer m_LightSprite;
+
+    public GameObject ElevatorPanel;
+
+    private void Start()
     {
-        
+        if (!m_ElevatorOpen)
+        {
+            m_LightSprite.color = Color.red;
+        }
+        else
+        {
+            ElevatorOpen();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ElevatorOpen()
     {
-        
+        m_ElevatorOpen = true;
+        m_LightSprite.color = Color.green;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (!inside)
+            {
+                inside = true;
+                GetComponent<Animator>().SetTrigger("CLOSE");
+                StartCoroutine(Wait());
+
+            }
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2);
+        ElevatorPanel.SetActive(true);
+
+    }
+
+    
+
+
 }

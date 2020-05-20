@@ -102,4 +102,14 @@ public class GUIhelper : MonoBehaviour
         //telon o lo que sea
         SceneManager.LoadScene(0);
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadBase()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
