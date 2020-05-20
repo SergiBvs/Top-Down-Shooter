@@ -313,10 +313,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InitialMagazine: 30
   m_Magazine: 30
-  m_CurrentAmmo: 0
+  m_CurrentAmmo: 30
   m_InitialMaxAmmo: 100
   m_MaxAmmo: 100
-  m_CurrentMaxAmmo: 0
+  m_CurrentMaxAmmo: 100
   m_ShootCD: 0.1
   m_ReloadSpeed: 2
   m_CurrentReloadSpeed: 0
@@ -423,10 +423,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InitialMagazine: 100
   m_Magazine: 100
-  m_CurrentAmmo: 0
+  m_CurrentAmmo: 100
   m_InitialMaxAmmo: 300
   m_MaxAmmo: 300
-  m_CurrentMaxAmmo: 0
+  m_CurrentMaxAmmo: 300
   m_ShootCD: 0.02
   m_ReloadSpeed: 1
   m_CurrentReloadSpeed: 0
@@ -823,10 +823,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InitialMagazine: 20
   m_Magazine: 20
-  m_CurrentAmmo: 0
+  m_CurrentAmmo: 20
   m_InitialMaxAmmo: 200
   m_MaxAmmo: 200
-  m_CurrentMaxAmmo: 0
+  m_CurrentMaxAmmo: 200
   m_ShootCD: 0.6
   m_ReloadSpeed: 1
   m_CurrentReloadSpeed: 0
@@ -935,10 +935,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InitialMagazine: 10
   m_Magazine: 10
-  m_CurrentAmmo: 0
+  m_CurrentAmmo: 50
   m_InitialMaxAmmo: 50
   m_MaxAmmo: 50
-  m_CurrentMaxAmmo: 0
+  m_CurrentMaxAmmo: 50
   m_ShootCD: 0.5
   m_ReloadSpeed: 2
   m_CurrentReloadSpeed: 0
