@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu(NotDoneYet).unity
     guid: ee3c5cca6f549704fab28912d5a383ce
   - enabled: 1
+    path: Assets/Scenes/Game/Reception.unity
+    guid: 9615d92f65ac59c499639bcafad97bcb
+  - enabled: 1
     path: Assets/Scenes/SampleScene2.unity
     guid: f44d3ac0c47f5a24b82c8d67c5d6f040
   - enabled: 1
