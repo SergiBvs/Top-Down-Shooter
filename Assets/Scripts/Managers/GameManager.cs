@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     //for upgrades
 
     public Gun[] m_WeaponsArray;
+    public Gun m_CurrentWeapon;
     public int m_CurrentMagazineUpgrade = 0;
     public bool m_CanRefillAmmo = true;
 
@@ -50,14 +51,14 @@ public class GameManager : MonoBehaviour
         SetMaxHealth(m_Health);
     }
 
-    public void GetAllWeapons()
+    public void GetCurrentWeapon()
     {
-        m_WeaponsArray = FindObjectsOfType<Gun>();
+        m_CurrentWeapon = FindObjectOfType<Gun>();
     }
 
     public void UpgradeMagazine()
     {
-        //GetAllWeapons();
+        GetCurrentWeapon();
         m_CurrentMagazineUpgrade++;
 
         foreach(Gun item in m_WeaponsArray)
@@ -66,13 +67,14 @@ public class GameManager : MonoBehaviour
             item.m_CurrentAmmo = item.m_Magazine;
             item.m_MaxAmmo = item.m_InitialMaxAmmo + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMaxAmmo * 0.2f));
             item.m_CurrentMaxAmmo = item.m_MaxAmmo;
-            item.UpdateGUI();
         }
+
+        m_CurrentWeapon.UpdateGUI();
     }
 
     public void RefillAmmo()
     {
-        //GetAllWeapons();
+        GetCurrentWeapon();
         m_CanRefillAmmo = false; //poner en true cuando se entre en el ascensor
 
         foreach(Gun item in m_WeaponsArray)
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
             item.UpdateGUI();
         }
 
+        m_CurrentWeapon.UpdateGUI();
     }
 
     public void SetMaxHealth(int health)
