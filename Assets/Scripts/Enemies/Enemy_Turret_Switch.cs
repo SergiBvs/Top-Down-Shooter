@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class Enemy_Turret_Switch : MonoBehaviour
 {
 
     public Enemy_Turret turret;
-    
+    public Sprite deactivatedSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,8 @@ public class Enemy_Turret_Switch : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 turret.TurretDeactivate();
-                turret.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                turret.gameObject.GetComponent<SpriteRenderer>().sprite = deactivatedSprite;
+                this.GetComponent<SpriteRenderer>().color = Color.gray;
                 this.GetComponent<Enemy_Turret_Switch>().enabled = false;
             }
         }

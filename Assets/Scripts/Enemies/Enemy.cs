@@ -104,8 +104,12 @@ public class Enemy : MonoBehaviour
                     }
                     else
                     {
-                        MoveToPlayer();
-                        transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_LastSeenPosition - (Vector2)transform.position).normalized);
+                        if (patrolType != PatrolType.None)
+                        {
+                            MoveToPlayer();
+                            transform.rotation = Quaternion.LookRotation(Vector3.forward, (m_LastSeenPosition - (Vector2)transform.position).normalized);
+                        }
+                        
                     }
                 }
             }
@@ -160,6 +164,7 @@ public class Enemy : MonoBehaviour
     public virtual void Shoot()
     {
         Instantiate((GameObject)Resources.Load("Bullets/Enemy/" + m_BulletName), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
+        Instantiate(Resources.Load("Shoot_Particles"), m_GunTip.transform);
         m_AttackCooldown = m_MaxAttackCooldown;
     }
 
