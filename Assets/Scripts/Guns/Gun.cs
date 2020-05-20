@@ -7,8 +7,10 @@ public class Gun : MonoBehaviour
 {
     //Gun variables
 
+    public int m_InitialMagazine;
     public int m_Magazine;
     public int m_CurrentAmmo;
+    public int m_InitialMaxAmmo;
     public int m_MaxAmmo;
     public int m_CurrentMaxAmmo;
     public float m_ShootCD;
@@ -24,6 +26,7 @@ public class Gun : MonoBehaviour
     public bool m_canShoot = true;
     public bool m_HasBullets = true;
     public bool m_IsReloading = false;
+    public static bool m_InitialAmmoActivator = false;
 
     protected GUIhelper GUIHelp;
     protected Transform player;
@@ -164,7 +167,7 @@ public class Gun : MonoBehaviour
         m_CurrentMaxAmmo = (int)(m_MaxAmmo * 0.2f);
     }
 
-    void UpdateGUI()
+    public void UpdateGUI()
     {
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
     }

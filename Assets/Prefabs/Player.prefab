@@ -311,8 +311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b8ca17932cb23459aa8a3ccfdd2311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_InitialMagazine: 30
   m_Magazine: 30
   m_CurrentAmmo: 0
+  m_InitialMaxAmmo: 100
   m_MaxAmmo: 100
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.1
@@ -419,8 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278811e1c49a5614e8e5fa5441a3f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_InitialMagazine: 100
   m_Magazine: 100
   m_CurrentAmmo: 0
+  m_InitialMaxAmmo: 300
   m_MaxAmmo: 300
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.02
@@ -596,7 +600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerRB2D: {fileID: 0}
   m_CurrentHealth: 0
-  m_PlayerSpeed: 10
   GunArray:
   - {fileID: 6620470245013873002}
   - {fileID: 6620470243306982565}
@@ -607,7 +610,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  GunBoughtArray: 00000000
   m_CurrentGun: {fileID: 0}
 --- !u!50 &6620470243767685165
 Rigidbody2D:
@@ -799,8 +801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b9e66f5acb5c14fb19f434207d63d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_InitialMagazine: 20
   m_Magazine: 20
   m_CurrentAmmo: 0
+  m_InitialMaxAmmo: 200
   m_MaxAmmo: 200
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.6
@@ -829,7 +833,7 @@ GameObject:
   - component: {fileID: 6620470245013873015}
   m_Layer: 0
   m_Name: Gun_Basic
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -909,8 +913,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2454fc0bca4d30b4587cc13647a8f948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_InitialMagazine: 10
   m_Magazine: 10
   m_CurrentAmmo: 0
+  m_InitialMaxAmmo: 50
   m_MaxAmmo: 50
   m_CurrentMaxAmmo: 0
   m_ShootCD: 0.5

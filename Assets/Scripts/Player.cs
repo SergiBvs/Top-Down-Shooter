@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     private GUIhelper GUIHelp;
 
+    int i = 0;
 
     void Start()
     {
@@ -41,6 +42,12 @@ public class Player : MonoBehaviour
         GunBoughtArray[0] = true;
         m_CurrentGun = GunArray[0].GetComponent<Gun>();
         ChangeWeapon(0);
+
+        foreach (GameObject item in GunArray)
+        {
+            GameManager.instance.m_WeaponsArray[i] = item.GetComponent<Gun>();
+            i++;
+        }
     }
 
 

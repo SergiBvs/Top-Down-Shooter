@@ -27,13 +27,9 @@ public class ShopScript : MonoBehaviour
             m_Cost = PlayerPrefs.GetInt(this.tag + "Cost");
 
         m_PlayerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        //m_GunScript = GameObject.FindGameObjectWithTag("Gun").Get
-
         m_ButtonImage = this.GetComponent<Image>();
         ChangeColors();
 
-        /*m_MaxUpgraded = PlayerPrefs.GetInt(this.tag);
-        m_Bought = PlayerPrefs.GetInt(this.tag);*/
     }
 
     void Update()
@@ -132,11 +128,31 @@ public class ShopScript : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Magazine"))
         {
-            
+            if(GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_CurrentMagazineUpgrade <5)
+            {
+                GameManager.instance.UpgradeMagazine();
+
+                m_Cost += 125;
+                PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
+
+                GameManager.instance.m_Currency -= m_Cost;
+            }
+
+            if(GameManager.instance.m_CurrentMagazineUpgrade == 5)
+            {
+                m_MaxUpgraded = 1;
+                PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
+            }
         }
         else if(this.gameObject.CompareTag("Ammo"))
         {
-            m_GunScript.RefillAmmo();
+            if (GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_CanRefillAmmo)
+            {
+                GameManager.instance.RefillAmmo();
+                GameManager.instance.m_Currency -= m_Cost;
+                m_Bought = 1;
+                PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
+            }
         }
 
         ChangeColors();
