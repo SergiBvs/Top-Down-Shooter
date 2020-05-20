@@ -40,6 +40,8 @@ public class Gun : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+
+        GameManager.instance.UpdateUpgrades();
     }
 
 
@@ -107,6 +109,7 @@ public class Gun : MonoBehaviour
         }
 
         UpdateGUI();
+        //save current values
 
     }
 
@@ -153,6 +156,9 @@ public class Gun : MonoBehaviour
             GUIHelp.m_AmmoText.color = new Color(255, 255, 255);
             GUIHelp.m_ReloadPanel.SetActive(false);
             m_IsReloading = false;
+
+            //save current values
+
         }
         else if (m_CurrentReloadSpeed > 0)
         {

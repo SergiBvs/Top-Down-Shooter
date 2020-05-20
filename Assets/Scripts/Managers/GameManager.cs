@@ -64,12 +64,25 @@ public class GameManager : MonoBehaviour
         foreach(Gun item in m_WeaponsArray)
         {
             item.m_Magazine = item.m_InitialMagazine + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMagazine * 0.2f));
-            item.m_CurrentAmmo = item.m_Magazine;
             item.m_MaxAmmo = item.m_InitialMaxAmmo + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMaxAmmo * 0.2f));
-            item.m_CurrentMaxAmmo = item.m_MaxAmmo;
         }
 
         m_CurrentWeapon.UpdateGUI();
+    }
+
+    public void UpdateUpgrades()  //llamar desde el start de algo , de Gun quizas?
+    {
+        GetCurrentWeapon();
+
+        foreach(Gun item in m_WeaponsArray)
+        {
+            item.m_Magazine = item.m_InitialMagazine + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMagazine * 0.2f));
+            item.m_MaxAmmo = item.m_InitialMaxAmmo + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMaxAmmo * 0.2f));
+        }
+
+        m_CurrentWeapon.UpdateGUI();
+
+        //aqui poner el de luck tambien
     }
 
     public void RefillAmmo()
@@ -79,7 +92,7 @@ public class GameManager : MonoBehaviour
 
         foreach(Gun item in m_WeaponsArray)
         {
-            item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);
+            item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);    
         }
 
         m_CurrentWeapon.UpdateGUI();
