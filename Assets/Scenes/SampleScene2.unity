@@ -1061,11 +1061,13 @@ MonoBehaviour:
   m_IsInShop: 0
   m_Health: 100
   m_Currency: 1000000000
-  GunUISprites:
-  - {fileID: 21300000, guid: 9dea9ad897240284ebdda09efb92f615, type: 3}
-  - {fileID: 21300000, guid: 08d921bf17bd9074b9590b796c7f97fb, type: 3}
-  - {fileID: 21300000, guid: a32b4a48b1829124abc365597e10da62, type: 3}
-  - {fileID: 21300000, guid: e027711fe137f2740b080e840c8e0141, type: 3}
+  m_WeaponsArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_CurrentMagazineUpgrade: 0
+  m_CanRefillAmmo: 1
 --- !u!4 &524286157
 Transform:
   m_ObjectHideFlags: 0
@@ -6778,10 +6780,6 @@ PrefabInstance:
       propertyPath: m_ReloadBar
       value: 
       objectReference: {fileID: 1037939926}
-    - target: {fileID: 1748580558, guid: d150e900b4b7ebd4fb3a5406dcb7bad9, type: 3}
-      propertyPath: m_ReloadSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 812743770415925868, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_ReloadBarCanvas
@@ -6881,11 +6879,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620470245013873002, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
-        type: 3}
-      propertyPath: m_TagString
-      value: Gun
       objectReference: {fileID: 0}
     - target: {fileID: 6620470245013873015, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
