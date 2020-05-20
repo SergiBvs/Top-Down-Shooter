@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
         foreach(Gun item in m_WeaponsArray)
         {
-            //item.m_Magazine = item.m_InitialMagazine + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMagazine * 0.2f));
+            item.m_Magazine = item.m_InitialMagazine + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMagazine * 0.2f));
             item.m_MaxAmmo = item.m_InitialMaxAmmo + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMaxAmmo * 0.2f));
         }
 
