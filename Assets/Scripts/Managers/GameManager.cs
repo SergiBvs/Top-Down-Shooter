@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
         foreach(Gun item in m_WeaponsArray)
         {
             item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);
-            item.UpdateGUI();
         }
 
         m_CurrentWeapon.UpdateGUI();
