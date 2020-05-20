@@ -51,18 +51,6 @@ public class LaserGun : Gun
             m_canShoot = false;
        
 
-            //aixo hauria de funcionar no?
-
-            /* if (m_CurrentAmmo <= (m_Magazine / 2))
-             {
-                 GUIHelp.m_AmmoText.color = new Color(255, 129, 129);
-             }
-
-             if (m_CurrentAmmo <= (m_Magazine / 4))
-             {
-                 GUIHelp.m_AmmoText.color = new Color(255, 57, 57);
-             }*/
-
             //aixo si funciona
 
 

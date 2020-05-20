@@ -60,7 +60,7 @@ public class GUIhelper : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.N))
         {
-            GameManager.instance.LoadScene(2);
+            GameManager.instance.LoadScene(4);
         }
 
         if (Input.GetKeyDown(KeyCode.M))

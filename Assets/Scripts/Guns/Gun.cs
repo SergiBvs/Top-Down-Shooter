@@ -31,11 +31,13 @@ public class Gun : MonoBehaviour
     protected GUIhelper GUIHelp;
     protected Transform player;
 
+    int i = 0;
+
 
     void Start()
     {
-        m_CurrentAmmo = m_Magazine;
-        m_CurrentMaxAmmo = m_MaxAmmo;
+        LoadValues();
+
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
@@ -108,7 +110,7 @@ public class Gun : MonoBehaviour
         }
 
         UpdateGUI();
-        //save current values
+        SaveValues();
 
     }
 
@@ -156,8 +158,7 @@ public class Gun : MonoBehaviour
             GUIHelp.m_ReloadPanel.SetActive(false);
             m_IsReloading = false;
 
-            //save current values
-
+            SaveValues();
         }
         else if (m_CurrentReloadSpeed > 0)
         {
@@ -186,6 +187,29 @@ public class Gun : MonoBehaviour
     public float CalculateSliderValue()
     {
         return (m_CurrentReloadSpeed / m_ReloadSpeed);
+    }
+
+    public void SaveValues()
+    {
+        foreach(Gun item in GameManager.instance.m_WeaponsArray)
+        {
+            PlayerPrefs.SetInt("CurrentAmmoValues" + i, m_CurrentAmmo);
+            PlayerPrefs.SetInt("CurrentMaxAmmoValues" + i, m_CurrentMaxAmmo);
+            i++;
+        }
+    }
+
+    public void LoadValues()
+    {
+        foreach (Gun item in GameManager.instance.m_WeaponsArray)
+        {
+            if (PlayerPrefs.HasKey("CurrentAmmoValues" + i))
+                m_CurrentAmmo = PlayerPrefs.GetInt("CurrentAmmoValues" + i);
+            if (PlayerPrefs.HasKey("CurrentMaxAmmoValues" + i))
+                m_CurrentMaxAmmo = PlayerPrefs.GetInt("CurrentMaxAmmoValues" + i);
+
+            i++;
+        }
     }
 }
 
