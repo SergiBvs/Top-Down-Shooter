@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Gun m_CurrentGun;
 
     private GUIhelper GUIHelp;
+    private Animator m_Anim;
 
 
     void Start()
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = GameManager.instance.m_Health;
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
+        m_Anim = GetComponent<Animator>();
 
         //quitar comentarios cuando se deje de testear
 
@@ -51,7 +53,14 @@ public class Player : MonoBehaviour
         m_movement.y = Input.GetAxisRaw("Vertical");
 
         m_PlayerRB2D.MovePosition(m_PlayerRB2D.position + m_movement * m_PlayerSpeed * Time.deltaTime);
-
+        if(m_movement.x != 0 || m_movement.y != 0)
+        {
+            m_Anim.SetTrigger("WALK");
+        }
+        else
+        {
+            m_Anim.SetTrigger("IDLE");
+        }
 
         //APUNTADO
 
