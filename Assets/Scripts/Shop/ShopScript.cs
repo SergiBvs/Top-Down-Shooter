@@ -88,8 +88,6 @@ public class ShopScript : MonoBehaviour
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
-                //mostrar +25 de vida y poner una barra mas de las 4 en total
-
                 GameManager.instance.m_Currency -= m_Cost;
             }
 
@@ -103,7 +101,21 @@ public class ShopScript : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Luck"))
         {
-            //no se como funciona lo de luck hazlo tu alex
+            if(GameManager.instance.m_Currency >= m_Cost /* && que este debajo del maximo*/)
+            {
+                //augmento de luck
+
+                m_Cost += 125; //lo puedes cambiar si quieres
+                PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
+
+                GameManager.instance.m_Currency -= m_Cost;
+            }
+
+            /*if(si ha llegado al maximo)
+            {
+                m_MaxUpgraded = 1;
+                PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
+            }*/
         }
         else if(this.gameObject.CompareTag("Speed"))
         {
@@ -113,9 +125,6 @@ public class ShopScript : MonoBehaviour
 
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
-
-                //mostrar +1 de speed y poner una barra mas de las 5 en total
-
                 GameManager.instance.m_Currency -= m_Cost;
             }
 
