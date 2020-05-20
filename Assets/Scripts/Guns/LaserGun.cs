@@ -49,10 +49,18 @@ public class LaserGun : Gun
             m_CurrentAmmo--;
 
             m_canShoot = false;
-       
 
-            //aixo si funciona
 
+            if (m_CurrentAmmo <= (m_Magazine / 2))
+            {
+                GUIHelp.m_AmmoText.color = new Color(236 / 255f, 128 / 255f, 48 / 255f);
+
+                if (m_CurrentAmmo <= (m_Magazine / 4))
+                {
+                    GUIHelp.m_AmmoText.color = new Color(236 / 255f, 94 / 255f, 52 / 255f);
+                }
+
+            }
 
             if (m_CurrentAmmo <= 0)
             {
@@ -93,6 +101,7 @@ public class LaserGun : Gun
             m_LR.enabled = true;
 
             StartCoroutine(LineCD());
+            SaveValues();
         }
     }
 

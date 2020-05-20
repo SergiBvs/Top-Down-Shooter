@@ -191,6 +191,8 @@ public class Gun : MonoBehaviour
 
     public void SaveValues()
     {
+        i = 0;
+
         foreach(Gun item in GameManager.instance.m_WeaponsArray)
         {
             PlayerPrefs.SetInt("CurrentAmmoValues" + i, m_CurrentAmmo);
@@ -201,6 +203,8 @@ public class Gun : MonoBehaviour
 
     public void LoadValues()
     {
+        i = 0;
+
         foreach (Gun item in GameManager.instance.m_WeaponsArray)
         {
             if (PlayerPrefs.HasKey("CurrentAmmoValues" + i))
