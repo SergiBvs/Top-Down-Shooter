@@ -37174,7 +37174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76278f6431ac8014eb34a1ebae49d6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 2
+  SceneToGo: 1
 --- !u!61 &1193671750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54103,6 +54103,7 @@ MonoBehaviour:
   m_IsInShop: 0
   m_Health: 100
   m_Currency: 0
+  m_Luck: 0
   m_WeaponsArray:
   - {fileID: 0}
   - {fileID: 0}

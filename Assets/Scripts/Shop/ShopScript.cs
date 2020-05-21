@@ -104,6 +104,7 @@ public class ShopScript : MonoBehaviour
             if(GameManager.instance.m_Currency >= m_Cost /* && que este debajo del maximo*/)
             {
                 //augmento de luck
+                GameManager.instance.m_Luck += 5;
 
                 m_Cost += 125; //lo puedes cambiar si quieres
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);

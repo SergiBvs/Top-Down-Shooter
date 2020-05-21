@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int m_AmmoChance = 0;
     [Range(0,100)]
     [SerializeField] private int m_HealthChance = 0;
+    private int m_Luck;
 
     public virtual void Start()
     {
@@ -62,6 +63,13 @@ public class Enemy : MonoBehaviour
         {
             m_HasReachedLastSeen = true;
         }
+
+        m_Luck = GameManager.instance.m_Luck;
+
+        m_MaxCoin += m_Luck;
+        m_minCoin += m_Luck;
+        m_AmmoChance += m_Luck;
+        m_HealthChance += m_Luck;
     }
 
     public virtual void Update()
@@ -250,6 +258,7 @@ public class Enemy : MonoBehaviour
         if(m_Health <= 0)
         {
             Loot();
+            GameManager.instance.EnemyDefeated();
             Destroy(this.gameObject);
         }
     }

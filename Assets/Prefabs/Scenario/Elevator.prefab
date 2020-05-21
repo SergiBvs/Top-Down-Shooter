@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 6093462889630140463}
   m_Layer: 0
   m_Name: Elevator
-  m_TagString: Untagged
+  m_TagString: Elevator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ElevatorOpen: 0
   m_LightSprite: {fileID: 5041626068606498184}
+  ElevatorPanel: {fileID: 0}
 --- !u!61 &6093462889630140463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -264,7 +265,7 @@ GameObject:
   - component: {fileID: 8198534564272336032}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Elevator
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

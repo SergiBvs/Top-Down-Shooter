@@ -110,6 +110,8 @@ public class GUIhelper : MonoBehaviour
 
     public void LoadBase()
     {
+        GameManager.instance.m_NeedsSpawnPosition = true;
+        GameManager.instance.m_SpawnPosition = new Vector2(45, -12);
         SceneManager.LoadScene(3);
     }
 }

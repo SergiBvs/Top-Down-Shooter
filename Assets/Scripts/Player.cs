@@ -9,22 +9,20 @@ public class Player : MonoBehaviour
     [HideInInspector] public Rigidbody2D m_PlayerRB2D;
 
     //Variables de player
-    
+    [Header("Stats")]
     public int m_CurrentHealth;
     public static float m_PlayerSpeed = 10;
 
+    [Header("Guns")]
     public static bool GunBoughtArrayActivator = false;
-
     public GameObject[] GunArray;
     public GameObject[] GunImages;
     public static bool[] GunBoughtArray;
-
     [HideInInspector] public Gun m_CurrentGun;
 
     private GUIhelper GUIHelp;
     private Animator m_Anim;
 
-    int i = 0;
 
     void Start()
     {
@@ -33,6 +31,11 @@ public class Player : MonoBehaviour
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         m_Anim = GetComponent<Animator>();
 
+        if (GameManager.instance.m_NeedsSpawnPosition)
+        {
+            transform.position = GameManager.instance.m_SpawnPosition;
+            GameManager.instance.m_NeedsSpawnPosition = false;
+        }
         //quitar comentarios cuando se deje de testear
 
         if(!GunBoughtArrayActivator) 
@@ -45,6 +48,7 @@ public class Player : MonoBehaviour
         m_CurrentGun = GunArray[0].GetComponent<Gun>();
         ChangeWeapon(0);
 
+        int i = 0;
         foreach (GameObject item in GunArray)
         {
             GameManager.instance.m_WeaponsArray[i] = item.GetComponent<Gun>();

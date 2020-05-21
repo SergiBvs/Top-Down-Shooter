@@ -1,10 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
-using System.Data;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,19 +7,28 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private GUIhelper GUIHelp;
 
-    public bool m_IsGameOverPanelOn = false;
-    public bool m_GameIsPaused;
-    public bool m_IsInShop;
+    [Header("Stats")]
     public int m_Health;
     public int m_Currency;
 
+    [Header("Game Logic")]
+    public int m_EnemyAmount;
+    public bool m_NeedsSpawnPosition = false;
+    public Vector2 m_SpawnPosition;
+
+
+    [Header("Panel Logic")]
+    public bool m_IsGameOverPanelOn = false;
+    public bool m_GameIsPaused;
+    public bool m_IsInShop;
 
     //for upgrades
-
+    [Header("For Upgrades")]
     public Gun[] m_WeaponsArray;
     public Gun m_CurrentWeapon;
     public int m_CurrentMagazineUpgrade = 0;
     public bool m_CanRefillAmmo = true;
+    public int m_Luck;
 
     void Awake()
     {
@@ -135,6 +139,15 @@ public class GameManager : MonoBehaviour
         GUIHelp.m_GUIPanel.SetActive(false); 
         GUIHelp.m_GameOverPanel.SetActive(true);
         m_IsGameOverPanelOn = true;
+    }
+
+    public void EnemyDefeated()
+    {
+        m_EnemyAmount -= 1;
+        if(m_EnemyAmount <= 0)
+        {
+            GameObject.FindGameObjectWithTag("Elevator").GetComponent<ElevatorScript>().ElevatorOpen();
+        }
     }
 
 }
