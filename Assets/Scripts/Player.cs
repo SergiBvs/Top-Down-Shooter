@@ -55,9 +55,14 @@ public class Player : MonoBehaviour
             i++;
         }
 
-        GameManager.instance.UpdateUpgrades();
+        StartCoroutine(nose());
     }
 
+    IEnumerator nose()
+    {
+        yield return new WaitForSeconds(0.1f);
+        GameManager.instance.UpdateUpgrades();
+    }
 
     void Update()
     {
