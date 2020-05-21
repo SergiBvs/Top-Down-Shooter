@@ -66,6 +66,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SoundManager.instance.PlaySound("Elevator_Ding");
+        }
+
+
         //MOVIMIENTO
         m_movement.x = Input.GetAxisRaw("Horizontal");
         m_movement.y = Input.GetAxisRaw("Vertical");

@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource m_AS;
+    public static SoundManager instance;
+
+    [HideInInspector] public AudioSource m_AS;
 
     public AudioClip[] m_AudioClips;
-  
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
     public void PlaySound(string SoundClip)
     {
-        Instantiate(m_AS);
+        m_AS = Instantiate((AudioSource)Resources.Load("AudioSource/AudioSource"));
 
         foreach (AudioClip clip in m_AudioClips)
         {
