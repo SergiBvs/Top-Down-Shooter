@@ -51,7 +51,7 @@ public class ReceptionTextScript : MonoBehaviour
                 {
                     if (m_TextDone)
                     {
-                        if (m_TextInt < ReceptionText.Text.Length)
+                        if (m_TextInt < ReceptionText.Text.Length -1)
                         {
                             m_TextInt++;
                             StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
