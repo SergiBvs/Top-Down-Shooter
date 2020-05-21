@@ -662,6 +662,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217736100}
   m_CullTransparentMesh: 0
+--- !u!1 &387953375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 387953376}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &387953376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387953375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.445401, y: 0.5872532, z: 464.13004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &395417715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,11 +1086,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bbbcab7771b9348b0513da307879f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Health: 100
+  m_Currency: 1000000000
+  m_EnemyAmount: 0
+  m_NeedsSpawnPosition: 0
+  m_SpawnPosition: {x: 0, y: 0}
   m_IsGameOverPanelOn: 0
   m_GameIsPaused: 0
   m_IsInShop: 0
-  m_Health: 100
-  m_Currency: 1000000000
   m_WeaponsArray:
   - {fileID: 0}
   - {fileID: 0}
@@ -1069,6 +1102,7 @@ MonoBehaviour:
   m_CurrentWeapon: {fileID: 0}
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
+  m_Luck: 0
 --- !u!4 &524286157
 Transform:
   m_ObjectHideFlags: 0
