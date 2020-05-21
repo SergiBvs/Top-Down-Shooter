@@ -6891,11 +6891,6 @@ PrefabInstance:
       propertyPath: m_ReloadBar
       value: 
       objectReference: {fileID: 1037939926}
-    - target: {fileID: 6620470245013873015, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
-        type: 3}
-      propertyPath: m_CurrentAmmo
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d150e900b4b7ebd4fb3a5406dcb7bad9, type: 3}
 --- !u!1 &935295058
