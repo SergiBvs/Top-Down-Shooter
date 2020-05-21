@@ -36372,12 +36372,12 @@ PrefabInstance:
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.4
+      value: -20.6
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.94
+      value: -16.9
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
@@ -37175,6 +37175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToGo: 1
+  nextStartPosition: {x: 20, y: -34}
 --- !u!61 &1193671750
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46151,7 +46152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557123044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.84, y: -15.94, z: -30}
+  m_LocalPosition: {x: -15.040001, y: -16.9, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1136529242}
@@ -54098,12 +54099,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bbbcab7771b9348b0513da307879f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Health: 100
+  m_Currency: 0
+  m_EnemyAmount: 0
+  m_NeedsSpawnPosition: 0
+  m_SpawnPosition: {x: 0, y: 0}
   m_IsGameOverPanelOn: 0
   m_GameIsPaused: 0
   m_IsInShop: 0
-  m_Health: 100
-  m_Currency: 0
-  m_Luck: 0
   m_WeaponsArray:
   - {fileID: 0}
   - {fileID: 0}
@@ -54112,6 +54115,7 @@ MonoBehaviour:
   m_CurrentWeapon: {fileID: 0}
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
+  m_Luck: 0
 --- !u!4 &1820538032
 Transform:
   m_ObjectHideFlags: 0

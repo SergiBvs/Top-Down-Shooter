@@ -11,7 +11,6 @@ public class ElevatorDoorScript : MonoBehaviour
     {
         if (!EScript.m_ElevatorOpen)
         {
-
             EAnim.SetTrigger("CLOSE");
         }
     }
