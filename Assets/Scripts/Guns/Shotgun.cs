@@ -14,7 +14,7 @@ public class Shotgun : Gun
         if (m_CurrentAmmo < 0)
             m_CurrentAmmo = 0;
 
-        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+       
         m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButtonDown("Fire1"))

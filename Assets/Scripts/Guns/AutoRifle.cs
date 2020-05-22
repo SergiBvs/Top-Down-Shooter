@@ -9,7 +9,6 @@ public class AutoRifle : Gun
     
     public override void Update()
     {
-        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
         m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButton("Fire1"))

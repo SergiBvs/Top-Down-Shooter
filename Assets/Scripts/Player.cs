@@ -138,6 +138,8 @@ public class Player : MonoBehaviour
         m_CurrentGun = GunArray[weaponNumber].GetComponent<Gun>();
         GUIHelp.m_AmmoText.color = new Color(255, 255, 255);
         GUIHelp.m_ReloadPanel.SetActive(false);
+        m_CurrentGun.UpdateGUI();
+        m_CurrentGun.m_canShoot = true;
     }
 
     public void TakeDamage(int amount)
