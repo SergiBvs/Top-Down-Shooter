@@ -66,9 +66,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.P)) //test 
         {
-            SoundManager.instance.PlaySound("Elevator_Ding");
+            SoundManager.instance.PlaySound("Elevator_Ding" , 1 , 1);
+            PlayerPrefs.DeleteAll();
         }
 
 

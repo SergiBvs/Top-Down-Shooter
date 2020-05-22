@@ -36,15 +36,23 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        LoadValues();
+        
 
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
-        GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+        //GUIHelp.m_AmmoText.text = m_CurrentAmmo + " / " + m_CurrentMaxAmmo;
+
+        //StartCoroutine(test());
     }
 
-   
+   IEnumerator test()
+   {
+        print("test");
+        yield return new WaitForSeconds(0.1f);
+        LoadValues();
+        UpdateGUI();
+   }
 
 
     public virtual void Update()
@@ -195,8 +203,8 @@ public class Gun : MonoBehaviour
 
         foreach(Gun item in GameManager.instance.m_WeaponsArray)
         {
-            PlayerPrefs.SetInt("CurrentAmmoValues" + i, m_CurrentAmmo);
-            PlayerPrefs.SetInt("CurrentMaxAmmoValues" + i, m_CurrentMaxAmmo);
+            PlayerPrefs.SetInt("CurrentAmmoValues" + i, item.m_CurrentAmmo);
+            PlayerPrefs.SetInt("CurrentMaxAmmoValues" + i, item.m_CurrentMaxAmmo);
             i++;
         }
     }
@@ -208,10 +216,14 @@ public class Gun : MonoBehaviour
         foreach (Gun item in GameManager.instance.m_WeaponsArray)
         {
             if (PlayerPrefs.HasKey("CurrentAmmoValues" + i))
-                m_CurrentAmmo = PlayerPrefs.GetInt("CurrentAmmoValues" + i);
+                item.m_CurrentAmmo = PlayerPrefs.GetInt("CurrentAmmoValues" + i);
+            else
+                item.m_CurrentAmmo = item.m_Magazine;
             if (PlayerPrefs.HasKey("CurrentMaxAmmoValues" + i))
-                m_CurrentMaxAmmo = PlayerPrefs.GetInt("CurrentMaxAmmoValues" + i);
-
+                item.m_CurrentMaxAmmo = PlayerPrefs.GetInt("CurrentMaxAmmoValues" + item.name);
+            else
+                item.m_CurrentMaxAmmo = item.m_MaxAmmo;
+         
             i++;
         }
     }

@@ -6258,8 +6258,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c970e5220f8e10c4fbbeefa42401698a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AS: {fileID: 0}
   m_AudioClips:
+  - {fileID: 8300000, guid: 5c3460e3f082cd944bf49bfc6e93d4bd, type: 3}
+  - {fileID: 8300000, guid: 1e32cdcf691a8e844893d562e67d90ef, type: 3}
+  - {fileID: 8300000, guid: e83ab41ea2430a7438cfcb0a089ef71f, type: 3}
+  - {fileID: 8300000, guid: ab33e7f5f4f97084991a959dc60e8b5f, type: 3}
+  - {fileID: 8300000, guid: 0d82b0518f6832641ba18b3fb8925492, type: 3}
   - {fileID: 8300000, guid: e780e488b36af644493008507524370a, type: 3}
 --- !u!4 &1452021151
 Transform:
@@ -8730,6 +8734,7 @@ MonoBehaviour:
   m_PausePanel: {fileID: 1436201006}
   m_GUIPanel: {fileID: 2079372774}
   m_ReloadPanel: {fileID: 1289800987}
+  m_AS: {fileID: 369774126786303904, guid: 653d635b90cfe064494e8ea769454e08, type: 3}
 --- !u!4 &1745531254
 Transform:
   m_ObjectHideFlags: 0
@@ -8918,7 +8923,7 @@ PrefabInstance:
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
@@ -10436,7 +10441,7 @@ Transform:
   - {fileID: 629566490}
   - {fileID: 1740995860}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2045739299
 GameObject:

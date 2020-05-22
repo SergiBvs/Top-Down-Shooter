@@ -33,10 +33,14 @@ public class GUIhelper : MonoBehaviour
     public GameObject m_GUIPanel;
     public GameObject m_ReloadPanel;
 
+    [Header("Audio")]
+    public AudioSource m_AS;
+
 
     void Start()
     {
         GameManager.instance.ReassignObjs();
+        SoundManager.instance.ReassignObjs();
         m_psmain = m_healthParticles.main;
     }
 
@@ -60,7 +64,7 @@ public class GUIhelper : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.N))
         {
-            GameManager.instance.LoadScene(5);
+            GameManager.instance.LoadScene(7);
         }
 
         if (Input.GetKeyDown(KeyCode.M))

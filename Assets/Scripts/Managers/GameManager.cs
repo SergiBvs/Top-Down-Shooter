@@ -41,13 +41,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 
     void Start()
     {
-        ReassignObjs();
         PlayerPrefs.DeleteAll();
+        ReassignObjs();
     }
 
     public void ReassignObjs()

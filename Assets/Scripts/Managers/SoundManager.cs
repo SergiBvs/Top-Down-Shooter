@@ -6,9 +6,9 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [HideInInspector] public AudioSource m_AS;
-
     public AudioClip[] m_AudioClips;
+
+    private GUIhelper GUIHelp;
 
     void Awake()
     {
@@ -24,21 +24,31 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlaySound(string SoundClip)
+    void Start()
     {
-        m_AS = Instantiate((AudioSource)Resources.Load("AudioSource/AudioSource"));
+        ReassignObjs();
+    }
+
+    public void ReassignObjs()
+    {
+        GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
+    }
+
+    public void PlaySound(string SoundClip , float volume , float pitch)
+    {
+        //m_AS = Instantiate((AudioSource)Resources.Load("AudioSource/AudioSource"));
 
         foreach (AudioClip clip in m_AudioClips)
         {
             if (clip.name == SoundClip)
             {
-                m_AS.clip = clip;
-                m_AS.Play();
+                GUIHelp.m_AS.clip = clip;
+                GUIHelp.m_AS.volume = volume;
+                GUIHelp.m_AS.pitch = pitch;
+                Instantiate(GUIHelp.m_AS);
+                GUIHelp.m_AS.Play();
             }
         }
-
-        /*if (cuando deje de sonar)
-            Destroy(m_AS);*/
     }
 }
 

@@ -54,4 +54,11 @@ public class Shotgun : Gun
             GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
         }
     }
+
+    public override void Shoot(float rotationZ)
+    {
+        SoundManager.instance.PlaySound("ShotgunShot", 1, 1);
+        base.Shoot(rotationZ);
+    }
 }
+

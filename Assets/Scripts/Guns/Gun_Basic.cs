@@ -8,4 +8,10 @@ public class Gun_Basic : Gun
     {
         base.Update();
     }
+
+    public override void Shoot(float rotationZ)
+    {
+        SoundManager.instance.PlaySound("PistolShot", 0.8f, 1);
+        base.Shoot(rotationZ);
+    }
 }

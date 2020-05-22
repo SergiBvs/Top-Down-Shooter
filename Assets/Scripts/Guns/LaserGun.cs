@@ -37,6 +37,7 @@ public class LaserGun : Gun
 
     public override void Shoot(float rotationZ)
     {
+        SoundManager.instance.PlaySound("LaserBeamSound2", 1, 1);
 
         RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right , 30);
         Debug.DrawRay(GunTip.position, hit.point - (Vector2)transform.position, Color.red, 0.5f);
