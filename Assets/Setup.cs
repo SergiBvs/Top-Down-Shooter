@@ -6,6 +6,7 @@ public class Setup : MonoBehaviour
     void Start()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_GameMusic[0]);
     }
 
 }

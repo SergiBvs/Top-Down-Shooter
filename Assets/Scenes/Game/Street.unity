@@ -6469,7 +6469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76278f6431ac8014eb34a1ebae49d6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 2
+  SceneToGo: 3
   nextStartPosition: {x: 0, y: 0}
 --- !u!61 &685042129
 BoxCollider2D:
@@ -8158,12 +8158,12 @@ PrefabInstance:
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: -22.7
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -34.1
+      value: -29.23
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
@@ -8503,7 +8503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76278f6431ac8014eb34a1ebae49d6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 3
+  SceneToGo: 4
   nextStartPosition: {x: -20.5, y: -17}
 --- !u!61 &1202555880
 BoxCollider2D:
@@ -8655,6 +8655,8 @@ MonoBehaviour:
   m_EnemyAmount: 0
   m_NeedsSpawnPosition: 0
   m_SpawnPosition: {x: 0, y: 0}
+  MManager: {fileID: 0}
+  m_AlreadyInElevator: 0
   m_IsGameOverPanelOn: 0
   m_GameIsPaused: 0
   m_IsInShop: 0
@@ -10639,7 +10641,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853887755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.389719, y: -34.23722, z: -30}
+  m_LocalPosition: {x: -15.010351, y: -29.21233, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10857,7 +10859,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931066686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.56, y: -34.1, z: -30}
+  m_LocalPosition: {x: -17.140001, y: -29.23, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 302030612}
@@ -11671,6 +11673,7 @@ MonoBehaviour:
   m_PausePanel: {fileID: 1230677703}
   m_GUIPanel: {fileID: 705060505}
   m_ReloadPanel: {fileID: 1806670817}
+  m_AS: {fileID: 0}
 --- !u!4 &2137163511
 Transform:
   m_ObjectHideFlags: 0

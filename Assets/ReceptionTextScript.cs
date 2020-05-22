@@ -16,6 +16,8 @@ public class ReceptionTextScript : MonoBehaviour
     bool m_TalkedOnce = false;
     int rows = 0;
 
+    bool insideTrigger = false;
+
     private int m_TextInt;
 
 
@@ -30,54 +32,61 @@ public class ReceptionTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (insideTrigger)
+        {
+            Conversation();
+        }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void Conversation()
     {
-        if (collision.CompareTag("Player"))
-        {
-            if(!m_InConversation)
-                m_PressEText.SetActive(true);
+        if (!m_InConversation)
+            m_PressEText.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (!m_InConversation)
             {
-                if (!m_InConversation)
+                if (m_TalkedOnce)
                 {
-                    if (m_TalkedOnce)
-                    {
-                        m_TextInt = 10;
-                        rows = 14;
-                    }
-                    else
-                    {
-                        rows = 9;
-                    }
-                        
-                    m_PressEText.SetActive(false);
-                    m_TextPanel.SetActive(true);
-                    StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
-                    m_InConversation = true;
-                    m_TextDone = false;
+                    m_TextInt = 10;
+                    rows = 14;
                 }
                 else
                 {
-                    if (m_TextDone)
+                    rows = 9;
+                }
+
+                m_PressEText.SetActive(false);
+                m_TextPanel.SetActive(true);
+                StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
+                m_InConversation = true;
+                m_TextDone = false;
+            }
+            else
+            {
+                if (m_TextDone)
+                {
+                    if (m_TextInt < rows)
                     {
-                        if (m_TextInt < rows)
-                        {
-                            m_TextInt++;
-                            StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
-                            m_TextDone = false;
-                        }
-                        else
-                        {
-                            m_TalkedOnce = true;
-                            EndConversation();
-                        }
+                        m_TextInt++;
+                        StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
+                        m_TextDone = false;
+                    }
+                    else
+                    {
+                        m_TalkedOnce = true;
+                        EndConversation();
                     }
                 }
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            insideTrigger = true;
         }
     }
 
@@ -85,6 +94,7 @@ public class ReceptionTextScript : MonoBehaviour
     {
         EndConversation();
         m_PressEText.SetActive(false);
+        insideTrigger = false;
     }
 
     void EndConversation()
@@ -94,6 +104,7 @@ public class ReceptionTextScript : MonoBehaviour
         m_TextInt = 0;
         rows = 0;
         m_TextPanel.SetActive(false);
+
     }
 
     //Para escribir letra a letra

@@ -13,7 +13,7 @@ public class SceneChangerTrigger : MonoBehaviour
         {
             GameManager.instance.m_NeedsSpawnPosition = true;
             GameManager.instance.m_SpawnPosition = nextStartPosition;
-            if(SceneToGo == 2)
+            if(SceneToGo == 3)
             {
                 GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_StoreMusic);
             }
