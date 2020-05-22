@@ -104,7 +104,7 @@ public class GUIhelper : MonoBehaviour
     public void MainMenu()
     {
         //telon o lo que sea
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void NextLevel()
