@@ -50,6 +50,7 @@ public class Gun : MonoBehaviour
    {
         print("test");
         yield return new WaitForSeconds(0.1f);
+        GameManager.instance.UpdateUpgrades();
         LoadValues();
         UpdateGUI();
    }
