@@ -45,7 +45,7 @@ public class Gun : MonoBehaviour
    IEnumerator test()
    {
         print("test2");
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         print("test4");
         GameManager.instance.UpdateUpgrades();
         LoadValues();

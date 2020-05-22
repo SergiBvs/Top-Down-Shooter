@@ -110,7 +110,7 @@ public class GUIhelper : MonoBehaviour
     public void NextLevel()
     {
         GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_GameMusic[0]);
-        GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = true;
+        GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

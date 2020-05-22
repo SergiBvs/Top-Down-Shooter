@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        SceneManager.LoadScene(1);
         PlayerPrefs.DeleteAll();
         MManager = GetComponent<MusicManager>();
         ReassignObjs();
