@@ -30,15 +30,32 @@ public class ElevatorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && this.CompareTag("Elevator"))
+        if (!GameManager.instance.m_AlreadyInElevator)
         {
-            if (!inside)
+            if (collision.CompareTag("Player") && this.CompareTag("Elevator"))
             {
-                inside = true;
-                GetComponent<Animator>().SetTrigger("CLOSE");
-                StartCoroutine(Wait());
+                if (!inside)
+                {
+                    inside = true;
+                    GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_ElevatorMusic[Random.Range(0, GameManager.instance.MManager.m_ElevatorMusic.Length)]);
+                    GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = true;
+                    GetComponent<Animator>().SetTrigger("CLOSE");
+                    StartCoroutine(Wait());
 
+                }
             }
+        }
+        else
+        {
+            GetComponent<Animator>().SetTrigger("OPEN");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")){
+            GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
+            GameManager.instance.m_AlreadyInElevator = false;
         }
     }
 
