@@ -35,6 +35,7 @@ public class ElevatorScript : MonoBehaviour
             if (!inside)
             {
                 inside = true;
+                GameManager.instance.EnteredElevator();
                 GetComponent<Animator>().SetTrigger("CLOSE");
                 StartCoroutine(Wait());
 

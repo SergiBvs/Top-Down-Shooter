@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int m_EnemyAmount;
     public bool m_NeedsSpawnPosition = false;
     public Vector2 m_SpawnPosition;
+    public bool m_InElevator = false;
 
 
     [Header("Panel Logic")]
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour
     public int m_CurrentMagazineUpgrade = 0;
     public bool m_CanRefillAmmo = true;
     public int m_Luck;
+
+    //For Music
+    private MusicManager MManager;
 
     void Awake()
     {
@@ -48,12 +52,14 @@ public class GameManager : MonoBehaviour
     {
         ReassignObjs();
         PlayerPrefs.DeleteAll();
+        
     }
 
     public void ReassignObjs()
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         SetMaxHealth(m_Health);
+        MManager = GetComponent<MusicManager>();
     }
 
     public void GetCurrentWeapon()
@@ -149,6 +155,11 @@ public class GameManager : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Elevator").GetComponent<ElevatorScript>().ElevatorOpen();
         }
+    }
+
+    public void EnteredElevator()
+    {
+        MManager.ChangeMusic(MManager.m_ElevatorMusic[Random.Range(0, MManager.m_ElevatorMusic.Length)]);
     }
 
 }
