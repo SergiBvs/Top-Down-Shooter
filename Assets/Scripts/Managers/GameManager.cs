@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int m_EnemyAmount;
     public bool m_NeedsSpawnPosition = false;
     public Vector2 m_SpawnPosition;
-    public bool m_InElevator = false;
+    public bool m_AlreadyInElevator = false;
 
 
     [Header("Panel Logic")]
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public int m_Luck;
 
     //For Music
-    private MusicManager MManager;
+    [HideInInspector] public MusicManager MManager;
 
     void Awake()
     {
@@ -157,9 +157,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EnteredElevator()
+    public void ChangeMusic(AudioClip audio)
     {
-        MManager.ChangeMusic(MManager.m_ElevatorMusic[Random.Range(0, MManager.m_ElevatorMusic.Length)]);
+        MManager.ChangeMusic(audio);
     }
 
 }

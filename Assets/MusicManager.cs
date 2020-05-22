@@ -8,6 +8,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource m_MusicSource;
     public AudioClip[] m_ElevatorMusic;
     public AudioClip[] m_GameMusic;
+    public AudioClip m_StoreMusic;
 
 
     public void ChangeMusic(AudioClip nextSong)

@@ -17029,7 +17029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 213.29999, y: -155.90002}
+  m_AnchoredPosition: {x: 213.29999, y: -155.90004}
   m_SizeDelta: {x: -674.92, y: -425.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636863637
@@ -35376,12 +35376,12 @@ PrefabInstance:
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.6
+      value: 40.11
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.9
+      value: -18.95
       objectReference: {fileID: 0}
     - target: {fileID: 6620470243767685154, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
@@ -44788,7 +44788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557123044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.040001, y: -16.9, z: -30}
+  m_LocalPosition: {x: 45.670002, y: -18.95, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1136529242}
@@ -46128,7 +46128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605816253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.554035, y: -17.002201, z: -30}
+  m_LocalPosition: {x: 33.631207, y: -18.639431, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1204548425}
@@ -52755,6 +52755,7 @@ MonoBehaviour:
   m_EnemyAmount: 0
   m_NeedsSpawnPosition: 0
   m_SpawnPosition: {x: 0, y: 0}
+  m_InElevator: 0
   m_IsGameOverPanelOn: 0
   m_GameIsPaused: 0
   m_IsInShop: 0
@@ -52767,6 +52768,7 @@ MonoBehaviour:
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
   m_Luck: 0
+  MManager: {fileID: 0}
 --- !u!4 &1820538032
 Transform:
   m_ObjectHideFlags: 0

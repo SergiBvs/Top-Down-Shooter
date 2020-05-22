@@ -16547,6 +16547,7 @@ GameObject:
   - component: {fileID: 2138052835}
   - component: {fileID: 2138052838}
   - component: {fileID: 2138052837}
+  - component: {fileID: 2138052839}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -16584,6 +16585,7 @@ MonoBehaviour:
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
   m_Luck: 0
+  MManager: {fileID: 0}
 --- !u!4 &2138052836
 Transform:
   m_ObjectHideFlags: 0
@@ -16612,7 +16614,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -16712,6 +16714,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b99b5009a60bc4f4cbb7c34cd92248fb, type: 3}
   - {fileID: 8300000, guid: 84d07619236ee994fb1d20c9000e4d60, type: 3}
   m_GameMusic: []
+  m_StoreMusic: {fileID: 8300000, guid: fde387e3bf7faf947a8f9e32174a9db6, type: 3}
+--- !u!165 &2138052839
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138052834}
+  m_Enabled: 1
+  m_CutoffFrequency: 1500
+  m_HighpassResonanceQ: 1
 --- !u!1 &2145559064
 GameObject:
   m_ObjectHideFlags: 0
