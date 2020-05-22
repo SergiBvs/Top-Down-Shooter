@@ -11,7 +11,11 @@ public class Gun_Basic : Gun
 
     public override void Shoot(float rotationZ)
     {
-        SoundManager.instance.PlaySound("PistolShot", 0.8f, 1);
+        float l_rand;
+
+        l_rand = Random.Range(0.9f, 1.4f);
+        SoundManager.instance.PlaySound("PistolShot", 0.3f, l_rand);
+      
         base.Shoot(rotationZ);
     }
 }

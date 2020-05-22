@@ -15,10 +15,17 @@ public class AutoRifle : Gun
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
             {
-                SoundManager.instance.PlaySound("ARShot", 1, 1);
+                float l_rand;
+                l_rand = Random.Range(0.9f, 1.4f);
+
+                SoundManager.instance.PlaySound("ARShot", 0.2f, l_rand);
                 Shoot(player.localRotation.eulerAngles.z);
             }
         }
+
+        if(Input.GetButtonDown("Fire1"))
+            if(!m_HasBullets && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
+                SoundManager.instance.PlaySound("EmptyGun", 0.4f, 1);
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))
         {

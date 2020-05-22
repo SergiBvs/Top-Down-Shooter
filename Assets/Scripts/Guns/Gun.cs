@@ -39,17 +39,19 @@ public class Gun : MonoBehaviour
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         print("test3");
+        //UpdateGUI();
         StartCoroutine(test());
     }
 
    IEnumerator test()
    {
         print("test2");
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         print("test4");
         GameManager.instance.UpdateUpgrades();
         LoadValues();
         UpdateGUI();
+       
    }
 
 
@@ -60,9 +62,9 @@ public class Gun : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
-            {
                 Shoot(player.localRotation.eulerAngles.z);
-            }
+            else if(!m_HasBullets && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
+                SoundManager.instance.PlaySound("EmptyGun", 0.3f, 1);
         }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))

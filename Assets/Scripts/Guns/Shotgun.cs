@@ -21,7 +21,8 @@ public class Shotgun : Gun
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
             {
-                
+                SoundManager.instance.PlaySound("ShotgunShot", 1, 1);
+
                 Shoot(player.localRotation.eulerAngles.z);
 
                 for (int i = 0; i < m_NumberOfPellets/2; i++)
@@ -37,6 +38,8 @@ public class Shotgun : Gun
                     Shoot(player.localRotation.eulerAngles.z + l_angle);
                 }
             }
+            else if (!m_HasBullets)
+                SoundManager.instance.PlaySound("EmptyGun", 0.5f, 1);
         }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))
@@ -53,12 +56,6 @@ public class Shotgun : Gun
             GUIHelp.m_ReloadPanel.SetActive(true);
             GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
         }
-    }
-
-    public override void Shoot(float rotationZ)
-    {
-        SoundManager.instance.PlaySound("ShotgunShot", 1, 1);
-        base.Shoot(rotationZ);
     }
 }
 

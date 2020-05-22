@@ -17,6 +17,8 @@ public class LaserGun : Gun
         {
             if (m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
                 Shoot(player.localRotation.eulerAngles.z);
+            else if (!m_HasBullets)
+                SoundManager.instance.PlaySound("EmptyGun", 0.5f, 1);
         }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))
@@ -37,7 +39,7 @@ public class LaserGun : Gun
 
     public override void Shoot(float rotationZ)
     {
-        SoundManager.instance.PlaySound("LaserBeamSound2", 1, 1);
+        SoundManager.instance.PlaySound("LaserBeamSound1", 1, 1);
 
         RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right , 30);
         Debug.DrawRay(GunTip.position, hit.point - (Vector2)transform.position, Color.red, 0.5f);
@@ -102,6 +104,7 @@ public class LaserGun : Gun
             m_LR.enabled = true;
 
             StartCoroutine(LineCD());
+            UpdateGUI();
             SaveValues();
         }
     }

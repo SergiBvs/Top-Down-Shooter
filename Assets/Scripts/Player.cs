@@ -46,7 +46,6 @@ public class Player : MonoBehaviour
 
         GunBoughtArray[0] = true;
         m_CurrentGun = GunArray[0].GetComponent<Gun>();
-        ChangeWeapon(0);
 
         int i = 0;
         foreach (GameObject item in GunArray)
@@ -55,7 +54,14 @@ public class Player : MonoBehaviour
             i++;
         }
 
-       
+        StartCoroutine(WaitForEndOfAssignment());
+        
+    }
+
+    IEnumerator WaitForEndOfAssignment()
+    {
+        yield return new WaitForSeconds(0.05f);
+        ChangeWeapon(0);
     }
 
    
@@ -135,11 +141,14 @@ public class Player : MonoBehaviour
 
         GunArray[weaponNumber].SetActive(true);
         GunImages[weaponNumber].SetActive(true);
-        m_CurrentGun = GunArray[weaponNumber].GetComponent<Gun>();
         GUIHelp.m_AmmoText.color = new Color(255, 255, 255);
         GUIHelp.m_ReloadPanel.SetActive(false);
+        /*m_CurrentGun = GunArray[weaponNumber].GetComponent<Gun>();
         m_CurrentGun.UpdateGUI();
-        m_CurrentGun.m_canShoot = true;
+        m_CurrentGun.m_canShoot = true;*/
+        GameManager.instance.GetCurrentWeapon();
+        GameManager.instance.m_CurrentWeapon.UpdateGUI();
+        GameManager.instance.m_CurrentWeapon.m_canShoot = true;
     }
 
     public void TakeDamage(int amount)
