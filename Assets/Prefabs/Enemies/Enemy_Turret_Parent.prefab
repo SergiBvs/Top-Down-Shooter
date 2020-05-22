@@ -196,9 +196,9 @@ GameObject:
   - component: {fileID: 349126937158254091}
   - component: {fileID: 349126937158254084}
   - component: {fileID: 349126937158254085}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Enemy_Turret
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,9 +210,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349126937158254086}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 44.178, y: 5.844, z: 0}
-  m_LocalScale: {x: 1.4155025, y: 1.266, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_Children:
   - {fileID: 349126936054174914}
   m_Father: {fileID: 349126936463264296}
@@ -254,11 +254,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1778ffcd342c1d94390aa7a9d96aca7c, type: 3}
-  m_Color: {r: 0.5283019, g: 0.3214667, b: 0.3214667, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: de8a6e2f8aaf74a448fb670b9cdfd459, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
@@ -302,7 +302,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.74
 --- !u!114 &349126937158254085
 MonoBehaviour:
   m_ObjectHideFlags: 0

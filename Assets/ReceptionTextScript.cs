@@ -13,6 +13,9 @@ public class ReceptionTextScript : MonoBehaviour
     private bool m_InConversation = false;
     private bool m_TextDone = false;
 
+    bool m_TalkedOnce = false;
+    int rows = 0;
+
     private int m_TextInt;
 
 
@@ -41,6 +44,16 @@ public class ReceptionTextScript : MonoBehaviour
             {
                 if (!m_InConversation)
                 {
+                    if (m_TalkedOnce)
+                    {
+                        m_TextInt = 10;
+                        rows = 14;
+                    }
+                    else
+                    {
+                        rows = 9;
+                    }
+                        
                     m_PressEText.SetActive(false);
                     m_TextPanel.SetActive(true);
                     StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
@@ -51,7 +64,7 @@ public class ReceptionTextScript : MonoBehaviour
                 {
                     if (m_TextDone)
                     {
-                        if (m_TextInt < ReceptionText.Text.Length -1)
+                        if (m_TextInt < rows)
                         {
                             m_TextInt++;
                             StartCoroutine(BuildText(ReceptionText.Text[m_TextInt], 0.01f));
@@ -59,6 +72,7 @@ public class ReceptionTextScript : MonoBehaviour
                         }
                         else
                         {
+                            m_TalkedOnce = true;
                             EndConversation();
                         }
                     }
@@ -78,6 +92,7 @@ public class ReceptionTextScript : MonoBehaviour
         m_InConversation = false;
         m_TextDone = true;
         m_TextInt = 0;
+        rows = 0;
         m_TextPanel.SetActive(false);
     }
 
@@ -100,8 +115,21 @@ public class ReceptionText
 {
     public static string[] Text =
     {
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis ",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis "
+        "I can't believe i lost that thing... Where could it be!?... I must find it before the boss finds out, or else he'll...",
+        "...",
+        "Oh!",
+        "I didn't see you there. Sorry.",
+        "Welcome to [Name of the game], do you have any bussiness here?",
+        "Oh you have an 'appointment' with the boss? Ok...",
+        "Wait over there until someone comes for you. Or not, I don't really care. You do you.",
+        "Just don't make anything stupid, these people don't play around.",
+        "You should be prepared, i suggest you check out the store just outside, could be really helpful.",
+        "Have a nice day! And good luck.",
+
+        "What? You're still around here? Don't you have somenthing better to do? You know... 'Meeting' the boss and all...",
+        "I'm not going to stop you from doing it, i'm just here to pay for college. Risking my life for my boss isn't really worth it.",
+        "Go to that elevator over there. It'll take you to the next floor.",
+        "By the way, I really don't know who designed this place, but there's an elevator for each floor. You'll have to manage to activate each one of them.",
+        "Anyways I need to do some paperwork so... Bye."
     };
 }

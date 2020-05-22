@@ -39,7 +39,7 @@ TagManager:
   - Drops
   - Obstacle
   - EnemyBullet
-  - 
+  - Floor
   - 
   - 
   - 
@@ -58,6 +58,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1901272555
+    locked: 0
+  - name: Floor
+    uniqueID: 3738234531
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
