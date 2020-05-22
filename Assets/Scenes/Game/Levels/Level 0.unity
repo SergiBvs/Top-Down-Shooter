@@ -14348,6 +14348,7 @@ MonoBehaviour:
   m_PausePanel: {fileID: 628197712}
   m_GUIPanel: {fileID: 184448455}
   m_ReloadPanel: {fileID: 1138996679}
+  m_AS: {fileID: 369774126786303904, guid: 653d635b90cfe064494e8ea769454e08, type: 3}
 --- !u!4 &1694621492
 Transform:
   m_ObjectHideFlags: 0
@@ -16572,6 +16573,7 @@ MonoBehaviour:
   m_EnemyAmount: 1
   m_NeedsSpawnPosition: 0
   m_SpawnPosition: {x: 0, y: 0}
+  MManager: {fileID: 0}
   m_AlreadyInElevator: 0
   m_IsGameOverPanelOn: 0
   m_GameIsPaused: 0
@@ -16585,7 +16587,6 @@ MonoBehaviour:
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
   m_Luck: 0
-  MManager: {fileID: 0}
 --- !u!4 &2138052836
 Transform:
   m_ObjectHideFlags: 0

@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PlayerPrefs.DeleteAll();
+        MManager = GetComponent<MusicManager>();
         ReassignObjs();
     }
 
