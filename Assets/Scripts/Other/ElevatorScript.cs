@@ -68,7 +68,7 @@ public class ElevatorScript : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         ElevatorPanel.SetActive(true);
 
     }
