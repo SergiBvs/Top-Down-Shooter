@@ -55,7 +55,14 @@ public class ElevatorScript : MonoBehaviour
     {
         if (collision.CompareTag("Player")){
             GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
-            GameManager.instance.m_AlreadyInElevator = false;
+            if (GameManager.instance.m_AlreadyInElevator)
+            {
+                GameManager.instance.m_AlreadyInElevator = false;
+            }
+            else
+            {
+                GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_GameMusic[0]);
+            }
         }
     }
 

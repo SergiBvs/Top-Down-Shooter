@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public int m_EnemyAmount;
     public bool m_NeedsSpawnPosition = false;
     public Vector2 m_SpawnPosition;
-
+    [HideInInspector] public MusicManager MManager;
+    public bool m_AlreadyInElevator = false;
 
     [Header("Panel Logic")]
     public bool m_IsGameOverPanelOn = false;
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
         GetCurrentWeapon();
         m_CurrentMagazineUpgrade++;
 
-        foreach(Gun item in m_WeaponsArray)
+        foreach (Gun item in m_WeaponsArray)
         {
             item.m_Magazine = item.m_InitialMagazine + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMagazine * 0.2f));
             item.m_MaxAmmo = item.m_InitialMaxAmmo + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMaxAmmo * 0.2f));
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
     {
         GetCurrentWeapon();
 
-        foreach(Gun item in m_WeaponsArray)
+        foreach (Gun item in m_WeaponsArray)
         {
             item.m_Magazine = item.m_InitialMagazine + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMagazine * 0.2f));
             item.m_MaxAmmo = item.m_InitialMaxAmmo + (m_CurrentMagazineUpgrade * (int)(item.m_InitialMaxAmmo * 0.2f));
@@ -94,9 +95,9 @@ public class GameManager : MonoBehaviour
         GetCurrentWeapon();
         m_CanRefillAmmo = false; //poner en true cuando se entre en el ascensor
 
-        foreach(Gun item in m_WeaponsArray)
+        foreach (Gun item in m_WeaponsArray)
         {
-            item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);    
+            item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);
         }
 
         m_CurrentWeapon.UpdateGUI();
@@ -136,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        GUIHelp.m_GUIPanel.SetActive(false); 
+        GUIHelp.m_GUIPanel.SetActive(false);
         GUIHelp.m_GameOverPanel.SetActive(true);
         m_IsGameOverPanelOn = true;
     }
@@ -144,12 +145,16 @@ public class GameManager : MonoBehaviour
     public void EnemyDefeated()
     {
         m_EnemyAmount -= 1;
-        if(m_EnemyAmount <= 0)
+        if (m_EnemyAmount <= 0)
         {
             GameObject.FindGameObjectWithTag("Elevator").GetComponent<ElevatorScript>().ElevatorOpen();
         }
     }
 
+    public void ChangeMusic(AudioClip audio)
+    {
+        MManager.ChangeMusic(audio);
+    }
 }
 
 

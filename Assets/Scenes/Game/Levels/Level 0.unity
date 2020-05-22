@@ -16572,7 +16572,7 @@ MonoBehaviour:
   m_EnemyAmount: 1
   m_NeedsSpawnPosition: 0
   m_SpawnPosition: {x: 0, y: 0}
-  m_InElevator: 0
+  m_AlreadyInElevator: 0
   m_IsGameOverPanelOn: 0
   m_GameIsPaused: 0
   m_IsInShop: 0
@@ -16711,9 +16711,9 @@ MonoBehaviour:
   m_MusicSource: {fileID: 2138052837}
   m_ElevatorMusic:
   - {fileID: 8300000, guid: 08f0088e6533c334ebfd7d9b07372576, type: 3}
-  - {fileID: 8300000, guid: b99b5009a60bc4f4cbb7c34cd92248fb, type: 3}
   - {fileID: 8300000, guid: 84d07619236ee994fb1d20c9000e4d60, type: 3}
-  m_GameMusic: []
+  m_GameMusic:
+  - {fileID: 8300000, guid: 8c003a3e77b3e244e9c91855428639ce, type: 3}
   m_StoreMusic: {fileID: 8300000, guid: fde387e3bf7faf947a8f9e32174a9db6, type: 3}
 --- !u!165 &2138052839
 AudioHighPassFilter:
