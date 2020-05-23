@@ -7,19 +7,27 @@ public class LaserGun : Gun
 
     public int m_DamagePerAmmoUnit;
     public LineRenderer m_LR;
-    
+    public AudioSource m_AS;
+    public AudioClip m_clip;
+
+    public override void Start()
+    {
+        base.Start();
+        m_AS = gameObject.GetComponent<AudioSource>();
+        m_AS.clip = m_clip;
+    }
+
     public override void  Update()
     {
-        
         m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButton("Fire1"))
-        {
             if (m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
                 Shoot(player.localRotation.eulerAngles.z);
-            else if (!m_HasBullets)
+
+        if (Input.GetButtonDown("Fire1"))
+            if (!m_HasBullets && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
                 SoundManager.instance.PlaySound("EmptyGun", 0.5f, 1);
-        }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))
         {
@@ -38,8 +46,9 @@ public class LaserGun : Gun
     }
 
     public override void Shoot(float rotationZ)
-    {
-        SoundManager.instance.PlaySound("LaserBeamSound1", 1, 1);
+    { 
+        if (!m_AS.isPlaying)
+            m_AS.Play();
 
         RaycastHit2D hit = Physics2D.Raycast(GunTip.position, transform.right , 30);
         Debug.DrawRay(GunTip.position, hit.point - (Vector2)transform.position, Color.red, 0.5f);

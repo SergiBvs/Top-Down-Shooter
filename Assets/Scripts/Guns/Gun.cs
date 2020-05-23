@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour
     int i = 0;
 
 
-    void Start()
+    public virtual void Start()
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -60,7 +60,7 @@ public class Gun : MonoBehaviour
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
                 Shoot(player.localRotation.eulerAngles.z);
             else if(!m_HasBullets && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
-                SoundManager.instance.PlaySound("EmptyGun", 0.3f, 1);
+                SoundManager.instance.PlaySound("EmptyGun", 0.5f, 1);
         }
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))

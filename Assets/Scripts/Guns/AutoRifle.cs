@@ -25,7 +25,7 @@ public class AutoRifle : Gun
 
         if(Input.GetButtonDown("Fire1"))
             if(!m_HasBullets && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
-                SoundManager.instance.PlaySound("EmptyGun", 0.4f, 1);
+                SoundManager.instance.PlaySound("EmptyGun", 0.5f, 1);
 
         if ((Input.GetKeyDown(KeyCode.R)) && (m_CurrentAmmo < m_Magazine) && (m_CurrentMaxAmmo > 0) && (!m_IsReloading))
         {
