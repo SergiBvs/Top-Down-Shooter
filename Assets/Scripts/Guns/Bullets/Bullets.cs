@@ -47,6 +47,11 @@ public class Bullets : MonoBehaviour
             Enemy l_Enemy = collision.gameObject.GetComponent<Enemy>();
             l_Enemy.TakeDamage(m_Damage); //particulas en esa funcion como en la de window?
         }
+        else if (collision.collider.CompareTag("ArenaEnemy"))
+        {
+            Arena_Enemy l_aEnemy = collision.collider.GetComponent<Arena_Enemy>();
+            l_aEnemy.TakeDamage(m_Damage);
+        }
         else if(collision.gameObject.CompareTag("Window"))
         {
             collision.gameObject.GetComponent<Window>().WindowDamage(m_Damage, this.transform.position);
