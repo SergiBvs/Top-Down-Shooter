@@ -38,16 +38,12 @@ public class Gun : MonoBehaviour
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        print("test3");
-        //UpdateGUI();
         StartCoroutine(WaitForAssignment());
     }
 
    IEnumerator WaitForAssignment()
    {
-        print("test2");
         yield return new WaitForSeconds(0.05f);
-        print("test4");
         GameManager.instance.UpdateUpgrades();
         LoadValues();
         UpdateGUI();
