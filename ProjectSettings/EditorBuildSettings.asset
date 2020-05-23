@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene2.unity
     guid: f44d3ac0c47f5a24b82c8d67c5d6f040
+  - enabled: 1
+    path: Assets/Scenes/Game/Arena.unity
+    guid: 7187fdfcb964ca346ad80f41dbdfd3e3
   m_configObjects: {}
