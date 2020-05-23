@@ -63,7 +63,7 @@ public class WaveManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         door.SetActive(true);
         m_currentWave++;
-        m_EnemySpawnNumber = Random.Range(5 + m_currentWave, 8 + m_currentWave);
+        m_EnemySpawnNumber = ThrowDice(5+m_currentWave, 8+m_currentWave);
         g_Difficulty += 1;
 
         waveStarted = true;
@@ -72,8 +72,19 @@ public class WaveManager : MonoBehaviour
     IEnumerator EnemySpawn()
     {
         yield return new WaitForSeconds(Random.Range(2f, 3f));
-        Instantiate(enemies[Random.Range(0, enemies.Length)], m_EnemySpawners[Random.Range(0, m_EnemySpawners.Length)].position, Quaternion.identity);
+        int i = ThrowDice(0, 100);
+        if(i < 70)
+            Instantiate(enemies[0], m_EnemySpawners[Random.Range(0, m_EnemySpawners.Length)].position, Quaternion.identity);
+        else if(i > 70)
+            Instantiate(enemies[1], m_EnemySpawners[Random.Range(0, m_EnemySpawners.Length)].position, Quaternion.identity);
+
         m_CurrentEnemySpawned++;
         Spawning = false;
+    }
+
+    int ThrowDice(int min, int max)
+    {
+        int l_random = Random.Range(min, max);
+        return l_random;
     }
 }

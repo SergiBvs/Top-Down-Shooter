@@ -5,7 +5,7 @@ public class Arena_Enemy : MonoBehaviour
     private Transform m_Player;
     protected Animator m_Anim;
 
-    private WaveManager wManager;
+    protected WaveManager wManager;
     private float w_difficutly;
 
     [Header("Enemy Stats")]
@@ -48,10 +48,18 @@ public class Arena_Enemy : MonoBehaviour
         m_Health += (int)w_difficutly * 5 + (int)l_randomScale*50;
         m_MovementSpeed += w_difficutly * 0.5f;
 
+
+        m_Luck = GameManager.instance.m_Luck;
+
+        m_MaxCoin += m_Luck;
+        m_minCoin += m_Luck;
+        m_AmmoChance += m_Luck;
+        m_HealthChance += m_Luck;
+
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
         MoveToPlayer();
@@ -65,7 +73,7 @@ public class Arena_Enemy : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public virtual void Shoot()
     {
         Instantiate((GameObject)Resources.Load("Bullets/Enemy/" + m_BulletName), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
         Instantiate(Resources.Load("Shoot_Particles"), m_GunTip.transform);
@@ -118,5 +126,6 @@ public class Arena_Enemy : MonoBehaviour
         transform.position += dir.normalized * Time.deltaTime * m_MovementSpeed;
         m_Anim.SetTrigger("WALK");
     }
+
 }
 

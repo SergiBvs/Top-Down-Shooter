@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 8337492593429820045}
   - component: {fileID: 8337492593429820044}
   - component: {fileID: 8337492593429820147}
+  - component: {fileID: 1587639440734127150}
   m_Layer: 8
   m_Name: Enemy_Kamikaze
   m_TagString: Enemy
@@ -164,8 +165,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1778ffcd342c1d94390aa7a9d96aca7c, type: 3}
-  m_Color: {r: 0.6226415, g: 0.1321645, b: 0.1321645, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 97706f0f4337b204aa510b4145484acb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -187,7 +188,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -195,7 +196,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &8337492593429820044
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -224,12 +225,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1ca8c8439011543ae54bf42f459534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 40
-  m_Damage: 1
+  m_Health: 25
+  m_Damage: 0
   m_MaxAttackCooldown: 0
-  m_MovementSpeed: 10
-  m_PatrolDistance: 3
+  m_GunTip: {fileID: 0}
+  m_BulletName: 
   patrolType: 1
+  m_PatrolSpeed: 4
+  m_MovementSpeed: 10
   pivots:
   - {fileID: 8337492592547658776}
   - {fileID: 8337492591923922592}
+  m_MaxCoin: 10
+  m_minCoin: 5
+  m_AmmoChance: 50
+  m_HealthChance: 20
+--- !u!95 &1587639440734127150
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337492593429820146}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8bcd8a3b4354e04699c74ffc0b1fbbf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
