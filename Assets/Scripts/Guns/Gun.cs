@@ -212,15 +212,9 @@ public class Gun : MonoBehaviour
         foreach (Gun item in GameManager.instance.m_WeaponsArray)
         {
             if (PlayerPrefs.HasKey("CurrentAmmoValues" + i))
-            {
                 item.m_CurrentAmmo = PlayerPrefs.GetInt("CurrentAmmoValues" + i);
-                print("test1");
-            }
             else
-            {
                 item.m_CurrentAmmo = item.m_Magazine;
-                print("test");
-            }
             if (PlayerPrefs.HasKey("CurrentMaxAmmoValues" + i))
                 item.m_CurrentMaxAmmo = PlayerPrefs.GetInt("CurrentMaxAmmoValues" + i);
             else
