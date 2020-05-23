@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private GUIhelper GUIHelp;
     private Animator m_Anim;
 
+    public static int m_lastWeapon = 0;
+
 
     void Start()
     {
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
     IEnumerator WaitForEndOfAssignment()
     {
         yield return new WaitForSeconds(0.05f);
-        ChangeWeapon(0);
+        ChangeWeapon(m_lastWeapon);
     }
 
    
@@ -101,26 +103,36 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            m_lastWeapon = 0;
             ChangeWeapon(0);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (GunBoughtArray[1])
+            {
+                m_lastWeapon = 1;
                 ChangeWeapon(1);
+            }
             else { }
             //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
         }
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (GunBoughtArray[2])
+            {
+                m_lastWeapon = 2;
                 ChangeWeapon(2);
+            }
             else { }
             //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
         }
         else if(Input.GetKeyDown(KeyCode.Alpha4))
         {
             if (GunBoughtArray[3])
+            {
+                m_lastWeapon = 3;
                 ChangeWeapon(3);
+            }
             else { }
             //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
         }
