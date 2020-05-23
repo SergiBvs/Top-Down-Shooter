@@ -5,6 +5,9 @@ public class Arena_Enemy : MonoBehaviour
     private Transform m_Player;
     protected Animator m_Anim;
 
+    private WaveManager wManager;
+    private float w_difficutly;
+
     [Header("Enemy Stats")]
     public int m_Health;
     public int m_Damage;
@@ -35,6 +38,16 @@ public class Arena_Enemy : MonoBehaviour
     {
         m_Player = GameObject.FindGameObjectWithTag("Player").transform;
         m_Anim = GetComponent<Animator>();
+        wManager = GameObject.FindGameObjectWithTag("WaveManager").GetComponent<WaveManager>();
+        w_difficutly = wManager.g_Difficulty;
+
+
+        float l_randomScale = Random.Range(-0.3f, 0.25f);
+        transform.localScale += new Vector3(l_randomScale, l_randomScale, 0);
+
+        m_Health += (int)w_difficutly * 5 + (int)l_randomScale*50;
+        m_MovementSpeed += w_difficutly * 0.5f;
+
     }
 
     // Update is called once per frame
@@ -66,6 +79,8 @@ public class Arena_Enemy : MonoBehaviour
         if (m_Health <= 0)
         {
             Loot();
+            wManager.m_EnemiesDefeated++;
+            wManager.m_WaveEnemiesDefeated++;
             Destroy(this.gameObject);
         }
     }

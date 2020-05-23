@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4458794360124694772}
   - component: {fileID: 3472473410361040165}
   m_Layer: 8
-  m_Name: Enemy_Basic
+  m_Name: Arena_Enemy_Basic
   m_TagString: ArenaEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196bf687077ca4d49982f200129adca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Health: 40
-  m_Damage: 20
+  m_Health: 20
+  m_Damage: 5
   m_MaxAttackCooldown: 2
   m_GunTip: {fileID: 8246304598277793360}
   m_BulletName: E_Basic_Bullet

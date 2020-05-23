@@ -25,6 +25,7 @@ TagManager:
   - Gun
   - ElevatorDoor
   - ArenaEnemy
+  - WaveManager
   layers:
   - Default
   - TransparentFX
