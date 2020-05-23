@@ -34244,7 +34244,7 @@ MonoBehaviour:
   m_PausePanel: {fileID: 346829617}
   m_GUIPanel: {fileID: 1932845840}
   m_ReloadPanel: {fileID: 148396720}
-  m_AS: {fileID: 0}
+  m_AS: {fileID: 369774126786303904, guid: 653d635b90cfe064494e8ea769454e08, type: 3}
 --- !u!4 &1063908619
 Transform:
   m_ObjectHideFlags: 0
