@@ -8,14 +8,14 @@ public class GameManager : MonoBehaviour
     private GUIhelper GUIHelp;
 
     [Header("Stats")]
-    public int m_Health;
+    public int m_Health = 100;
     public int m_Currency;
 
     [Header("Game Logic")]
     public int m_EnemyAmount;
     public bool m_NeedsSpawnPosition = false;
     public Vector2 m_SpawnPosition;
-    [HideInInspector] public MusicManager MManager;
+    MusicManager MManager;
     public bool m_AlreadyInElevator = false;
 
     [Header("Panel Logic")]
@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        CreateInstance();
+    }
+
+    public void CreateInstance()
+    {
         if (instance == null)
         {
             instance = this;
@@ -46,9 +51,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        m_WeaponsArray = new Gun[4];
+
         SceneManager.LoadScene(0);
         PlayerPrefs.DeleteAll();
-        MManager = GetComponent<MusicManager>();
+        MManager = MusicManager.instance;
         ReassignObjs();
     }
 

@@ -5,11 +5,30 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
 
+    public static MusicManager instance;
+
     public AudioSource m_MusicSource;
     public AudioClip[] m_ElevatorMusic;
     public AudioClip[] m_GameMusic;
     public AudioClip m_StoreMusic;
 
+    void Awake()
+    {
+        CreateInstance();
+    }
+
+    public void CreateInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     public void ChangeMusic(AudioClip nextSong)
     {

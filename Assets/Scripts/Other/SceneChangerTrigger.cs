@@ -15,7 +15,7 @@ public class SceneChangerTrigger : MonoBehaviour
             GameManager.instance.m_SpawnPosition = nextStartPosition;
             if(SceneToGo == 3)
             {
-                GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_StoreMusic);
+                GameManager.instance.ChangeMusic(MusicManager.instance.m_StoreMusic);
             }
             SceneManager.LoadScene(SceneToGo);
         }

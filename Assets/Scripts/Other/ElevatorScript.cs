@@ -10,6 +10,8 @@ public class ElevatorScript : MonoBehaviour
 
     public GameObject ElevatorPanel;
 
+    MusicManager musicManager;
+
     private void Start()
     {
         if (!m_ElevatorOpen)
@@ -20,6 +22,8 @@ public class ElevatorScript : MonoBehaviour
         {
             ElevatorOpen();
         }
+
+        musicManager = MusicManager.instance;
     }
 
     public void ElevatorOpen()
@@ -37,8 +41,8 @@ public class ElevatorScript : MonoBehaviour
                 if (!inside)
                 {
                     inside = true;
-                    GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_ElevatorMusic[Random.Range(0, GameManager.instance.MManager.m_ElevatorMusic.Length)]);
-                    GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = true;
+                    GameManager.instance.ChangeMusic(musicManager.m_ElevatorMusic[Random.Range(0, musicManager.m_ElevatorMusic.Length)]);
+                    MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = true;
                     GetComponent<Animator>().SetTrigger("CLOSE");
                     StartCoroutine(Wait());
 
@@ -54,21 +58,22 @@ public class ElevatorScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")){
-            GameManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
+            
+            MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
             if (GameManager.instance.m_AlreadyInElevator)
             {
                 GameManager.instance.m_AlreadyInElevator = false;
             }
             else
             {
-                GameManager.instance.ChangeMusic(GameManager.instance.MManager.m_GameMusic[0]);
+                GameManager.instance.ChangeMusic(musicManager.m_GameMusic[0]);
             }
         }
     }
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.5f);
         ElevatorPanel.SetActive(true);
 
     }
