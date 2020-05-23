@@ -24,6 +24,7 @@ TagManager:
   - Magazine
   - Gun
   - ElevatorDoor
+  - ArenaEnemy
   layers:
   - Default
   - TransparentFX
