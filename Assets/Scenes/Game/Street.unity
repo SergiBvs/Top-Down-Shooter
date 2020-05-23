@@ -5024,7 +5024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 213.29999, y: -155.90004}
+  m_AnchoredPosition: {x: 213.29999, y: -155.90002}
   m_SizeDelta: {x: -674.92, y: -425.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183159209
@@ -6470,7 +6470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToGo: 3
-  nextStartPosition: {x: 0, y: 0}
+  nextStartPosition: {x: 11.5, y: 0.7}
 --- !u!61 &685042129
 BoxCollider2D:
   m_ObjectHideFlags: 0

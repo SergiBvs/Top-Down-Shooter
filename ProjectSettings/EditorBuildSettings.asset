@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Street.unity
     guid: a09f7d8dc23f56041bad90f784c41bf2
   - enabled: 1
-    path: Assets/Scenes/ShopScene.unity
+    path: Assets/Scenes/Game/ShopScene.unity
     guid: 652e1520fe1c7f44984536718ce2ab74
   - enabled: 1
     path: Assets/Scenes/Game/Reception.unity
@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Levels/Level 1.unity
     guid: a5503f1f59236fc4b8213fd1aa991512
   - enabled: 1
-    path: Assets/Scenes/TestingScene.unity
+    path: Assets/Scenes/Game/Levels/TestingScene.unity
     guid: 42eccc3ff3463fd47997c65e3f441245
   - enabled: 1
     path: Assets/Scenes/SampleScene2.unity

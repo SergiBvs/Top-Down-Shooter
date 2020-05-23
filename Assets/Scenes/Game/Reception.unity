@@ -39053,7 +39053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76278f6431ac8014eb34a1ebae49d6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 1
+  SceneToGo: 2
   nextStartPosition: {x: 20, y: -34}
 --- !u!61 &1193671750
 BoxCollider2D:

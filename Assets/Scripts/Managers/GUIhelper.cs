@@ -119,6 +119,6 @@ public class GUIhelper : MonoBehaviour
         GameManager.instance.m_NeedsSpawnPosition = true;
         GameManager.instance.m_AlreadyInElevator = true;
         GameManager.instance.m_SpawnPosition = new Vector2(45, -3);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }
