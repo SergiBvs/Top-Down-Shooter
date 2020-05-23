@@ -21,7 +21,7 @@ public class Shotgun : Gun
         {
             if (m_canShoot && m_HasBullets && !m_IsReloading && !GameManager.instance.m_GameIsPaused && !GameManager.instance.m_IsInShop)
             {
-                SoundManager.instance.PlaySound("ShotgunShot", 1, 1);
+                SoundManager.instance.PlaySound("ShotgunShot", 0.7f, 1);
 
                 Shoot(player.localRotation.eulerAngles.z);
 

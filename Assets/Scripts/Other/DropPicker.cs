@@ -117,14 +117,18 @@ public class DropPicker : MonoBehaviour
         }
 
         GameManager.instance.SetCoins(m_CoinValue);
+        SoundManager.instance.PlaySound("Money", 0.3f, 1);
     }
     private void PickAmmo()
     {
         m_Player.m_CurrentGun.m_CurrentMaxAmmo += m_HowMuchAmmo;
+        m_Player.m_CurrentGun.SaveValues();
+        m_Player.m_CurrentGun.UpdateGUI();
 
         guiHelp.m_AmmoPickupText.SetActive(true);
         guiHelp.m_AmmoPickupText.GetComponent<TMP_Text>().text = "+ " + m_HowMuchAmmo;
         guiHelp.m_PlayerPickupCanvas.transform.position = transform.position;
+        SoundManager.instance.PlaySound("Ammo", 1, 1);
         Destroy(this.gameObject);
     }
 
@@ -135,6 +139,7 @@ public class DropPicker : MonoBehaviour
             m_Player.m_CurrentHealth = GameManager.instance.m_Health;
 
         GameManager.instance.SetHealth(m_Player.m_CurrentHealth);
+        SoundManager.instance.PlaySound("Health", 1, 1);
         Destroy(this.gameObject);
 
     }

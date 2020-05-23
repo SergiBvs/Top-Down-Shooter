@@ -93,6 +93,8 @@ public class GUIhelper : MonoBehaviour
         //GameManager.instance.m_Telon.SetTrigger("Telon");
         //StartCoroutine(GameManager.instance.TelonWait(SceneManager.GetActiveScene().buildIndex));
 
+        //hay que reiniciar municion y dinero a los valores del principio del nivel!!!!
+
         m_PausePanel.SetActive(false);
         GameManager.instance.m_GameIsPaused = false;
         Time.timeScale = 1f;
@@ -103,12 +105,15 @@ public class GUIhelper : MonoBehaviour
 
     public void MainMenu()
     {
+        //reiniciar todo a 0????
+
         //telon o lo que sea
         SceneManager.LoadScene(1);
     }
 
     public void NextLevel()
     {
+        //no reiniciar ni dinero ni municion pero si vida (hay que ser justos)
         GameManager.instance.ChangeMusic(MusicManager.instance.m_GameMusic[0]);
         MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

@@ -18,7 +18,7 @@ public class AutoRifle : Gun
                 float l_rand;
                 l_rand = Random.Range(0.9f, 1.4f);
 
-                SoundManager.instance.PlaySound("ARShot", 0.6f, l_rand);
+                SoundManager.instance.PlaySound("ARShot", 0.8f, l_rand);
                 Shoot(player.localRotation.eulerAngles.z);
             }
         }

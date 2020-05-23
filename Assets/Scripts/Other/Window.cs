@@ -45,6 +45,7 @@ public class Window : MonoBehaviour
 
     IEnumerator DestroyWindow()
     {
+        SoundManager.instance.PlaySound("WindowBreak", 0.7f, 1);
         m_DestroyParticles.transform.rotation = Quaternion.Euler(-m_Rot);
         m_DestroyParticles.SetActive(true);
         GetComponent<SpriteRenderer>().enabled = false;

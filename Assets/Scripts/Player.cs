@@ -72,8 +72,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P)) //test 
         {
-            SoundManager.instance.PlaySound("Elevator_Ding" , 1 , 1);
-            PlayerPrefs.DeleteAll();
+            TakeDamage(50);
         }
 
 
@@ -113,8 +112,8 @@ public class Player : MonoBehaviour
                 m_lastWeapon = 1;
                 ChangeWeapon(1);
             }
-            else { }
-            //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
@@ -123,8 +122,9 @@ public class Player : MonoBehaviour
                 m_lastWeapon = 2;
                 ChangeWeapon(2);
             }
-            else { }
-            //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
+
         }
         else if(Input.GetKeyDown(KeyCode.Alpha4))
         {
@@ -133,8 +133,8 @@ public class Player : MonoBehaviour
                 m_lastWeapon = 3;
                 ChangeWeapon(3);
             }
-            else { }
-            //mostrar de alguna forma que no se puede cambiar de arma hasta que se compre
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
     }
 
@@ -175,8 +175,12 @@ public class Player : MonoBehaviour
         m_CurrentHealth -= amount;
         GameManager.instance.SetHealth(m_CurrentHealth);
 
+        int l_soundRand = Random.Range(1, 3);
+        SoundManager.instance.PlaySound("Hurt" +l_soundRand, 1 ,1);
+
         if(m_CurrentHealth <= 0)
         {
+            SoundManager.instance.PlaySound("GameOver", 1, 1);
             Destroy(this.gameObject);
             GameManager.instance.GameOver();
         }

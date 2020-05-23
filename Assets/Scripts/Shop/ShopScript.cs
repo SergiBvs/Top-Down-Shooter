@@ -40,6 +40,8 @@ public class ShopScript : MonoBehaviour
 
     public void BuyWeapons()
     {
+        int l_randSound = Random.Range(1, 3);
+       
         if(this.gameObject.CompareTag("AR"))
         {
             if(GameManager.instance.m_Currency >= m_Cost && Player.GunBoughtArray[1] == false)
@@ -48,7 +50,10 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = 1;
                 PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
         else if (this.gameObject.CompareTag("Shotgun"))
         {
@@ -58,7 +63,10 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = 1;
                 PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
         else if(this.gameObject.CompareTag("LaserGun"))
         {
@@ -68,7 +76,10 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = 1;
                 PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
 
         ChangeColors();
@@ -77,6 +88,8 @@ public class ShopScript : MonoBehaviour
 
     public void BuyUpgrades()
     {
+        int l_randSound = Random.Range(1, 3);
+
         if (this.gameObject.CompareTag("Health"))
         {
             if(GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_Health <200)
@@ -90,9 +103,12 @@ public class ShopScript : MonoBehaviour
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
 
-            if(GameManager.instance.m_Health>=200)
+            if (GameManager.instance.m_Health>=200)
             {
                 m_MaxUpgraded = 1;
                 PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
@@ -111,7 +127,10 @@ public class ShopScript : MonoBehaviour
                 m_Cost += 125; //lo puedes cambiar si quieres
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
 
             /*if(si ha llegado al maximo)
             {
@@ -129,9 +148,12 @@ public class ShopScript : MonoBehaviour
 
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
 
-            if(Player.m_PlayerSpeed>=20)
+            if (Player.m_PlayerSpeed>=20)
             {
                 m_MaxUpgraded = 1;
                 PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
@@ -149,9 +171,12 @@ public class ShopScript : MonoBehaviour
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
 
-            if(GameManager.instance.m_CurrentMagazineUpgrade == 5)
+            if (GameManager.instance.m_CurrentMagazineUpgrade == 5)
             {
                 m_MaxUpgraded = 1;
                 PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
@@ -165,7 +190,10 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.m_Currency -= m_Cost;
                 m_Bought = 1;
                 PlayerPrefs.SetInt(this.tag + "Bought", m_Bought);
+                SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
+            else
+                SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
 
         ChangeColors();

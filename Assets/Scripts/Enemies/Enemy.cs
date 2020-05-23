@@ -172,6 +172,7 @@ public class Enemy : MonoBehaviour
     public virtual void Shoot()
     {
         Instantiate((GameObject)Resources.Load("Bullets/Enemy/" + m_BulletName), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
+        SoundManager.instance.PlaySound("ARShot", 0.7f, 1);
         Instantiate(Resources.Load("Shoot_Particles"), m_GunTip.transform);
         m_AttackCooldown = m_MaxAttackCooldown;
     }
@@ -258,6 +259,7 @@ public class Enemy : MonoBehaviour
         if(m_Health <= 0)
         {
             Loot();
+            SoundManager.instance.PlaySound("DeathSound", 1, 1);
             GameManager.instance.EnemyDefeated();
             Destroy(this.gameObject);
         }
