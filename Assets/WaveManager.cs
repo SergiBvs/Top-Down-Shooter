@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -16,6 +14,8 @@ public class WaveManager : MonoBehaviour
     bool waveStarted = false;
     bool waveEnded = false;
 
+    public GameObject door;
+
     bool Spawning = false;
 
     public GameObject[] enemies;
@@ -24,6 +24,7 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        door.SetActive(false);
         StartCoroutine(WaveStart());
     }
 
@@ -50,6 +51,7 @@ public class WaveManager : MonoBehaviour
         }
         else if (waveEnded)
         {
+            door.SetActive(false);
             StartCoroutine(WaveStart());
             waveEnded = false;
         }
@@ -57,7 +59,9 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator WaveStart()
     {
+        
         yield return new WaitForSeconds(5);
+        door.SetActive(true);
         m_currentWave++;
         m_EnemySpawnNumber = Random.Range(5 + m_currentWave, 8 + m_currentWave);
         g_Difficulty += 1;
