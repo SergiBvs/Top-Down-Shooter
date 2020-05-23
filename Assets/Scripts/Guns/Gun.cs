@@ -40,10 +40,10 @@ public class Gun : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         print("test3");
         //UpdateGUI();
-        StartCoroutine(test());
+        StartCoroutine(WaitForAssignment());
     }
 
-   IEnumerator test()
+   IEnumerator WaitForAssignment()
    {
         print("test2");
         yield return new WaitForSeconds(0.05f);

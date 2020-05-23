@@ -147,6 +147,13 @@ public class Player : MonoBehaviour
         m_CurrentGun.UpdateGUI();
         m_CurrentGun.m_canShoot = true;*/
         GameManager.instance.GetCurrentWeapon();
+        StartCoroutine(UpdateGUIAfterTime());
+        GameManager.instance.m_CurrentWeapon.m_canShoot = true;
+    }
+
+    IEnumerator UpdateGUIAfterTime()
+    {
+        yield return new WaitForSeconds(0.05f);
         GameManager.instance.m_CurrentWeapon.UpdateGUI();
         GameManager.instance.m_CurrentWeapon.m_canShoot = true;
     }
