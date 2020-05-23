@@ -85,10 +85,11 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.SetMaxHealth(GameManager.instance.m_Health);
                 m_PlayerScript.m_CurrentHealth = GameManager.instance.m_Health;
 
+                GameManager.instance.m_Currency -= m_Cost;
+
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
-                GameManager.instance.m_Currency -= m_Cost;
             }
 
             if(GameManager.instance.m_Health>=200)
@@ -106,10 +107,10 @@ public class ShopScript : MonoBehaviour
                 //augmento de luck
                 GameManager.instance.m_Luck += 5;
 
+                GameManager.instance.m_Currency -= m_Cost;
                 m_Cost += 125; //lo puedes cambiar si quieres
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
-                GameManager.instance.m_Currency -= m_Cost;
             }
 
             /*if(si ha llegado al maximo)
@@ -124,9 +125,10 @@ public class ShopScript : MonoBehaviour
             {
                 Player.m_PlayerSpeed += 2;
 
+                GameManager.instance.m_Currency -= m_Cost;
+
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
-                GameManager.instance.m_Currency -= m_Cost;
             }
 
             if(Player.m_PlayerSpeed>=20)
@@ -142,10 +144,11 @@ public class ShopScript : MonoBehaviour
             {
                 GameManager.instance.UpgradeMagazine();
 
+                GameManager.instance.m_Currency -= m_Cost;
+
                 m_Cost += 125;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
-                GameManager.instance.m_Currency -= m_Cost;
             }
 
             if(GameManager.instance.m_CurrentMagazineUpgrade == 5)
