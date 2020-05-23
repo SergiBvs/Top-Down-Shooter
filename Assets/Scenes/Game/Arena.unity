@@ -21814,6 +21814,7 @@ MonoBehaviour:
   door: {fileID: 1573241134}
   enemies:
   - {fileID: 3223683410862718745, guid: 09a39c705e45c324093ab762274d90a1, type: 3}
+  - {fileID: 4983312514124610402, guid: 51471a04fff129243906d1e8f7873043, type: 3}
 --- !u!4 &968917966
 Transform:
   m_ObjectHideFlags: 0
