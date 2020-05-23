@@ -14,7 +14,7 @@ public class Gun_Basic : Gun
         float l_rand;
 
         l_rand = Random.Range(0.9f, 1.4f);
-        SoundManager.instance.PlaySound("PistolShot", 0.3f, l_rand);
+        SoundManager.instance.PlaySound("PistolShot", 0.6f, l_rand);
       
         base.Shoot(rotationZ);
     }

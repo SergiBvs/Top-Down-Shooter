@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
     public void SetCoins(int l_quantity)
     {
         m_Currency += l_quantity;
-        GUIHelp.CoinText.text = m_Currency.ToString();
+        GUIHelp.CoinText.text = m_Currency.ToString() + " $";
     }
 
     public void GameOver()
