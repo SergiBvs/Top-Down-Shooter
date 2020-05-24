@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
     {
         Instantiate((GameObject)Resources.Load("Bullets/Enemy/" + m_BulletName), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
         float l_rand = Random.Range(0.3f, 0.8f);
-        SoundManager.instance.PlaySound("PistolShot", 1f, l_rand);
+        SoundManager.instance.PlaySound("PistolShot", 0.5f, l_rand);
         Instantiate(Resources.Load("Shoot_Particles"), m_GunTip.transform);
         m_AttackCooldown = m_MaxAttackCooldown;
     }
@@ -183,7 +183,6 @@ public class Enemy : MonoBehaviour
     {
         if ((m_PatrolCooldown <= 0) || ComesFromChasing)
         {
-            
             HasReachedPivot = false;
             ChoosePatrolDirection();
             m_PatrolCooldown = Random.Range(3f, 5f);

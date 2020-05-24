@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BulletForce: 90
   m_Damage: 10
+  m_UpTime: 10
   m_BulletRB2D: {fileID: 0}
 --- !u!61 &61979708380230438
 BoxCollider2D:

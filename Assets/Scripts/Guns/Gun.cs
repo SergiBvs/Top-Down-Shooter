@@ -96,8 +96,6 @@ public class Gun : MonoBehaviour
 
         m_CurrentAmmo--;
 
-        //aixo hauria de funcionar no?
-
         if (m_CurrentAmmo <= (m_Magazine / 2))
         {
             GUIHelp.m_AmmoText.color = new Color(236 / 255f, 128 / 255f, 48 / 255f);
@@ -108,7 +106,6 @@ public class Gun : MonoBehaviour
             }
 
         }
-        //aixo si funciona
 
         if (m_CurrentAmmo <= 0)
         {
@@ -119,7 +116,6 @@ public class Gun : MonoBehaviour
 
         UpdateGUI();
         SaveValues();
-
     }
 
     protected void Reload()

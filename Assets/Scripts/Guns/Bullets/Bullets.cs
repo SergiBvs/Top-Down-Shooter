@@ -8,6 +8,7 @@ public class Bullets : MonoBehaviour
 
     public float m_BulletForce;
     public int m_Damage;
+    public int m_UpTime;
 
     //others
 
@@ -71,7 +72,7 @@ public class Bullets : MonoBehaviour
 
     public IEnumerator DeleteBulletAfterTime()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(m_UpTime);
         Destroy(this.gameObject);
     }
 
