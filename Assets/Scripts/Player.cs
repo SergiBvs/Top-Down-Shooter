@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     public static int m_lastWeapon = 0;
 
+   
 
     void Start()
     {
@@ -199,5 +200,13 @@ public class Player : MonoBehaviour
         //Fall Animation
         TakeDamage(20);
         transform.position = DZpivot.position;
+    }
+
+
+    public void PlayFootsteps()
+    {
+        int l_randomSound = Random.Range(1, 5);
+
+        SoundManager.instance.PlaySound("FootStep" + l_randomSound, 1, 1);
     }
 }

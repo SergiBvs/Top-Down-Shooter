@@ -121,9 +121,15 @@ public class DropPicker : MonoBehaviour
     }
     private void PickAmmo()
     {
-        m_Player.m_CurrentGun.m_CurrentMaxAmmo += m_HowMuchAmmo;
-        m_Player.m_CurrentGun.SaveValues();
-        m_Player.m_CurrentGun.UpdateGUI();
+        GameManager.instance.GetCurrentWeapon();
+
+        foreach (Gun item in GameManager.instance.m_WeaponsArray)
+        {
+            item.m_CurrentMaxAmmo += m_HowMuchAmmo;
+        }
+
+        GameManager.instance.m_CurrentWeapon.SaveValues();
+        GameManager.instance.m_CurrentWeapon.UpdateGUI();
 
         guiHelp.m_AmmoPickupText.SetActive(true);
         guiHelp.m_AmmoPickupText.GetComponent<TMP_Text>().text = "+ " + m_HowMuchAmmo;
