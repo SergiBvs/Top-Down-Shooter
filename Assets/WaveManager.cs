@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class WaveManager : MonoBehaviour
     public TMP_Text WaveText;
     public TMP_Text KillText;
 
+    public Slider NextBar;
+    public GameObject NextBarObj;
+
     public GameObject door;
 
     bool Spawning = false;
@@ -29,6 +33,7 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         door.SetActive(false);
+        NextBar = NextBarObj.GetComponent<Slider>();
         StartCoroutine(WaveStart());
     }
 
@@ -63,8 +68,15 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator WaveStart()
     {
-        
-        yield return new WaitForSeconds(5);
+        NextBarObj.SetActive(true);
+        NextBar.value = 1;
+        while(NextBar.value > 0)
+        {
+            NextBar.value -= Time.deltaTime/7;
+            yield return null;
+        }
+
+        NextBarObj.SetActive(false);
         door.SetActive(true);
         m_currentWave++;
         WaveText.text = "Wave: " + m_currentWave;
