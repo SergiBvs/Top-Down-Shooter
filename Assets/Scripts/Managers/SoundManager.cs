@@ -41,11 +41,11 @@ public class SoundManager : MonoBehaviour
         {
             if (clip.name == SoundClip)
             {
-                GUIHelp.m_AS.clip = clip;
-                GUIHelp.m_AS.volume = volume;
-                GUIHelp.m_AS.pitch = pitch;
-                Instantiate(GUIHelp.m_AS);
-                GUIHelp.m_AS.Play();
+                AudioSource aS = Instantiate(GUIHelp.m_AS);
+                aS.clip = clip;
+                aS.volume = volume;
+                aS.pitch = pitch;
+                aS.Play();
             }
         }
     }

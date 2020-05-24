@@ -77,6 +77,8 @@ public class Arena_Enemy : MonoBehaviour
     {
         Instantiate((GameObject)Resources.Load("Bullets/Enemy/" + m_BulletName), m_GunTip.position, Quaternion.Euler(transform.rotation.eulerAngles));
         Instantiate(Resources.Load("Shoot_Particles"), m_GunTip.transform);
+        float l_rand = Random.Range(0.6f, 1f);
+        SoundManager.instance.PlaySound("PistolShot", 1f, l_rand);
         m_AttackCooldown = m_MaxAttackCooldown;
     }
 
