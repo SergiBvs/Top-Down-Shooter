@@ -100,7 +100,7 @@ public class ShopScript : MonoBehaviour
 
                 GameManager.instance.m_Currency -= m_Cost;
 
-                m_Cost += 125;
+                m_Cost += 75;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
                 SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
@@ -118,12 +118,13 @@ public class ShopScript : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Luck"))
         {
-            if(GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_Luck >= 20)
+            if(GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_Luck <= 20)
             {
                 //augmento de luck
                 GameManager.instance.m_Luck += 5;
 
                 GameManager.instance.m_Currency -= m_Cost;
+                m_Cost += 75;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
                 SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
@@ -144,8 +145,7 @@ public class ShopScript : MonoBehaviour
                 Player.m_PlayerSpeed += 2;
 
                 GameManager.instance.m_Currency -= m_Cost;
-
-                m_Cost += 125;
+                m_Cost += 75;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
                 SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
             }
@@ -166,8 +166,7 @@ public class ShopScript : MonoBehaviour
                 GameManager.instance.UpgradeMagazine();
 
                 GameManager.instance.m_Currency -= m_Cost;
-
-                m_Cost += 125;
+                m_Cost += 75;
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
                 SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
