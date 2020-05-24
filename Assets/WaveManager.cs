@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class WaveManager : MonoBehaviour
     public Transform[] m_EnemySpawners;
     bool waveStarted = false;
     bool waveEnded = false;
+
+    public TMP_Text WaveText;
+    public TMP_Text KillText;
 
     public GameObject door;
 
@@ -63,6 +67,8 @@ public class WaveManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         door.SetActive(true);
         m_currentWave++;
+        WaveText.text = "Wave: " + m_currentWave;
+
         m_EnemySpawnNumber = ThrowDice(5+m_currentWave, 8+m_currentWave);
         g_Difficulty += 1;
 

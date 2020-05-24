@@ -93,6 +93,7 @@ public class Arena_Enemy : MonoBehaviour
             SoundManager.instance.PlaySound("DeathSound", 1, 1);
             wManager.m_EnemiesDefeated++;
             wManager.m_WaveEnemiesDefeated++;
+            wManager.KillText.text = "x" + wManager.m_EnemiesDefeated.ToString();
             Destroy(this.gameObject);
         }
     }

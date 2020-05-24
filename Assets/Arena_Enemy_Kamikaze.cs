@@ -36,6 +36,7 @@ public class Arena_Enemy_Kamikaze : Arena_Enemy
         Destroy(explosion);
         wManager.m_EnemiesDefeated++;
         wManager.m_WaveEnemiesDefeated++;
+        wManager.KillText.text = "x" + wManager.m_EnemiesDefeated.ToString();
         Destroy(this.gameObject);
     }
 
