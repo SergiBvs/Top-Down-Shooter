@@ -32,6 +32,7 @@ public class Gun : MonoBehaviour
     protected Transform player;
 
     int i = 0;
+    int b = 0;
 
 
     public virtual void Start()
@@ -46,6 +47,9 @@ public class Gun : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         GameManager.instance.UpdateUpgrades();
         LoadValues();
+        if (GameManager.instance.m_HasRestarted)
+            LoadInitialValues();    
+        SaveInitialValues();
         UpdateGUI();
        
    }
@@ -191,6 +195,39 @@ public class Gun : MonoBehaviour
     public float CalculateSliderValue()
     {
         return (m_CurrentReloadSpeed / m_ReloadSpeed);
+    }
+
+    public void SaveInitialValues()
+    {
+        b = 0;
+
+        foreach (Gun item in GameManager.instance.m_WeaponsArray)
+        {
+            PlayerPrefs.SetInt("InitialCurrentAmmoValues" + b, item.m_CurrentAmmo);
+            PlayerPrefs.SetInt("InitialCurrentMaxAmmoValues" + b, item.m_CurrentMaxAmmo);
+            b++;
+        }
+    }
+
+    public void LoadInitialValues()
+    {
+        b = 0;
+
+        foreach (Gun item in GameManager.instance.m_WeaponsArray)
+        {
+            if (PlayerPrefs.HasKey("InitialCurrentAmmoValues" + b))
+                item.m_CurrentAmmo = PlayerPrefs.GetInt("InitialCurrentAmmoValues" + b);
+            else
+                item.m_CurrentAmmo = item.m_Magazine;
+            if (PlayerPrefs.HasKey("InitialCurrentMaxAmmoValues" + b))
+                item.m_CurrentMaxAmmo = PlayerPrefs.GetInt("InitialCurrentMaxAmmoValues" + b);
+            else
+                item.m_CurrentMaxAmmo = item.m_MaxAmmo;
+
+            b++;
+        }
+
+        GameManager.instance.m_HasRestarted = false;
     }
 
     public void SaveValues()

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Stats")]
     public int m_Health = 100;
     public int m_Currency;
+    public int m_InitialCurrency;
 
     [Header("Game Logic")]
     public int m_EnemyAmount;
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour
     public int m_CurrentMagazineUpgrade = 0;
     public bool m_CanRefillAmmo = true;
     public int m_Luck;
+
+    [Header("Others")]
+    public bool m_HasRestarted;
 
     void Awake()
     {

@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.m_InitialCurrency = GameManager.instance.m_Currency;
         m_PlayerRB2D = this.GetComponent<Rigidbody2D>();
         m_CurrentHealth = GameManager.instance.m_Health;
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();

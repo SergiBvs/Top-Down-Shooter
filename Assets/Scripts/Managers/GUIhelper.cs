@@ -90,11 +90,19 @@ public class GUIhelper : MonoBehaviour
 
     public void RestartLevel()
     {
-        //GameManager.instance.m_Telon.SetTrigger("Telon");
-        //StartCoroutine(GameManager.instance.TelonWait(SceneManager.GetActiveScene().buildIndex));
+        GameManager.instance.m_HasRestarted = true;
+        GameManager.instance.m_Currency = GameManager.instance.m_InitialCurrency;
+        m_PausePanel.SetActive(false);
+        GameManager.instance.m_GameIsPaused = false;
+        Time.timeScale = 1f;
+        GameManager.instance.m_IsGameOverPanelOn = false;
+        SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
+        GameManager.instance.SetMaxHealth(100);
+    }
 
-        //hay que reiniciar municion y dinero a los valores del principio del nivel!!!!
-
+    public void RestartArena()
+    {
+        GameManager.instance.m_HasRestarted = true;
         m_PausePanel.SetActive(false);
         GameManager.instance.m_GameIsPaused = false;
         Time.timeScale = 1f;
