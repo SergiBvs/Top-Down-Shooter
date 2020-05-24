@@ -38,10 +38,15 @@ public class GUIhelper : MonoBehaviour
 
     public int m_NumberOfEnemies;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
 
     void Start()
     {
         GameManager.instance.ReassignObjs();
+        GameManager.instance.m_GameIsPaused = false;
         SoundManager.instance.ReassignObjs();
         m_psmain = m_healthParticles.main;
     }
@@ -116,24 +121,10 @@ public class GUIhelper : MonoBehaviour
     public void MainMenu()
     {
         //reiniciar todo a 0????
-
+        GameManager.instance.m_GameIsPaused = false;
+        Time.timeScale = 1f;
+        GameManager.instance.m_IsGameOverPanelOn = false;
         //telon o lo que sea
         SceneManager.LoadScene(1);
-    }
-
-    public void NextLevel()
-    {
-        //no reiniciar ni dinero ni municion pero si vida (hay que ser justos)
-        GameManager.instance.ChangeMusic(MusicManager.instance.m_GameMusic[0]);
-        MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void LoadBase()
-    {
-        GameManager.instance.m_NeedsSpawnPosition = true;
-        GameManager.instance.m_AlreadyInElevator = true;
-        GameManager.instance.m_SpawnPosition = new Vector2(45, -3);
-        SceneManager.LoadScene(4);
     }
 }
