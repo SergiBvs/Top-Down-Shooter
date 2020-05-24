@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,10 +29,14 @@ public class WaveManager : MonoBehaviour
 
     public GameObject[] enemies;
 
+    public GameObject[] bloodPools;
+    public int bloodPoolNum = 0;
+
     
     // Start is called before the first frame update
     void Start()
     {
+        bloodPools = new GameObject[15];
         door.SetActive(false);
         NextBar = NextBarObj.GetComponent<Slider>();
         StartCoroutine(WaveStart());

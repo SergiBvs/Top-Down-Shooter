@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class Arena_Enemy : MonoBehaviour
 {
@@ -90,9 +91,21 @@ public class Arena_Enemy : MonoBehaviour
         if (m_Health <= 0)
         {
             Loot();
-            Instantiate((GameObject)Resources.Load("EnemyDeathParticles"), transform.position, Quaternion.Euler(90,0,0));
-            Instantiate((GameObject)Resources.Load("Bloodstain"), transform.position, Quaternion.Euler(0, 0, Random.Range(0,360)));
+            if (wManager.bloodPools[wManager.bloodPoolNum] != null) {
+                wManager.bloodPools[wManager.bloodPoolNum].GetComponent<Animator>().SetTrigger("FADE");
+                wManager.bloodPools[wManager.bloodPoolNum] = null;
+            }
+            wManager.bloodPools[wManager.bloodPoolNum] =
+            Instantiate((GameObject)Resources.Load("Bloodstain"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+            wManager.bloodPoolNum++;
+
+            if(wManager.bloodPoolNum >= 15)
+            {
+                wManager.bloodPoolNum = 0;
+            }
+            Instantiate((GameObject)Resources.Load("EnemyDeathParticles"), transform.position, Quaternion.Euler(90, 0, 0));
             SoundManager.instance.PlaySound("DeathSound", 1, 1);
+            
             wManager.m_EnemiesDefeated++;
             wManager.m_WaveEnemiesDefeated++;
             wManager.KillText.text = "x" + wManager.m_EnemiesDefeated.ToString();
