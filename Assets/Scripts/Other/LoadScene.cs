@@ -37,11 +37,33 @@ public class LoadScene : MonoBehaviour
                 GameManager.instance.m_ElevatorMusicPlaying = false;
                 break;
         }
+
+        GameManager.instance.m_GameIsPaused = false;
+        Time.timeScale = 1f;
+        GameManager.instance.m_IsGameOverPanelOn = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneToLoad);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(SceneToLoad != 4)
         Load();
+        else
+        {
+            if (!GameManager.instance.m_ElevatorMusicPlaying)
+            {
+                GameManager.instance.ChangeMusic(MusicManager.instance.m_ElevatorMusic[Random.Range(0, MusicManager.instance.m_ElevatorMusic.Length)]);
+                GameManager.instance.m_ElevatorMusicPlaying = true;
+
+            }
+            GameManager.instance.m_NeedsSpawnPosition = true;
+            GameManager.instance.m_SpawnPosition = Pos;
+
+            GameManager.instance.m_GameIsPaused = false;
+            Time.timeScale = 1f;
+            GameManager.instance.m_IsGameOverPanelOn = false;
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene(SceneToLoad);
+        }
     }
 }

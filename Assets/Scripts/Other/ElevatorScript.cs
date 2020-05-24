@@ -48,7 +48,7 @@ public class ElevatorScript : MonoBehaviour
                         GameManager.instance.m_ElevatorMusicPlaying = true;
                     }
                     MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = true;
-                    GetComponent<Animator>().SetTrigger("CLOSE");
+                    //GetComponent<Animator>().SetTrigger("CLOSE");
                     StartCoroutine(Wait());
 
                 }
@@ -79,8 +79,10 @@ public class ElevatorScript : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         ElevatorPanel.SetActive(true);
+        GameManager.instance.m_GameIsPaused = true;
+        Time.timeScale = 0f;
 
     }
 
