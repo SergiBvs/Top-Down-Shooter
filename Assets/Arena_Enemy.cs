@@ -89,6 +89,8 @@ public class Arena_Enemy : MonoBehaviour
         {
             Loot();
             Instantiate((GameObject)Resources.Load("EnemyDeathParticles"), transform.position, Quaternion.Euler(90,0,0));
+            Instantiate((GameObject)Resources.Load("Bloodstain"), transform.position, Quaternion.Euler(0, 0, Random.Range(0,360)));
+            SoundManager.instance.PlaySound("DeathSound", 1, 1);
             wManager.m_EnemiesDefeated++;
             wManager.m_WaveEnemiesDefeated++;
             Destroy(this.gameObject);
