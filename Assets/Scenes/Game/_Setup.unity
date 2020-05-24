@@ -6637,6 +6637,7 @@ GameObject:
   - component: {fileID: 597502247}
   - component: {fileID: 597502246}
   - component: {fileID: 597502245}
+  - component: {fileID: 597502248}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -6774,6 +6775,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!165 &597502248
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597502244}
+  m_Enabled: 0
+  m_CutoffFrequency: 1500
+  m_HighpassResonanceQ: 1
 --- !u!1 &651657927
 GameObject:
   m_ObjectHideFlags: 0
@@ -10010,7 +10021,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 08f0088e6533c334ebfd7d9b07372576, type: 3}
   - {fileID: 8300000, guid: 84d07619236ee994fb1d20c9000e4d60, type: 3}
   m_GameMusic:
-  - {fileID: 8300000, guid: 8c003a3e77b3e244e9c91855428639ce, type: 3}
+  - {fileID: 8300000, guid: 2c4e99ed8e3eb3d4bbdcfc27e8c856d7, type: 3}
   m_StoreMusic: {fileID: 8300000, guid: fde387e3bf7faf947a8f9e32174a9db6, type: 3}
   m_ArenaMusic: {fileID: 8300000, guid: e5dd5e34ce4ccb84b9b08c723fec75d5, type: 3}
 --- !u!4 &1851153676

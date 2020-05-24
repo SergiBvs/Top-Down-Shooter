@@ -27,6 +27,7 @@ public class Setup : MonoBehaviour
         MM.AddComponent<MusicManager>();
         MM.AddComponent<AudioSource>();
         MM.AddComponent<AudioHighPassFilter>().enabled=false;
+        MM.GetComponent<AudioHighPassFilter>().cutoffFrequency = 1500;
 
         GameObject b = Instantiate(MM);
         mManager = b.GetComponent<MusicManager>();

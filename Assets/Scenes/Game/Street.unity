@@ -788,11 +788,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 685042127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76278f6431ac8014eb34a1ebae49d6a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ba24d150065e9949bef7d75654d29ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 3
-  nextStartPosition: {x: 11.5, y: 0.7}
+  SceneToLoad: 3
+  Pos: {x: 0, y: 0}
 --- !u!61 &685042129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1280,11 +1280,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1202555878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76278f6431ac8014eb34a1ebae49d6a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ba24d150065e9949bef7d75654d29ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToGo: 4
-  nextStartPosition: {x: -20.5, y: -17}
+  SceneToLoad: 4
+  Pos: {x: -20.5, y: -17}
 --- !u!61 &1202555880
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1356,6 +1356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Health: 100
   m_Currency: 0
+  m_InitialCurrency: 0
   m_EnemyAmount: 0
   m_NeedsSpawnPosition: 0
   m_SpawnPosition: {x: 0, y: 0}
@@ -1372,6 +1373,7 @@ MonoBehaviour:
   m_CurrentMagazineUpgrade: 0
   m_CanRefillAmmo: 1
   m_Luck: 0
+  m_HasRestarted: 0
 --- !u!4 &1231845735
 Transform:
   m_ObjectHideFlags: 0
@@ -1573,7 +1575,7 @@ PrefabInstance:
     - target: {fileID: 3318511152089408184, guid: cec16084143ce8044a4503b476e58751,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154.70003
+      value: -154.70001
       objectReference: {fileID: 0}
     - target: {fileID: 3318511152312287939, guid: cec16084143ce8044a4503b476e58751,
         type: 3}
@@ -1603,12 +1605,12 @@ PrefabInstance:
     - target: {fileID: 3318511152595126609, guid: cec16084143ce8044a4503b476e58751,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -189.09999
+      value: -189.09998
       objectReference: {fileID: 0}
     - target: {fileID: 3318511152630128067, guid: cec16084143ce8044a4503b476e58751,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -153.50002
+      value: -153.5
       objectReference: {fileID: 0}
     - target: {fileID: 3318511152662733752, guid: cec16084143ce8044a4503b476e58751,
         type: 3}

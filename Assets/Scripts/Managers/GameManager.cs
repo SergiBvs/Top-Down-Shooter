@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Vector2 m_SpawnPosition;
     MusicManager MManager;
     public bool m_AlreadyInElevator = false;
+    public bool m_ElevatorMusicPlaying = false;
 
     [Header("Panel Logic")]
     public bool m_IsGameOverPanelOn = false;

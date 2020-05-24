@@ -1,6 +1,7 @@
 ﻿
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ElevatorScript : MonoBehaviour
 {
@@ -41,7 +42,11 @@ public class ElevatorScript : MonoBehaviour
                 if (!inside)
                 {
                     inside = true;
-                    GameManager.instance.ChangeMusic(musicManager.m_ElevatorMusic[Random.Range(0, musicManager.m_ElevatorMusic.Length)]);
+                    if (!GameManager.instance.m_ElevatorMusicPlaying)
+                    {
+                        GameManager.instance.ChangeMusic(musicManager.m_ElevatorMusic[Random.Range(0, musicManager.m_ElevatorMusic.Length)]);
+                        GameManager.instance.m_ElevatorMusicPlaying = true;
+                    }
                     MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = true;
                     GetComponent<Animator>().SetTrigger("CLOSE");
                     StartCoroutine(Wait());
@@ -66,7 +71,8 @@ public class ElevatorScript : MonoBehaviour
             }
             else
             {
-                GameManager.instance.ChangeMusic(musicManager.m_GameMusic[0]);
+                if(SceneManager.GetActiveScene().buildIndex != 4)
+                    GameManager.instance.ChangeMusic(musicManager.m_GameMusic[0]);
             }
         }
     }
