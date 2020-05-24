@@ -26,6 +26,11 @@ public class LoadScene : MonoBehaviour
                 GameManager.instance.m_ElevatorMusicPlaying = false;
                 break;
 
+            case 3: // Shop
+                GameManager.instance.ChangeMusic(MusicManager.instance.m_StoreMusic);
+                GameManager.instance.m_ElevatorMusicPlaying = false;
+                break;
+
             default:
                 GameManager.instance.ChangeMusic(MusicManager.instance.m_GameMusic[0]);
                 MusicManager.instance.gameObject.GetComponent<AudioHighPassFilter>().enabled = false;

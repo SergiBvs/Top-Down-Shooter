@@ -36,6 +36,8 @@ public class GUIhelper : MonoBehaviour
     [Header("Audio")]
     public AudioSource m_AS;
 
+    public int m_NumberOfEnemies;
+
 
     void Start()
     {
