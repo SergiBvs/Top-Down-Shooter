@@ -10149,6 +10149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 5
+  Pos: {x: 0, y: 0}
 --- !u!1 &5748779760443837846
 GameObject:
   m_ObjectHideFlags: 0
@@ -10512,6 +10513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 4
+  Pos: {x: 45, y: -3}
 --- !u!1 &6506034055908296885
 GameObject:
   m_ObjectHideFlags: 0
@@ -10652,6 +10654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 7
+  Pos: {x: 0, y: 0}
 --- !u!1 &6999361784620686348
 GameObject:
   m_ObjectHideFlags: 0
@@ -11041,6 +11044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 6
+  Pos: {x: 0, y: 0}
 --- !u!1 &7760784123074252296
 GameObject:
   m_ObjectHideFlags: 0
@@ -11641,6 +11645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 10
+  Pos: {x: 0, y: 0}
 --- !u!1 &8882008987839184852
 GameObject:
   m_ObjectHideFlags: 0
@@ -11781,3 +11786,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 9
+  Pos: {x: 0, y: 0}

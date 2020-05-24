@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip[] m_ElevatorMusic;
     public AudioClip[] m_GameMusic;
     public AudioClip m_StoreMusic;
+    public AudioClip m_ArenaMusic;
 
     void Awake()
     {

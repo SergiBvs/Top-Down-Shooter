@@ -11,6 +11,7 @@ public class Setup : MonoBehaviour
     public AudioClip[] m_ElevatorMusic;
     public AudioClip[] m_GameMusic;
     public AudioClip m_StoreMusic;
+    public AudioClip m_ArenaMusic;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,6 +41,7 @@ public class Setup : MonoBehaviour
         MusicManager.instance.m_ElevatorMusic = m_ElevatorMusic;
         MusicManager.instance.m_GameMusic = m_GameMusic;
         MusicManager.instance.m_StoreMusic = m_StoreMusic;
+        MusicManager.instance.m_ArenaMusic = m_ArenaMusic;
 
         MusicManager.instance.m_MusicSource.pitch = 0.8f;
         MusicManager.instance.m_MusicSource.volume = 0.8f;
