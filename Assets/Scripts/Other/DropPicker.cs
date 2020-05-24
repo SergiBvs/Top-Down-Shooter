@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DropPicker : MonoBehaviour
 {
-
+    int i = 0;
     private static DropPicker instance;
     bool isThisMainInstance;
 
@@ -122,10 +122,14 @@ public class DropPicker : MonoBehaviour
     private void PickAmmo()
     {
         GameManager.instance.GetCurrentWeapon();
+        i = 0;
 
         foreach (Gun item in GameManager.instance.m_WeaponsArray)
         {
-            item.m_CurrentMaxAmmo += m_HowMuchAmmo;
+            if (Player.GunBoughtArray[i])
+                item.m_CurrentMaxAmmo += m_HowMuchAmmo;
+
+            i++;
         }
 
         GameManager.instance.m_CurrentWeapon.SaveValues();

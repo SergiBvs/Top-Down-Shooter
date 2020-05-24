@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     private GUIhelper GUIHelp;
+    int i = 0;
 
     [Header("Stats")]
     public int m_Health = 100;
@@ -108,10 +109,14 @@ public class GameManager : MonoBehaviour
     {
         GetCurrentWeapon();
         m_CanRefillAmmo = false; //poner en true cuando se entre en el ascensor
+        i = 0;
 
         foreach (Gun item in m_WeaponsArray)
         {
-            item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);
+            if(Player.GunBoughtArray[i])
+                item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.5f);
+
+            i++;
         }
 
         m_CurrentWeapon.SaveValues();
@@ -163,6 +168,8 @@ public class GameManager : MonoBehaviour
         if (m_EnemyAmount <= 0)
         {
             GameObject.FindGameObjectWithTag("Elevator").GetComponent<ElevatorScript>().ElevatorOpen();
+            m_CanRefillAmmo = true;
+            SoundManager.instance.PlaySound("Elevator_Ding", 1, 1);
         }
     }
 
