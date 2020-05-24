@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public void ReassignObjs()
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();
+        SetCoins(0);
         SetMaxHealth(m_Health);
     }
 
