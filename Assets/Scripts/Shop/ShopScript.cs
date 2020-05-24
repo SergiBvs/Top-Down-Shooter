@@ -34,7 +34,7 @@ public class ShopScript : MonoBehaviour
 
     void Update()
     {
-       
+        ChangeColors(); //no hay otra forma de hacer que se detecte si te has quedado sin dinero para los demas botones, o si la hay no se me ocurre, asi que se queda asi y punto
     }
 
 
@@ -82,7 +82,7 @@ public class ShopScript : MonoBehaviour
                 SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
 
-        ChangeColors();
+        //ChangeColors();
 
     }
 
@@ -195,7 +195,7 @@ public class ShopScript : MonoBehaviour
                 SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
         }
 
-        ChangeColors();
+        //ChangeColors();
         GameManager.instance.SetCoins(0);
         //lo que sea que se quiera añadir 
     }

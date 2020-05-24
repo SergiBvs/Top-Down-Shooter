@@ -91,6 +91,11 @@ public class LaserGun : Gun
                     Enemy l_Enemy = hit.collider.gameObject.GetComponent<Enemy>();
                     l_Enemy.TakeDamage(m_DamagePerAmmoUnit);
                 }
+                if(hit.collider.CompareTag("ArenaEnemy"))
+                {
+                    Arena_Enemy l_Enemy = hit.collider.gameObject.GetComponent<Arena_Enemy>();
+                    l_Enemy.TakeDamage(m_DamagePerAmmoUnit);
+                }
                 else if (hit.collider.CompareTag("Wall"))
                 {
                     //particles
