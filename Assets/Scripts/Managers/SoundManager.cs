@@ -36,7 +36,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(string SoundClip , float volume , float pitch)
     {
-        //m_AS = Instantiate((AudioSource)Resources.Load("AudioSource/AudioSource"));
 
         foreach (AudioClip clip in m_AudioClips)
         {
