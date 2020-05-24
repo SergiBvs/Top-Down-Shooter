@@ -158,8 +158,8 @@ MonoBehaviour:
   m_GunTip: {fileID: 8246304598277793360}
   m_BulletName: E_Basic_Bullet
   m_MovementSpeed: 5
-  m_MaxCoin: 20
-  m_minCoin: 10
+  m_MaxCoin: 10
+  m_minCoin: 5
   m_AmmoChance: 20
   m_HealthChance: 10
 --- !u!1 &3583446010776270238

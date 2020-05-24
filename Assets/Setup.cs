@@ -41,6 +41,9 @@ public class Setup : MonoBehaviour
         MusicManager.instance.m_GameMusic = m_GameMusic;
         MusicManager.instance.m_StoreMusic = m_StoreMusic;
 
+        MusicManager.instance.m_MusicSource.pitch = 0.8f;
+        MusicManager.instance.m_MusicSource.volume = 0.8f;
+
         GameManager.instance.ChangeMusic(MusicManager.instance.m_GameMusic[0]);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }

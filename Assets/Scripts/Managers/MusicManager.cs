@@ -48,7 +48,7 @@ public class MusicManager : MonoBehaviour
         m_MusicSource.clip = nextSong;
         m_MusicSource.Play();
 
-        while (m_MusicSource.volume < 1f)
+        while (m_MusicSource.volume < 0.7f)
         {
             m_MusicSource.volume += Time.deltaTime/2;
             yield return null;
