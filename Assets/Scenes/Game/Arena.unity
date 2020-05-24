@@ -24868,7 +24868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneToLoad: 4
-  Pos: {x: 30, y: 30}
+  Pos: {x: 30, y: -9}
 --- !u!61 &1496766730
 BoxCollider2D:
   m_ObjectHideFlags: 0
