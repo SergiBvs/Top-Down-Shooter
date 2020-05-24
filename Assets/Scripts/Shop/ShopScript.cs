@@ -118,13 +118,12 @@ public class ShopScript : MonoBehaviour
         }
         else if (this.gameObject.CompareTag("Luck"))
         {
-            if(GameManager.instance.m_Currency >= m_Cost /* && que este debajo del maximo*/)
+            if(GameManager.instance.m_Currency >= m_Cost && GameManager.instance.m_Luck >= 20)
             {
                 //augmento de luck
                 GameManager.instance.m_Luck += 5;
 
                 GameManager.instance.m_Currency -= m_Cost;
-                m_Cost += 125; //lo puedes cambiar si quieres
                 PlayerPrefs.SetInt(this.tag + "Cost", m_Cost);
 
                 SoundManager.instance.PlaySound("BuySound" + l_randSound, 1, 1);
@@ -132,11 +131,11 @@ public class ShopScript : MonoBehaviour
             else
                 SoundManager.instance.PlaySound("ErrorSound1", 1, 1);
 
-            /*if(si ha llegado al maximo)
+            if(GameManager.instance.m_Luck >= 20)
             {
                 m_MaxUpgraded = 1;
                 PlayerPrefs.SetInt(this.tag + "MaxUpgraded", m_MaxUpgraded);
-            }*/
+            }
         }
         else if(this.gameObject.CompareTag("Speed"))
         {
@@ -197,6 +196,7 @@ public class ShopScript : MonoBehaviour
         }
 
         ChangeColors();
+        GameManager.instance.SetCoins(0);
         //lo que sea que se quiera añadir 
     }
 

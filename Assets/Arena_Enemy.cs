@@ -80,7 +80,7 @@ public class Arena_Enemy : MonoBehaviour
         m_AttackCooldown = m_MaxAttackCooldown;
     }
 
-    public void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount)
     {
         m_Health -= amount;
 

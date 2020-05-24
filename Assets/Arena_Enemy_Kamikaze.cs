@@ -38,4 +38,10 @@ public class Arena_Enemy_Kamikaze : Arena_Enemy
         wManager.m_WaveEnemiesDefeated++;
         Destroy(this.gameObject);
     }
+
+    public override void TakeDamage(int amount)
+    {
+        if(!m_GonnaExplode)
+            base.TakeDamage(amount);
+    }
 }
