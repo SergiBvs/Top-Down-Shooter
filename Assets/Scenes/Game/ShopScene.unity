@@ -1675,7 +1675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 100
+  m_Cost: 50
   m_CostText: {fileID: 1269176402}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 300
+  m_Cost: 50
   m_CostText: {fileID: 860213873}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -2456,7 +2456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &190903598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3000,7 +3000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 100
+  m_Cost: 50
   m_CostText: {fileID: 824980987}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -4841,7 +4841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 200
+  m_Cost: 150
   m_CostText: {fileID: 1601266897}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -9255,7 +9255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 100
+  m_Cost: 50
   m_CostText: {fileID: 1712388497}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -10703,7 +10703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 100
+  m_Cost: 50
   m_CostText: {fileID: 1348629097}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -12537,7 +12537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 500
+  m_Cost: 350
   m_CostText: {fileID: 1670923609}
   m_MaxUpgraded: 0
   m_Bought: 0
@@ -14368,7 +14368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d627ab1a8bde98479f327a17457b554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cost: 1000
+  m_Cost: 750
   m_CostText: {fileID: 1582590155}
   m_MaxUpgraded: 0
   m_Bought: 0
