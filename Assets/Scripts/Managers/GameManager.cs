@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
             item.m_CurrentMaxAmmo = item.m_CurrentMaxAmmo + (int)(item.m_InitialMaxAmmo * 0.3f);
         }
 
+        m_CurrentWeapon.SaveValues();
         m_CurrentWeapon.UpdateGUI();
     }
 

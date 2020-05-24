@@ -711,6 +711,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_CurrentGun: {fileID: 0}
+  m_AS: {fileID: 0}
 --- !u!50 &6620470243767685165
 Rigidbody2D:
   serializedVersion: 4
