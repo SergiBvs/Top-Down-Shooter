@@ -254,11 +254,13 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
-        m_Health -= amount; 
+        m_Health -= amount;
+        Instantiate((GameObject)Resources.Load("DamagedParticles"), transform.position, transform.rotation);
 
-        if(m_Health <= 0)
+        if (m_Health <= 0)
         {
             Loot();
+            Instantiate((GameObject)Resources.Load("EnemyDeathParticles"), transform.position, Quaternion.identity);
             SoundManager.instance.PlaySound("DeathSound", 1, 1);
             GameManager.instance.EnemyDefeated();
             Destroy(this.gameObject);
@@ -272,7 +274,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject coin = Instantiate((GameObject)Resources.Load("Loot/Coin"));
             coin.transform.position = transform.position;
-            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 20, ForceMode2D.Impulse);
+            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0.5f, 1.5f), Random.Range(-1f, 1f)) * 40, ForceMode2D.Impulse);
         }
     
 

@@ -83,10 +83,12 @@ public class Arena_Enemy : MonoBehaviour
     public virtual void TakeDamage(int amount)
     {
         m_Health -= amount;
+        Instantiate((GameObject)Resources.Load("DamagedParticles"), transform.position, transform.rotation);
 
         if (m_Health <= 0)
         {
             Loot();
+            Instantiate((GameObject)Resources.Load("EnemyDeathParticles"), transform.position, Quaternion.Euler(90,0,0));
             wManager.m_EnemiesDefeated++;
             wManager.m_WaveEnemiesDefeated++;
             Destroy(this.gameObject);
@@ -100,7 +102,8 @@ public class Arena_Enemy : MonoBehaviour
         {
             GameObject coin = Instantiate((GameObject)Resources.Load("Loot/Coin"));
             coin.transform.position = transform.position;
-            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 20, ForceMode2D.Impulse);
+            coin.transform.rotation = Quaternion.Euler(0,0,Random.Range(0,360));
+            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(1f, 2f), Random.Range(-2f, 2f)) * 30, ForceMode2D.Impulse);
         }
 
 

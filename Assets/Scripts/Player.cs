@@ -174,6 +174,7 @@ public class Player : MonoBehaviour
     {
         m_CurrentHealth -= amount;
         GameManager.instance.SetHealth(m_CurrentHealth);
+        Instantiate((GameObject)Resources.Load("DamagedParticles"), transform);
 
         int l_soundRand = Random.Range(1, 3);
         SoundManager.instance.PlaySound("Hurt" +l_soundRand, 1 ,1);
