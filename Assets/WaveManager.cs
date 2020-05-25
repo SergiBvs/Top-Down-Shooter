@@ -60,6 +60,7 @@ public class WaveManager : MonoBehaviour
                     m_CurrentEnemySpawned = 0;
                     waveEnded = true;
                     waveStarted = false;
+                    GameManager.instance.m_CanRefillAmmo = true;
                 }
             }
         }
