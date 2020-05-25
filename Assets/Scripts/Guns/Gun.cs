@@ -48,7 +48,9 @@ public class Gun : MonoBehaviour
         GameManager.instance.UpdateUpgrades();
         LoadValues();
         if (GameManager.instance.m_HasRestarted)
+        {
             LoadInitialValues();    
+        }
         SaveInitialValues();
         UpdateGUI();
        

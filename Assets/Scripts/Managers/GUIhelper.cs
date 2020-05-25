@@ -104,7 +104,6 @@ public class GUIhelper : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.instance.m_IsGameOverPanelOn = false;
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
-        GameManager.instance.SetMaxHealth(100);
     }
 
     public void RestartArena()
@@ -115,7 +114,6 @@ public class GUIhelper : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.instance.m_IsGameOverPanelOn = false;
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
-        GameManager.instance.SetMaxHealth(100);
     }
 
     public void MainMenu()

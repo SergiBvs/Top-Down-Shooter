@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
         ReassignObjs();
     }
 
+    private void Update()
+    {
+        print(m_HasRestarted);
+    }
+
     public void ReassignObjs()
     {
         GUIHelp = GameObject.FindGameObjectWithTag("GUI").GetComponent<GUIhelper>();

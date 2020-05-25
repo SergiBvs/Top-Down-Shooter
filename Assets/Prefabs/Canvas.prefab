@@ -2143,7 +2143,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 50
+  m_SortingOrder: 140
   m_TargetDisplay: 0
 --- !u!114 &3318511152662733755
 MonoBehaviour:
@@ -8765,6 +8765,7 @@ MonoBehaviour:
   m_GUIPanel: {fileID: 3318511153096101498}
   m_ReloadPanel: {fileID: 3318511152630128066}
   m_AS: {fileID: 369774126786303904, guid: 653d635b90cfe064494e8ea769454e08, type: 3}
+  m_NumberOfEnemies: 0
 --- !u!1 &3318511153767979006
 GameObject:
   m_ObjectHideFlags: 0
