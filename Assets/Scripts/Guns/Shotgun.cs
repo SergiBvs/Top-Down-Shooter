@@ -24,19 +24,6 @@ public class Shotgun : Gun
                 SoundManager.instance.PlaySound("ShotgunShot", 0.5f, 1);
 
                 Shoot(player.localRotation.eulerAngles.z);
-
-                for (int i = 0; i < m_NumberOfPellets/2; i++)
-                {
-                    float l_angle = Random.Range(0, m_MaxAngle);
-                    Shoot(player.localRotation.eulerAngles.z + l_angle);
-                }
-
-                for (int i2 = 0; i2 < m_NumberOfPellets/2; i2++)
-                {
-                    float l_angle = Random.Range(0, m_MinAngle);
-
-                    Shoot(player.localRotation.eulerAngles.z + l_angle);
-                }
             }
             else if (!m_HasBullets)
                 SoundManager.instance.PlaySound("EmptyGun", 0.5f, 1);
@@ -56,6 +43,60 @@ public class Shotgun : Gun
             GUIHelp.m_ReloadPanel.SetActive(true);
             GUIHelp.m_AmmoText.color = new Color(255, 0, 0);
         }
+    }
+
+    public override void Shoot(float rotationZ)
+    {
+        m_canShoot = false;
+
+        StartCoroutine(CreateBullets(rotationZ));
+
+        StartCoroutine(GunCooldown());
+
+        m_CurrentAmmo-= 5;
+
+        if (m_CurrentAmmo <= (m_Magazine / 2))
+        {
+            GUIHelp.m_AmmoText.color = new Color(236 / 255f, 128 / 255f, 48 / 255f);
+
+            if (m_CurrentAmmo <= (m_Magazine / 4))
+            {
+                GUIHelp.m_AmmoText.color = new Color(236 / 255f, 94 / 255f, 52 / 255f);
+            }
+
+        }
+
+        if (m_CurrentAmmo <= 0)
+        {
+            GUIHelp.m_ReloadPanel.SetActive(true);
+            GUIHelp.m_AmmoText.color = new Color(1, 0, 0);
+            m_HasBullets = false;
+        }
+
+        UpdateGUI();
+        SaveValues();
+    }
+
+    IEnumerator CreateBullets(float rotationZ)
+    {
+        yield return new WaitForSeconds(0.001f);
+        float l_angle = Random.Range(0, m_MinAngle);
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ + l_angle));
+
+        yield return new WaitForSeconds(0.001f);
+        l_angle = Random.Range(0, m_MinAngle);
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ + l_angle));
+
+        yield return new WaitForSeconds(0.001f);
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ));
+
+        yield return new WaitForSeconds(0.001f);
+        l_angle = Random.Range(0, m_MaxAngle);
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ + l_angle));
+
+        yield return new WaitForSeconds(0.001f);
+        l_angle = Random.Range(0, m_MaxAngle);
+        Instantiate(Resources.Load("Bullets/" + m_BulletName), GunTip.position, Quaternion.Euler(0, 0, rotationZ + l_angle));
     }
 }
 

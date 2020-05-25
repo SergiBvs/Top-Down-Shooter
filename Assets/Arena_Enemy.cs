@@ -85,12 +85,15 @@ public class Arena_Enemy : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
+        bool dying = false;
         m_Health -= amount;
         Instantiate((GameObject)Resources.Load("DamagedParticles"), transform.position, transform.rotation);
 
-        if (m_Health <= 0)
+        if (m_Health <= 0 && !dying)
         {
+            dying = true;
             Loot();
+            print("loot");
             if (wManager.bloodPools[wManager.bloodPoolNum] != null) {
                 wManager.bloodPools[wManager.bloodPoolNum].GetComponent<Animator>().SetTrigger("FADE");
                 wManager.bloodPools[wManager.bloodPoolNum] = null;

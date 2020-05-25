@@ -254,12 +254,15 @@ public class Enemy : MonoBehaviour
 
     public virtual void TakeDamage(int amount)
     {
+        bool dying = false;
         m_Health -= amount;
         Instantiate((GameObject)Resources.Load("DamagedParticles"), transform.position, transform.rotation);
 
-        if (m_Health <= 0)
+        if (m_Health <= 0 && !dying)
         {
+            dying = true;
             Loot();
+            print("loot");
             Instantiate((GameObject)Resources.Load("EnemyDeathParticles"), transform.position, Quaternion.Euler(90, 0, 0));
             Instantiate((GameObject)Resources.Load("Bloodstain"), transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
             SoundManager.instance.PlaySound("DeathSound", 1, 1);
@@ -267,6 +270,7 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    
 
     public virtual void Loot()
     {
