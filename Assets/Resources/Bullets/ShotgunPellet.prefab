@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BulletForce: 50
-  m_Damage: 10
-  m_UpTime: 4
+  m_Damage: 8
+  m_UpTime: 0.5
   m_BulletRB2D: {fileID: 0}
-  FallOffDamageDistance: 5
+  FallOffDamageDistance: 4
   DamageAfterFallOff: 1
 --- !u!61 &61979708380230438
 BoxCollider2D:

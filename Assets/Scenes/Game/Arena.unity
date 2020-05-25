@@ -34276,6 +34276,11 @@ PrefabInstance:
       propertyPath: m_ReloadBar
       value: 
       objectReference: {fileID: 572018151}
+    - target: {fileID: 812743770415925868, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
+        type: 3}
+      propertyPath: m_ShootCD
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6620470243306982564, guid: d150e900b4b7ebd4fb3a5406dcb7bad9,
         type: 3}
       propertyPath: m_LocalPosition.x

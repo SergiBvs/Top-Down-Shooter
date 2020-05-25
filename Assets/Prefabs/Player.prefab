@@ -118,7 +118,7 @@ LineRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 0
+    numCornerVertices: 2
     numCapVertices: 3
     alignment: 0
     textureMode: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_InitialMaxAmmo: 200
   m_MaxAmmo: 200
   m_CurrentMaxAmmo: 200
-  m_ShootCD: 0.6
+  m_ShootCD: 1
   m_ReloadSpeed: 1
   m_CurrentReloadSpeed: 0
   m_BulletName: ShotgunPellet
