@@ -72,8 +72,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-       
-
 
         //MOVIMIENTO
         m_movement.x = Input.GetAxisRaw("Horizontal");
