@@ -34254,6 +34254,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1259781659, guid: d150e900b4b7ebd4fb3a5406dcb7bad9, type: 3}
+      propertyPath: m_Parameters.numCornerVertices
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1748580558, guid: d150e900b4b7ebd4fb3a5406dcb7bad9, type: 3}
       propertyPath: m_ReloadBarCanvas
       value: 
