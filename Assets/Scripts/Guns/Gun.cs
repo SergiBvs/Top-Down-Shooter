@@ -34,8 +34,6 @@ public class Gun : MonoBehaviour
     int i = 0;
     int b = 0;
 
-    int test = 0;
-
 
     public virtual void Start()
     {
@@ -50,14 +48,8 @@ public class Gun : MonoBehaviour
         GameManager.instance.UpdateUpgrades();
         LoadValues();
         if (GameManager.instance.m_HasRestarted)
-        {
-            print("has restarted");
             LoadInitialValues();    
-        }
-
-        test++;
         SaveInitialValues();
-        print("test" + test);
         UpdateGUI();
        
    }
@@ -65,12 +57,6 @@ public class Gun : MonoBehaviour
 
     public virtual void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.P)) //test 
-        {
-            print(test);
-        }
-
         m_ReloadBar.value = CalculateSliderValue();
 
         if (Input.GetButtonDown("Fire1"))
@@ -210,23 +196,18 @@ public class Gun : MonoBehaviour
     public void SaveInitialValues()
     {
         b = 0;
-        print("SaveInitialValuesEnter");
 
         foreach (Gun item in GameManager.instance.m_WeaponsArray)
         {
             PlayerPrefs.SetInt("InitialCurrentAmmoValues" + b, item.m_CurrentAmmo);
             PlayerPrefs.SetInt("InitialCurrentMaxAmmoValues" + b, item.m_CurrentMaxAmmo);
-            print("SaveInitialValues" + b);
             b++;
         }
-
-        print("SaveInitialValuesExit");
     }
 
     public void LoadInitialValues()
     {
         b = 0;
-        print("LoadInitialValuesEnter");
 
         foreach (Gun item in GameManager.instance.m_WeaponsArray)
         {
@@ -239,12 +220,10 @@ public class Gun : MonoBehaviour
             else
                 item.m_CurrentMaxAmmo = item.m_MaxAmmo;
 
-            print("LoadInitialValues" + b);
             b++;
         }
 
         GameManager.instance.m_HasRestarted = false;
-        print("LoadInitialValuesFinished");
     }
 
     public void SaveValues()
